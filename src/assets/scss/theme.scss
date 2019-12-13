@@ -1,0 +1,19 @@
+@import "./colors";
+
+body {
+  background-color: $color-white; //$background-color;
+  color: $color-black;
+  font-family: EffraRegular, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+
+  * {
+    outline: none;
+  }
+}

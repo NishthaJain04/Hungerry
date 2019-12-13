@@ -1,0 +1,8 @@
+{
+  "name": "Hungerry",
+  "short_name": "Hungerry",
+  "start_url": "/home?launch=pwa",
+  "display": "standalone",
+  "background_color": "#0095da",
+  "theme_color": "#0095da"
+}

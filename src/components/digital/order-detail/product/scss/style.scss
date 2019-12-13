@@ -1,0 +1,18 @@
+.digital-product--detail {
+  padding: 16px;
+  width: 100%;
+  display: table;
+  text-align: left;
+  border-spacing: 0px 5px;
+  .table-row {
+    div:last-child {
+      text-align: right;
+    }
+    .value {
+      max-width: 50%;
+    }
+    .label {
+      max-width: 50%;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+import OrderSummary from '@/components/order-history/OrderSummary'
+import ProductType from '@/components/order-history/ProductType'
+import Loader from '@/components/web/Loader'
+import InfiniteLoading from 'vue-infinite-loading';
+import RetailOrderSummary from '@/components/order-history/RetailOrderSummary'
+import { mapGetters } from 'vuex'
+import { getI18nText } from '@/utils/helpers'
+export default {
+  name: 'OrderHistory',
+  data() {
+    return {
+      orderStatusFilter: [
+        {
+          name: getI18nText('Pending', 'Saat Ini'),
+          code: 'PENDING_ORDER'
+        },
+        {
+          name: getI18nText('Completed', 'Selesai'),
+          code: 'FINISHED_ORDER'
+        },
+        {
+          name: getI18nText('Cancelled', 'Dibatalkan'),
+          code: 'CANCELED_ORDER'
+        }
+      ],
+      page: 0,
+      selectedOrderStatus: null,
+      }
+  },
+  created() {
+    this.getAllOrders();
+    const self = this;
+    window.onpopstate = function() {
+      self.getAllOrders();
+    };
+  },
+  components: {
+    OrderSummary,
+    ProductType,
+    InfiniteLoading,
+    Loader,
+    RetailOrderSummary
+  },
+  computed: {
+    selectedOrderStatusFilter: {
+      get() {
+        return this.$route.query.orderStatus
+      },
+      set(value) {
+        this.$route.query.orderStatus = value
+      }
+    },
+    ...mapGetters('orderHistory', ['orders', 'isFetchingOrderHistory', 'paging']),
+    ...mapGetters('retailOrderHistory', ['getOrderHistory', 'retailPaging', 'isFetchingRetailOrderHistory']),
+    ...mapGetters('profileStore', ['getMembersData']),
+    showEmptyMessage() {
+      if (this.$route.query.productType === 'GROCERIES') {
+        return !this.isFetchingRetailOrderHistory && this.getOrderHistory.length === 0
+      } else {
+        return !this.isFetchingOrderHistory && this.orders.length === 0
+      }
+    }
+  },
+  methods: {
+    getAllOrders() {
+      const query = {};
+      this.page = 0;
+      if(this.isRetailAccessible()) {
+        Object.assign(query, {
+          productType: this.$route.query.productType || 'GROCERIES',
+          orderStatus: this.$route.query.orderStatus || 'PENDING_ORDER'
+        })
+      } else {
+        Object.assign(query, {
+          productType: this.$route.query.productType || 'PHONE_CREDIT',
+          orderStatus: this.$route.query.orderStatus || 'PENDING_ORDER'
+        })
+      }
+      this.$router.push({ query });
+      this.$store.dispatch('orderHistory/RESET_ORDERS');
+      this.$store.dispatch('retailOrderHistory/RESET_ORDERS');
+      this.getOrders()
+    },
+    changeOrderStatusFilter(filter) {
+      const query = {
+        ...this.$route.query,
+        orderStatus: filter.code
+      };
+      this.$router.push({ query })
+      this.$store.dispatch('orderHistory/RESET_ORDERS')
+      this.$store.dispatch('retailOrderHistory/RESET_ORDERS')
+      this.page = 0
+      this.getOrders()
+    },
+    getOrders(success) {
+      const query = this.$route.query
+      if (query.productType === 'GROCERIES') {
+        this.$store.dispatch('retailOrderHistory/GET_ORDER_HISTORY', {
+        params: {
+          page: this.page,
+          pageSize: 10,
+          orderStatus: query.orderStatus,
+        },
+        success,
+        isNewPage: this.page === 0 ? true : false
+      })
+    } else {
+      const payload = {
+        status: query.orderStatus,
+        productType: query.productType,
+        page: this.page,
+        size: 10
+      }
+      this.$store.dispatch('orderHistory/GET_ORDERS', { payload, success })
+    }
+    },
+    getNextPage($state) {
+      this.page = this.page + 1;
+      const query = this.$route.query
+        if (query.productType === 'GROCERIES' && this.retailPaging && this.page < this.retailPaging.total_page) {
+          this.getOrders(
+            () => $state.loaded()
+          )
+        } else if (this.paging && this.page < this.paging.total_page) {
+            this.getOrders(
+              () => $state.loaded()
+            )
+        } else {
+            $state.loaded()
+            $state.complete()
+        }
+    },
+    getRetailOrderDetailPath(order) {
+      return {
+        path: `/order/retail/${order.orderId}`,
+        query: this.$route.query
+      }
+    },
+    getOrderDetailPath(order) {
+      return {
+        path: `/order/digital/${order.orderId}`,
+        query: this.$route.query
+      }
+    },
+    isRetailAccessible() {
+      const memberData = this.getMembersData;
+      if(!memberData || !memberData.services) return false;
+      const hasAccessOfService = memberData.services.includes('replenishment_products');
+      const zoneId = memberData.zoneId;
+      return hasAccessOfService && zoneId !== null;
+    }
+  }
+}

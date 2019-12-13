@@ -1,0 +1,55 @@
+<template>
+  <div class="setting-pin-wrapper">
+    <Transition effect-name="slide-right">
+      <PinModal
+        v-if="isPinModalVisible"
+        :settingPin="true"
+        :forgotPinVisible="false"
+        :isError="isError"
+        :pinHeader="i18n('SET_PIN')"
+        :pinDescriptionHeader="i18n('SET_PIN_MSG')"
+        :handlePinClose="handlePinClose"
+        :handlePinEnter="handlePinEnter"
+      />
+    </Transition>
+    <Transition effect-name="slide-left">
+      <PinModal
+        v-if="isConfirmPinModalVisible"
+        :settingPin="true"
+        :isError="isError"
+        :pinHeader="i18n('SET_PIN')"
+        :forgotPinVisible="false"
+        :handleIncorrectPinEnter="handleIncorrectPinEnter"
+        :pinDescriptionHeader="i18n('CONFIRM_PIN')"
+        :message="i18n('INCORRECT_PIN')"
+        :handlePinClose="handlePinClose"
+        :handlePinEnter="handleConfirmPinEnter"
+        :disableInput="disableInput"
+      />
+    </Transition>
+    <OverlayPopup
+      :is-open="isOtpModalVisible"
+    >
+      <OtpModal
+        :isOtpCorrect="isOtpCorrect"
+        :resendVisible="resendVisible"
+        :countDownVisible="countDownVisible"
+        :minuteTimer="minuteTimerString"
+        :secondTimer="secondTimerString"
+        :resendSuccessVisible="resendSuccessVisible"
+        ref="otpModal"
+        :message="i18n('INCORRECT_PIN')"
+        :registeredNumber="registeredNumber"
+        :handleOtpEnter="verifyOtpAndSetPin"
+        :handleOtpResend="generateOtp"
+        class="mt-3"
+      />
+    </OverlayPopup>
+    <Alert
+      :show-alert="isPinChangeSuccess"
+      :hide-alert="handleAlertClose"
+      :alertMessage="i18n('PIN_SET_SUCCESS')"
+    />
+  </div>
+</template>
+<script src="./js/setting-pin.js"></script>

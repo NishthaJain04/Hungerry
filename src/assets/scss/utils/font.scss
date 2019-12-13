@@ -1,0 +1,66 @@
+@import "../colors";
+
+.font-grey {
+  color: $color-grey-shade;
+}
+
+.font-grey-3 {
+  color: $color-grey-shade-3;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-green {
+  color: $color-green;
+}
+
+.font-blue-3 {
+  color: $color-blue-3;
+}
+.font-blue-5 {
+  color: $color-blue-5;
+}
+
+.font-red {
+  color: $color-red;
+}
+
+.font-orange {
+  color: $color-orange;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.text-left {
+  text-align: left;
+}
+.background-blue-5 {
+  background-color: $color-blue-5;
+}
+.background-red {
+  background-color: $color-red;
+}
+.background-green {
+  background-color: $color-green-light-1;
+}
+.background-red-3 {
+  background-color: $color-red-3;
+}
+.font-grey-1 {
+  color: $color-grey-shade-1;
+}
+.text-right {
+  text-align: right;
+}

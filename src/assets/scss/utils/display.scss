@@ -1,0 +1,6 @@
+.table-row {
+  display: table-row;
+  &>div {
+    display: table-cell;
+  }
+}
