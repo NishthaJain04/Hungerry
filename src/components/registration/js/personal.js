@@ -1,7 +1,7 @@
 import DatePicker from '@/components/web/DatePicker'
 import { mapGetters } from 'vuex'
 import {getMemberID} from '@/utils/helpers'
-import {enUS, id} from 'date-fns/locale';
+// import {enUS, id} from 'date-fns/locale';
 import format from 'date-fns/format';
 import lang from '@/utils/language';
 
@@ -70,7 +70,7 @@ export default {
       if(memberObject.dateOfBirth) {
         const dob = memberObject.dateOfBirth.split('T')[0];
         Object.assign(this.memberDetail, {dateOfBirth: dob});
-        const options = {locale: lang.getUserLanguage() === 'en' ? enUS : id};
+        // const options = {locale: lang.getUserLanguage() === 'en' ? enUS : id};
         const year = parseInt(dob.split('-')[0]);
         const month = parseInt(dob.split('-')[1])-1;
         const date = parseInt(dob.split('-')[2]);

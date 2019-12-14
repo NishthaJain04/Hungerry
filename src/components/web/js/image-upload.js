@@ -1,7 +1,7 @@
 import Loader from '@/components/web/Loader'
-import imageCompression from 'browser-image-compression';
-import {getI18nText} from '@/utils/helpers'
-import i18n from '@/i18n/lang'
+// import imageCompression from 'browser-image-compression';
+// import {getI18nText} from '@/utils/helpers'
+// import i18n from '@/i18n/lang'
 
 export default {
   name: 'ImageUpload',
@@ -44,11 +44,11 @@ export default {
       capturedImage: this.imagePath || '',
       fallbackImage: '',
       errorMessages: {
-        invalidType: getI18nText('Invalid image format', 'Format gambar tidak valid'),
-        sizeLimit: getI18nText('The image size must be less than 8 MB', 'Ukuran gambar harus kurang dari 8 MB')
+        invalidType: 'Invalid image format',
+        sizeLimit: 'The image size must be less than 8 MB'
       },
       isImageErrorVisible: false,
-      imageErrorMessage: getI18nText('Invalid image format', 'Format gambar tidak valid'),
+      imageErrorMessage: 'Invalid image format',
       fileValue: null
     };
   },

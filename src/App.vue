@@ -18,10 +18,10 @@
       :showOnboardingScreen="showOnboarding"
       :on-skip-click="handleSkipOnboarding"
     ></OnboardingScreen> -->
-    <Alert
+    <!-- <Alert
       alert-message="Login to your account successfully"
       :show-alert="true"
-    ></Alert>
+    ></Alert> -->
     <!-- <transition name="fade-effect" mode="out-in">
       <Offline v-if="isOfflineNow"></Offline>
     </transition> -->

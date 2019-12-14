@@ -1,7 +1,8 @@
 <template>
   <div>
   <Transition effectName="slide-up">
-    <div v-if="navTabs.isNavigationTabVisible" class="navigation-tab">
+    <!-- v-if="navTabs.isNavigationTabVisible" -->
+    <div class="navigation-tab">
       <div
         class="slider"
         :style="sliderStyle"
@@ -23,68 +24,13 @@
                 :alt="v.alt"
             />
             <div class="tab-text">
-              {{ i18n(v.label) }}
+              {{ v.label }}
             </div>
           </div>
         </div>
       </div>
     </div>
   </Transition>
-  <PopupMessage
-       :isPopupVisible="isCompletePopupVisible"
-       :isCloseIconVisible="false"
-       :popupCrossBtnClick="togglePopup"
-       popupTitle=""
-       :popupHeading="i18n('HOME_PAGE.DATA_INCOMPLETE_HEADING')"
-       :popupText="i18n('HOME_PAGE.DATA_INCOMPLETE_MSG_TEXT')"
-       :popupButtonText="i18n('HOME_PAGE.DATA_INCOMPLETE_BTN_TEXT')"
-       :popupButtonClickHandler="handleIncompleteDataClick"
-  ></PopupMessage>
-  <PopupMessage
-       :isPopupVisible="isUnderVerificationVisible"
-       :isCloseIconVisible="true"
-       :popupCrossBtnClick="handleUnderVerificationClick"
-       popupTitle=""
-       :popupHeading='i18n("VERIFICATION_HEADER")'
-       :popupText='i18n("VERIFICATION_MSG")'
-       :popupButtonText='i18n("BROWSE")'
-       :popupButtonClickHandler="handleUnderVerificationClick"
-  ></PopupMessage>
-    <OverlayPopup
-            :isOpen="isRejectionOverlayVisible"
-            :closePopup="toggleRejectionOverlay"
-            :title="i18n('HOME_PAGE.APPLICATION_REJECTION_HEADER')"
-            :closeVisible="true"
-    >
-      <ul class="navigation-tab__rejectionReasonList">
-        <li
-                v-for="(reason, index) in reasons"
-                :key="index"
-                class="font-grey-1 font-16"
-        >
-          {{ reason }}
-        </li>
-      </ul>
-      <div>
-        <div class="mt-2 navigation-tab__section-footer">
-          <router-link to="/registration">
-            <BliButton
-                    color="secondary"
-                    block
-            >
-              {{ i18n("ACCOUNT_PAGE.RE_REGISTER") }}
-            </BliButton>
-          </router-link>
-        </div>
-      </div>
-    </OverlayPopup>
-    <BliModal type="warning"
-              :bli-active.sync="isOutsideZoneModalVisible"
-              @maskClick="isOutsideZoneModalVisible = false"
-              @close="isOutsideZoneModalVisible = false">
-      <BliModalHeader>{{i18n('HOME_PAGE.OUTSIDE_ZONE')}}</BliModalHeader>
-      <BliModalBody>{{i18n('HOME_PAGE.TRY_NEW_ADDRESS')}}</BliModalBody>
-    </BliModal>
   </div>
 </template>
 <script src="./js/navigation-tab.js"></script>

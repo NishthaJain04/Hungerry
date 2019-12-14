@@ -32,7 +32,9 @@ const NotFound = () => import(/* webpackChunkName: 'p-not-found' */ '@/pages/Not
 Vue.use(Router);
 import store from '@/store'
 
-const allRoutes = [
+export default new Router({
+  mode: 'history',
+  routes: [
   {
     path: '/',
     redirect: '/home'
@@ -205,40 +207,21 @@ const allRoutes = [
     path: '*',
     redirect: '/not-found'
   }
-];
-
-const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: allRoutes
-});
-
-router.onError(error => {
-  console.log('router on error hook:', error);
-  const err = error.message;   //'Loading chunk WEBPACK_CHUNK_NAME failed.' eg: Loading chunk p-store failed.
-  const msg = err.toLowerCase();
-  const extractedKey = msg.split(' ').filter((e,i)=> i !== 2).join('_');
-  const pattern = /loading_chunk_failed./i;
-
-  if(pattern.test(extractedKey)) {
-    window.location.reload();
-  }
+]
 });
 
 function checkAccessOfUser(to, from, next) {
-  const isMemberFetched = store._vm['profileStore/isMemberFetched'];
-  if (isMemberFetched) {
-    const member = store._vm['profileStore/getMembersData'];
-    console.log('Member Detail:',member);
-    const serviceAccess = member.services || [];
-    if(serviceAccess.includes('digital_products')) {
-      next()
-    } else {
-      next({path: '/home'});
-    }
-  } else {
-    setTimeout(() => checkAccessOfUser(to, from, next), 400)
-  }
+  // const isMemberFetched = store._vm['profileStore/isMemberFetched'];
+  // if (isMemberFetched) {
+  //   const member = store._vm['profileStore/getMembersData'];
+  //   console.log('Member Detail:',member);
+  //   const serviceAccess = member.services || [];
+  //   if(serviceAccess.includes('digital_products')) {
+  //     next()
+  //   } else {
+  //     next({path: '/home'});
+  //   }
+  // } else {
+  //   setTimeout(() => checkAccessOfUser(to, from, next), 400)
+  // }
 }
-
-export default router;
