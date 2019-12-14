@@ -6,16 +6,16 @@
     {{ i.label }}
   </BliChipChoice>
     </div>
-    <div class="label">Registration ID</div>
+    <div class="label">Organisation Name</div>
     <BliField class="input" b-clearable>
-    <BliInput />
-    <label>Registration ID</label>
+    <BliInput v-model="name"/>
+    <label>Organisation Name</label>
   </BliField>
    <div class="label">Organisation Mail ID</div>
-    <BliField class="input" b-clearable>
-    <BliInput />
-    <label>Organisation Mail ID</label>
-  </BliField>
+    <BliField class="input" b-clearable >
+      <BliInput v-model="email"/>
+      <label>Organisation Mail ID</label>
+    </BliField>
   <div>
   <div class="register">
     <BliButton color="secondary" @click="registerMember()">Register</BliButton>

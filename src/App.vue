@@ -27,7 +27,8 @@
     <!-- <transition name="fade-effect" mode="out-in">
       <Offline v-if="isOfflineNow"></Offline>
     </transition> -->
-    <CollectorCreateRequest />
+    <!-- <CollectorCreateRequest /> -->
+    <Profile />
   </div>
 </template>
 <script src="./js/app.js"></script>

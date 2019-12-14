@@ -21,6 +21,8 @@ export default {
       interval: null,
       disableInput: false,
       value: 'donator',
+      name: '',
+      email: '',
       items: [
         {
           value: 'donator',

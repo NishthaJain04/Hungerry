@@ -4,6 +4,7 @@ import NavigationTab from '@/components/web/NavigationTab';
 import CollectorMatchPage from '@/pages/CollectorMatchPage';
 import Alert from '@/components/web/Alert';
 import SignUp from '@/pages/SignUp';
+import Profile from '@/pages/Profile';
 // import digitalConfigNames from '@/constant/digital-config-name'
 // import {getMemberID, getOnboardingStatus, setOnboardingStatus } from '@/utils/helpers';
 // import Offline from '@/pages/Offline'
@@ -15,6 +16,7 @@ export default {
       NavigationTab,
       SignUp,
       CollectorMatchPage,
-      CollectorCreateRequest
+      CollectorCreateRequest,
+      Profile
   }
 };
