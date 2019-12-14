@@ -27,7 +27,39 @@
                 <img src="../assets/icons/icon-cross.svg" alt="add icon" width="35px" style="margin-left:10%;margin-top:5%;" @click="() =>{deleteProduct(index)}">
             </div>
         </div>
-            <img src="../assets/icons/icon-add-circle.svg" alt="add icon" width="30px" class="donarCreateRequest__header__img-donar" @click="() =>{displayProduct()}">
+        <img src="../assets/icons/icon-add-circle.svg" alt="add icon" width="30px" class="donarCreateRequest__header__img-donar" @click="() =>{displayProduct()}">
+        <div class="blu-columns b-mobile b-0 b-gapless" style="margin-top:5%;">
+            <div class="blu-column b-6 center-text" style="margin-left:1%;">
+                <b><label>Do food contain Non-Veg?</label></b>
+            </div>
+            <div class="blu-column b-6 center-text">
+                <BliSwitch v-model="switchedCustom">
+                </BliSwitch>
+             </div>
+        </div>
+        <div class="blu-columns b-mobile b-0 b-gapless mt-3" style="margin-top:10%;">
+            <div class="blu-column b-6 center-text" style="margin-top:4%;">
+                <b><label slot="label">Select pickup within time</label></b>
+            </div>
+            <div class="blu-column b-6 center-text" >
+                <BliDropdown v-model="selectTime" selection autoclose>
+                    <BliList scrollable >
+                        <BliListItem value="Item 1">15 min</BliListItem>
+                        <BliListItem value="Item 2">30 mins</BliListItem>
+                        <BliListItem value="Item 3">45 mins</BliListItem>
+                        <BliListItem value="Item 4">60 mins</BliListItem>
+                        <BliListItem value="Item 5">75 mins5</BliListItem>
+                        <BliListItem value="Item 6">90 mins</BliListItem>
+                    </BliList>
+                </BliDropdown>
+            </div>
+        </div>
+        <div style="margin-left:3%; margin-top:10%;">
+            <BliField b-clearable v-model="additionalInfo" style="margin-right:2%; width:95%;">
+                <BliInput />
+                <label>Additional Information</label>
+            </BliField>
+        </div>
         </div>
     </div>
 </template>

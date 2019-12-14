@@ -11,7 +11,7 @@
     </ErrorHandleNotifier>
     <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in">
     </transition> -->
-    <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in"> -->
+    <!-- <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in"> -->
       <router-view/>
     <!-- </transition> -->
     <NavigationTab />

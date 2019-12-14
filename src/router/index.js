@@ -9,6 +9,7 @@ const HomePage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/
 const DonarCreateRequest = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/DonarCreateRequest');
 const RegistrationPage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/RegistrationPage');
 const DonatorRequestDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DonatorRequestDetail');
+const LoginPage = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/LoginPage');
 const Pulsa = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Pulsa');
 const BlipayPin = () => import(/* webpackChunkName: 'p-blipay-pin' */ '@/pages/BlipayPin');
 const ElectricityToken = () => import(/* webpackChunkName: 'p-electricity-token' */ '@/pages/ElectricityToken');
@@ -61,6 +62,11 @@ export default new Router({
     path: '/homePage',
     name: 'HomePage',
     component: HomePage
+  },
+  {
+    path: '/loginPage',
+    name: 'LoginPage',
+    component: LoginPage
   },
   {
     path: '/donarCreateRequest',

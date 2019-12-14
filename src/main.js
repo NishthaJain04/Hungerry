@@ -5,7 +5,6 @@ import store from '@/store'
 import Blue from '@blibli/dls'
 import '@blibli/dls/dist/blue.min.css'
 import 'assets/scss/index.scss'
-import Blue from '@blibli/dls'
 import '@blibli/dls/dist/blue.min.css'
 
 Vue.use(Blue);

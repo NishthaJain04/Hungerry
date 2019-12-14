@@ -6,7 +6,10 @@ export default {
         donatingItems: [{
             categories: '',
             Quantity: ''
-        }]
+        }],
+        switchedCustom: true,
+        additionalInfo: '',
+        selectTime: ''
       };
     },
     created() {
@@ -22,6 +25,8 @@ export default {
             this.donatingItems.push(product)
         },
         deleteProduct (index) {
+            this.donatingItems.splice(index, 1);
+            this.donatingItems.join()
             console.log(index)
         }
     }  

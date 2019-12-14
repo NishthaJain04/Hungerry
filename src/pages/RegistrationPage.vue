@@ -1,7 +1,14 @@
 <template>
   <div class="registration">
+    <div class="registration__profile-header">
+      Personal Details
+      <img
+        v-show="false"
+        class="bell"
+        src="~assets/icons/icon-bell-grey.svg"
+        alt="Notification" />
+    </div>
     <div class="registration__header">
-      <h2> Personal Details </h2>
       <BliField>
         <BliInput v-model="form.organisationName"/>
         <label>Organisation Name</label>
@@ -48,14 +55,21 @@
   width: 100%;
 
   &__header {
-    text-align: center;
-    padding: 16px;
     font-family: EffraMedium, sans-serif;
+    text-align: center;
+    border-bottom: 1px solid $color-grey;
+    padding: 15px 0;
 
     img{
       left: 10px;
       position: absolute;
     }
+  }
+  &__profile-header {
+    font-family: EffraMedium, sans-serif;
+    text-align: center;
+    border-bottom: 1px solid $color-grey;
+    padding: 15px 0;
   }
 }
 
