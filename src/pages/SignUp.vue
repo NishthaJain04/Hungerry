@@ -1,5 +1,8 @@
 <template>
   <div class="login-wrapper">
+    <div class="login-wrapper__profile-header">
+      App Title
+    </div>
     <div class="chips">
     <BliChipChoice type="radio" v-for="i in items" :key="'blichipchoice' + i.value"
     :itemValue="i.value" v-model="value">
@@ -17,8 +20,11 @@
       <label>Organisation Mail ID</label>
     </BliField>
   <div>
-  <div class="register">
+  <div v-if="name && email" class="register">
     <BliButton color="secondary" @click="registerMember()">Register</BliButton>
+  </div>
+  <div v-else class="register">
+    <BliButton color="disabled"  @click="registerMember()">Register</BliButton>
   </div>
   </div>
     <Transition effect-name="slide-right">
@@ -46,7 +52,14 @@
 </template>
 <script src="./js/sign-up.js"></script>
 <style lang="scss" scoped>
+@import "~assets/scss/colors";
   .login-wrapper {
+    &__profile-header {
+    font-family: EffraMedium, sans-serif;
+    text-align: center;
+    border-bottom: 1px solid $color-grey;
+    padding: 15px 0;
+  }
     .chips {
       margin-top: 12px;
       text-align: center;

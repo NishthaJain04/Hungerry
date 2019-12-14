@@ -109,7 +109,7 @@ export default {
     verifyOtpAndSetPin(otpValue) {
       this.resendVisible = false;
       console.log(otpValue)
-      this.$router.push('/registration')
+      this.$router.push('/registrationPage')
 
       this.$store.dispatch('profileStore/VERIFY_OTP', {
         pathVariables: {
@@ -127,7 +127,7 @@ export default {
         this.isOtpCorrect = true;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
-        this.$router.push('/registration')
+        this.$router.push('/registrationPage')
       // } else {
         this.isOtpCorrect = false;
         this.resendVisible = false;
