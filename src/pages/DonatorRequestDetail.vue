@@ -1,21 +1,23 @@
 <template>
-  <div class="order--detail" v-if="order">
+  <div class="order--detail" v-if="order.requestDetails">
     <div class="order--detail__header">
-      <router-link :to="orderHistoryPath">
         <img
           src="~assets/icons/icon-left.svg"
-          alt="back"/>
-      </router-link>
+          alt="back"
+          @click="$router.go(-1)"/>
       <div class="font-16">
-        {{ i18n("DIGITAL.ORDER.DETAIL") }}
+        Your Request
       </div>
       <div class="font-12 font-grey">
-        {{ i18n("DIGITAL.ORDER.ORDER_ID", order.orderId) }}
+        Request ID: {{ order.orderId }}
       </div>
     </div>
-    <transaction-detail />
-    <product-detail />
-    <help-action />
+    <div class="font-16 padding-16">Your Items List</div>
+    <div v-for="(itemType, index) in order.requestDetails.type">
+      <img class="padding-left-16" style="display: inline-block;" :src="images[index]"/>
+      <div class="label font-blue-3 font-bold padding-left-16">{{ itemType.name }}</div>
+      <div class="value font-orange font-16 padding-left-16">{{ itemType.quantity }}</div>
+      </div>
   </div>
 </template>
 
@@ -35,18 +37,16 @@
       top: 28%;
     }
   }
-
-  .receipt--button {
-    padding: 16px;
-    .blu-field__msg {
-      text-align: left;
-      margin-top: 10px;
-    }
-
-    .number--label {
-      text-align: left;
-      margin-bottom: 8px;
-    }
+  .label {
+   display: inline-block; 
+   line-height: 30px;
+   transform: translate(12px, -24px);
+  }
+  .value {
+    display: inline-block;
+    float: right;
+    margin-right: 12px;
+    transform: translate(0, 10px);
   }
 }
 </style>
