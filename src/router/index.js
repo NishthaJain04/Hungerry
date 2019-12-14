@@ -5,7 +5,7 @@ const Account = () => import(/* webpackChunkName: 'p-profile' */ '@/pages/Profil
 const Home = () => import(/* webpackChunkName: 'p-store' */ '@/pages/Store');
 const OrderHistory = () => import(/* webpackChunkName: 'p-order-history' */ '@/pages/OrderHistory');
 const Registration = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/Registration');
-const DigitalOrderDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DigitalOrderDetail');
+const DonatorRequestDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DonatorRequestDetail');
 const Pulsa = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Pulsa');
 const BlipayPin = () => import(/* webpackChunkName: 'p-blipay-pin' */ '@/pages/BlipayPin');
 const ElectricityToken = () => import(/* webpackChunkName: 'p-electricity-token' */ '@/pages/ElectricityToken');
@@ -84,9 +84,9 @@ export default new Router({
     component: RetailOrderDetail
   },
   {
-    path: '/order/digital/:orderId',
-    name: 'DigitalOrderDetail',
-    component: DigitalOrderDetail
+    path: '/donator/donator-request-details',
+    name: 'DonatorRequestDetail',
+    component: DonatorRequestDetail
   },
   {
     path: '/digital/pulsa',
