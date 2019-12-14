@@ -1,7 +1,7 @@
 import Loader from '@/components/web/Loader';
 import Transition from '@/components/web/Transition';
 import OverlayPopup from '@/components/web/OverlayPopup';
-import { getI18nText } from '@/utils/helpers';
+// import { getI18nText } from '@/utils/helpers';
 export default {
   name: 'LocationMap',
   props: {
@@ -72,7 +72,8 @@ export default {
     if (!window.google) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
-      s.src = `https://maps.google.com/maps/api/js?key=${apiKey}&libraries=places`;
+      // s.src = `https://maps.google.com/maps/api/js?key=${apiKey}&libraries=places`;
+      s.src = 'https://maps.google.com/maps/api/js?key=AIzaSyAJ-M5Aj-QWRbhmrJZwidOao7-TFOL__9k&libraries=places';
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
       // Below is important.
@@ -190,14 +191,16 @@ export default {
               this.setZipCodeFromComponents(result.address_components);
               this.isFetchingAddress = true
               this.isFetching = true
-              this.$store.dispatch('profileStore/GET_ADDRESS_DETAILS', {
-                params: {
-                  postalCode: this.postalCode,
-                  search: this.search
-                },
-                success: this.getAddressDetailsSuccess,
-                fail: this.getAddressDetailsFail
-              })
+              this.isFetchingAddress = false
+              this.isFetching = false
+              // this.$store.dispatch('profileStore/GET_ADDRESS_DETAILS', {
+              //   params: {
+              //     postalCode: this.postalCode,
+              //     search: this.search
+              //   },
+              //   success: this.getAddressDetailsSuccess,
+              //   fail: this.getAddressDetailsFail
+              // })
             }
           } else {
             console.log('[Reverse Geocode Error]', status);
@@ -209,10 +212,10 @@ export default {
       this.isFetchingAddress = false;
       this.isFetching = false;
       if(error.response.data.message === 'Read timed out') {
-      this.$store.dispatch('SET_ERROR_POPUP', {
-        isErrorPopupVisible: true,
-        errorList: { Sorry: [getI18nText('Read timed out. Please, try again.', 'Waktu habis dibaca. Silakan coba kembali esok hari')]}
-      }, {root: true});
+      // this.$store.dispatch('SET_ERROR_POPUP', {
+      //   isErrorPopupVisible: true,
+      //   errorList: { Sorry: [getI18nText('Read timed out. Please, try again.', 'Waktu habis dibaca. Silakan coba kembali esok hari')]}
+      // }, {root: true});
     }
     },
     getAddressDetailsSuccess(res) {
@@ -267,7 +270,7 @@ export default {
       }
       const service = new window.google.maps.places.AutocompleteService();
       service.getPredictions(
-        { input: e.target.value, componentRestrictions: { country: ['id'] } },
+        { input: e.target.value, componentRestrictions: { country: ['in'] } },
         (result, status) => {
           this.displaySuggestions(result, status);
         }

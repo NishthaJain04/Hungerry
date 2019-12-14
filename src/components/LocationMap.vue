@@ -7,17 +7,10 @@
     <div class="map-container__go-back">
       <img class="icon-svg" src="~assets/icons/icon-left.svg" alt="Go Back" @click="goBackFromMap"/>
     </div>
-
-    <div class="locate-me" :style="{ bottom: showConfirmationBox ? '260px' : '260px' }">
-      <BliButton icon style="border-radius: 50%;overflow: hidden" @click="getCurrentLocationGPS">
-        <img src="~assets/icons/icon-my-location.svg" alt="My Location" />
-      </BliButton>
-    </div>
-
     <div class="address-container">
       <span class="address-container__top-bar"></span>
       <div class="address-container__heading">
-        {{ i18n("LOCATION_MAP.YOUR_LOCATION") }}
+        Enter your location
       </div>
       <span class="icon-container">
         <div class="search-icon">
@@ -28,7 +21,7 @@
           type="text"
           readonly
           @input="getAutoCompelete"
-          :placeholder="i18n('LOCATION_MAP.CHOOSE_ADDRESS_PLACEHOLDER')"
+          placeholder="Choose Address"
           @click="toggleSearch"
         />
       </span>
@@ -42,16 +35,15 @@
           @click="submitCurrentDetails"
           :disabled="zipCode.length === 0 || isFetching"
         >
-          {{ i18n("LOCATION_MAP.CHOOSE_ADDRESS") }}
+          Select Address
         </BliButton>
       </div>
     </div>
-
     <Transition>
       <OverlayPopup
         :isOpen="isSearchVisible"
         :closePopup="toggleSearch"
-        :title="i18n('LOCATION_MAP.YOUR_LOCATION')"
+        title="Your Location"
         closeVisible
       >
         <div>
@@ -67,20 +59,14 @@
               type="text"
               @input="getAutoCompelete"
               @blur="removeFocus"
-              :placeholder="i18n('LOCATION_MAP.CHOOSE_ADDRESS_PLACEHOLDER')"
+              placeholder="Choose Address"
             />
           </span>
           <div class="mt-3 use-current-position" @click="getCurrentLocationGPS">
             <img
               src="~assets/icons/icon-my-location.svg"
               alt="My Location" />
-            <span>{{ i18n("LOCATION_MAP.USE_CURRENT_LOCATION") }}</span>
-          </div>
-          <div
-            class="mt-3 use-these-locations"
-            v-if="!noResultFound && isInput"
-          >
-            <span>{{ i18n("LOCATION_MAP.USE_THESE_LOCATION") }}</span>
+            <span>Use Current Location</span>
           </div>
           <div class="mt-2 prediction-list" v-if="!noResultFound && isInput">
             <div
@@ -100,14 +86,13 @@
           <div class="mt-2 not-found-result" v-if="noResultFound && isInput">
             <img src="~assets/icons/404.svg" alt="Not Found" />
             <div class="not-found-result__wording">
-              <span class="main-text">{{i18n('LOCATION_MAP.LOCATION_NOT_FOUND_HEAD')}}</span>
-              <span class="secondary-text">{{i18n('LOCATION_MAP.LOCATION_NOT_FOUND_SUBTEXT')}}</span>
+              <span class="main-text">{{LOCATION_MAP.LOCATION_NOT_FOUND_HEAD}}</span>
+              <span class="secondary-text">{{LOCATION_MAP.LOCATION_NOT_FOUND_SUBTEXT}}</span>
             </div>
           </div>
         </div>
       </OverlayPopup>
     </Transition>
-
     <BliModal
         type="warning"
         :bli-active.sync="isGeoLocationWarningVisible"
@@ -251,9 +236,8 @@
   overflow-y: scroll;
   text-align: left;
   padding-left: 16px;
-
+  color: $color-blue-3;
   &__item {
-    border-bottom: 1px solid $color-grey;
     word-break: break-word;
     padding: 16px 16px 16px 0;
 
@@ -264,16 +248,16 @@
     }
     .item-text {
       font-size: 14px;
-      color: $color-grey-shade;
+      color: $color-grey-darkest;
     }
   }
 }
 
-.use-current-position{
+.use-current-position {
   text-align: left;
   padding: 0 16px;
   user-select: none;
-
+  color: $color-blue-5;
   img {
     display: inline-block;
     vertical-align: bottom;

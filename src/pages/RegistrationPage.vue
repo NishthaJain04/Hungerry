@@ -38,9 +38,20 @@
       <label>Confirmation Password</label>
     </BliField>
     <BliField b-clearable>
-      <BliTextarea v-model="form.address" />
+      <BliTextarea v-model="address" @click="() => showGoogleMaps = true"/>
       <label>Address</label>
     </BliField>
+    <Transition effect-name="slide-left">
+        <LocationMap
+          v-if="showGoogleMaps"
+          id="myMap"
+          :onCloseRequest="toggleMapsVisibility"
+          :currentPosition="currentPosition"
+          :onPlaceChanged="handlePlaceChange"
+          :onContinueClick="saveAddress"
+        >
+        </LocationMap>
+      </Transition>
       <BliButton color="secondary" @click="confirmation">Confirmation</BliButton>
     </div>
     </div>

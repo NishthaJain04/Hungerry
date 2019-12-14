@@ -29,7 +29,7 @@ export default {
           email: 'jain04nishtha@gmail.com',
           imageUrl: profileImage,
           distance: '1.2km',
-          shortDescription: 'about nishtha'
+          quantity: '1.5kg'
         },
         {
           name: 'purvakshi',
@@ -37,7 +37,7 @@ export default {
           email: 'jain04nishtha@gmail.com',
           imageUrl: profileImage,
           distance: '1.2km',
-          shortDescription: 'about nishtha'
+          quantity: '1.5kg'
         },
         {
           name: 'vyshnavi',
@@ -45,7 +45,7 @@ export default {
           email: 'jain04nishtha@gmail.com',
           imageUrl: profileImage,
           distance: '1.2km',
-          shortDescription: 'about nishtha'
+          quantity: '1.5kg'
         },
         {
           name: 'sowmiya',
@@ -53,7 +53,7 @@ export default {
           email: 'jain04nishtha@gmail.com',
           imageUrl: profileImage,
           distance: '1.2km',
-          shortDescription: 'about nishtha'
+          quantity: '1.5kg'
         }
       ]
     };

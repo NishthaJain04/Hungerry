@@ -1,0 +1,20 @@
+{
+  "name": "Blibli Mitra",
+  "short_name": "Blibli Mitra",
+  "icons": [
+    {
+      "src": "./img/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/home?launch=pwa",
+  "display": "standalone",
+  "background_color": "#0095da",
+  "theme_color": "#0095da"
+}

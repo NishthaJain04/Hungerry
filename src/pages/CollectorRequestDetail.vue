@@ -77,7 +77,7 @@
         </div>
   </div>
 </template>
-<script src="./js/retail-order-detail.js"></script>
+<script src="./js/collector-request-detail.js"></script>
 <style lang="scss" scoped>
 @import "~assets/scss/colors";
 .retail-order-detail {

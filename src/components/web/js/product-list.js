@@ -50,9 +50,21 @@ export default {
     }
    },
     methods: {
+      matchDonorSuccess(res) {
+        if (res) {
+          this.hasAccepted = true
+        }
+      },
       matchDonor(event, item) {
         console.log(item);
         this.hasAccepted = true
+        // this.$store.dispatch('retailCheckoutStore/ADD_TO_CART', {
+        //   payload: {
+        //     quantity: 1,
+        //     itemSku: item.itemSku
+        //   },
+        //   success: this.matchDonorSuccess
+        // });
       }
     //   checkItemInCart() {
     //   this.getCartDetails.items.forEach( currentItem => {
@@ -68,13 +80,13 @@ export default {
     //   event.stopPropagation();
     //   this.count = 1
     //   this.quantity = 1
-    //   this.$store.dispatch('retailCheckoutStore/ADD_TO_CART', {
-    //     payload: {
-    //       quantity: 1,
-    //       itemSku: item.itemSku
-    //     },
-    //     fail: this.addItemFail
-    //   });
+      // this.$store.dispatch('retailCheckoutStore/ADD_TO_CART', {
+      //   payload: {
+      //     quantity: 1,
+      //     itemSku: item.itemSku
+      //   },
+      //   fail: this.addItemFail
+      // });
     // },
     // addItemFail(error) {
     //   if(error) {
