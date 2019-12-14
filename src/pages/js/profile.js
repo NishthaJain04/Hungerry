@@ -7,7 +7,9 @@ export default {
       profile: {
         memberDetails: {
           name: 'Nishtha Jain',
-          phoneNumber: '90172635323'
+          phoneNumber: '90172635323',
+          memberType: 'Donor',
+          emailId: 'nishtha.jain@coviam.com'
         },
         addressDetails: {
           addressLine: 'adderess 123456789'

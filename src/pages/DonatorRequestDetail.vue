@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="font-16 padding-16">Your Items List</div>
-    <div v-for="(itemType, index) in order.requestDetails.type">
+    <div v-for="(itemType, index) in order.requestDetails.type" :key="index">
       <img class="padding-left-16" style="display: inline-block;" :src="images[index]"/>
       <div class="label font-blue-3 font-bold padding-left-16">{{ itemType.name }}</div>
       <div class="value font-orange font-16 padding-left-16">{{ itemType.quantity }}</div>

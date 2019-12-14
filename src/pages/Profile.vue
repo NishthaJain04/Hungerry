@@ -3,9 +3,8 @@
     <div class="profile-page__profile-header">
       Your Account
       <img
-        v-show="false"
         class="bell"
-        src="~assets/icons/icon-bell-grey.svg"
+        src="~assets/icons/icon-left.svg"
         alt="Notification" />
     </div>
 
@@ -14,13 +13,20 @@
       <span class="profile-name">
         {{ profile.memberDetails.name }}
       </span>
-        <img src="~assets/icons/icon-female.svg"
+        <img src="~assets/icons/icon-face.svg"
              class="profile-img icon-svg"
              alt="profileIcon"
         />
         <div class="profile-number">{{ profile.memberDetails.phoneNumber }}</div>
+        <span class="font-grey">{{ profile.memberDetails.emailId }}</span>
       </div>
-      <div class="profile-page__address" v-if="profile.addressDetails && profile.addressDetails.addressLine">
+      <div class="profile-page__address">
+        <span class="address-label">Type</span>
+        <span class="address-text">
+        {{ profile.memberDetails.memberType }}
+      </span>
+      </div>
+      <div class="profile-page__address padding-16" v-if="profile.addressDetails && profile.addressDetails.addressLine">
         <span class="address-label">Your Address</span>
         <span class="address-text">
         {{ profile.addressDetails.addressLine }}
@@ -54,9 +60,9 @@
     border-bottom: 1px solid $color-grey;
     padding: 15px 0;
     .bell {
-      float: right;
-      position: relative;
-      right: 14px;
+      display: inline-block;
+      float: left;
+      margin-left: 5px;
     }
   }
   &__profile-scroller {
@@ -66,7 +72,6 @@
   &__profile-detail {
     padding: 10px 16px;
     min-height: 60px;
-    border-bottom: 1px solid $color-grey;
     .profile-name {
       position: relative;
     }
@@ -81,7 +86,8 @@
     }
   }
   &__address {
-    padding: 0 16px;
+    padding: 4px 16px;
+    border-top: 1px solid $color-grey;
     .address-label {
       color: $color-grey-shade-1;
       font-family: EffraMedium, serif;
@@ -96,7 +102,6 @@
   &__change-pin {
     border-top: 1px solid $color-grey;
     padding: 16px;
-
     .icon-lock {
       position: relative;
       vertical-align: sub;
