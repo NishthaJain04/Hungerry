@@ -32,7 +32,7 @@ export default {
     placeholder: {
       type: String,
       required: false,
-      default: i18n('ADD_PHOTO')
+      default: 'ADD_PHOTO'
     },
     onImageLoadFailed: {
       type: Function,
@@ -67,7 +67,7 @@ export default {
         if(this.validateImage(imageFile)) {
           console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
           this.onImageCompression(this.id);
-          this.compressImage(imageFile)
+          // this.compressImage(imageFile)
         }
       }
     },
@@ -82,33 +82,33 @@ export default {
         this.onImageLoadFailed()
       }
     },
-    async compressImage (imageFile) {
-      var options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: undefined,
-        useWebWorker: false,
-        maxIteration: 15
-      };
+    // async compressImage (imageFile) {
+    //   var options = {
+    //     maxSizeMB: 1,
+    //     maxWidthOrHeight: undefined,
+    //     useWebWorker: false,
+    //     maxIteration: 15
+    //   };
 
-      const T1 = performance.now();
-      console.log('T1:', T1);
+    //   const T1 = performance.now();
+    //   console.log('T1:', T1);
 
-      const compressedFile = await imageCompression(imageFile, options);
-      const file = new File([compressedFile], imageFile.name, {type: imageFile.type, lastModified: Date.now()});
+    //   const compressedFile = await imageCompression(imageFile, options);
+    //   const file = new File([compressedFile], imageFile.name, {type: imageFile.type, lastModified: Date.now()});
 
-      const T2 = performance.now();
-      console.log('T2:', T2);
+    //   const T2 = performance.now();
+    //   console.log('T2:', T2);
 
-      console.log(`compressedFile size ${file.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-      console.log('Time to Compress Image ' + (T2 - T1)/1000 + ' seconds.');
+    //   console.log(`compressedFile size ${file.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+    //   console.log('Time to Compress Image ' + (T2 - T1)/1000 + ' seconds.');
 
-      let self = this;
-      this.blobToDataURL(compressedFile, function(dataurl){
-        self.fallbackImage = dataurl;
-        self.capturedImage = dataurl
-      });
-      this.uploadThisItem(file, this.id);
-    },
+    //   let self = this;
+    //   this.blobToDataURL(compressedFile, function(dataurl){
+    //     self.fallbackImage = dataurl;
+    //     self.capturedImage = dataurl
+    //   });
+    //   this.uploadThisItem(file, this.id);
+    // },
     handleClickOnChangePic() {
       this.fileValue = null;
       const element = document.getElementById(`${this.id}`);

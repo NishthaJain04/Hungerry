@@ -102,7 +102,7 @@ export default {
               response.data.errors === null ||
               response.data.errors === undefined
             ) {
-              commit('setShippingStatus', response.data.data.generalManifestResponses[0]);
+              // commit('setShippingStatus', response.data.data.generalManifestResponses[0]);
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,

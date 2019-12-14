@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-view/>
     <!-- <div class="blank-header" v-if="isBlankHeaderVisible()"></div> -->
     <!-- <ErrorNotifier
       :is-error-popup-visible="errors.isErrorPopupVisible"
@@ -10,9 +11,10 @@
       :error-handle-message="displayErrors.errorHandleMessage">
     </ErrorHandleNotifier>
     <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in">
-      <router-view/>
     </transition> -->
     <NavigationTab />
+    <!-- <RegistrationPage />
+    <HomePage /> -->
     <!-- <OnboardingScreen
       v-if="showOnboarding"
       :showOnboardingScreen="showOnboarding"
@@ -25,6 +27,7 @@
     <!-- <transition name="fade-effect" mode="out-in">
       <Offline v-if="isOfflineNow"></Offline>
     </transition> -->
+    
   </div>
 </template>
 <script src="./js/app.js"></script>

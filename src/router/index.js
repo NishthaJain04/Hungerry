@@ -5,6 +5,9 @@ const Account = () => import(/* webpackChunkName: 'p-profile' */ '@/pages/Profil
 const Home = () => import(/* webpackChunkName: 'p-store' */ '@/pages/Store');
 const OrderHistory = () => import(/* webpackChunkName: 'p-order-history' */ '@/pages/OrderHistory');
 const Registration = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/Registration');
+const HomePage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/HomePage');
+const DonarCreateRequest = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/DonarCreateRequest');
+const RegistrationPage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/RegistrationPage');
 const DigitalOrderDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DigitalOrderDetail');
 const Pulsa = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Pulsa');
 const BlipayPin = () => import(/* webpackChunkName: 'p-blipay-pin' */ '@/pages/BlipayPin');
@@ -30,7 +33,7 @@ const NotFound = () => import(/* webpackChunkName: 'p-not-found' */ '@/pages/Not
 
 
 Vue.use(Router);
-import store from '@/store'
+// import store from '@/store
 
 export default new Router({
   mode: 'history',
@@ -53,6 +56,21 @@ export default new Router({
     path: '/registration',
     name: 'Registration',
     component: Registration
+  },
+  {
+    path: '/homePage',
+    name: 'HomePage',
+    component: HomePage
+  },
+  {
+    path: '/donarCreateRequest',
+    name: 'DonarCreateRequest',
+    component: DonarCreateRequest
+  },
+  {
+    path: '/registrationPage',
+    name: 'RegistrationPage',
+    component: RegistrationPage
   },
   {
     path: '/retail-checkout',
@@ -93,73 +111,46 @@ export default new Router({
     path: '/digital/pulsa',
     name: 'Pulsa',
     component: Pulsa,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/token-listrik',
     name: 'ElectricityToken',
     component: ElectricityToken,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/paket-data',
     name: 'PackageData',
     component: PackageData,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/pdam',
     name: 'Pdam',
     component: Pdam,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/bpjs',
     name: 'Bpjs',
     component: Bpjs,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/game-voucher',
     name: 'GameVoucher',
     component: GameVoucher,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/blipay',
     name: 'BlipayTopup',
     component: BlipayTopup,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/order/payment/:orderId',
     name: 'BlipayPin',
     component: BlipayPin,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/digital/order/thank-you/:orderId',
     name: 'digitalThankyou',
     component: DigitalThankyouPage,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/blipay/cashout',
@@ -170,9 +161,6 @@ export default new Router({
     path: '/digital/blipay/cart',
     name: 'BlipayCart',
     component: BlipayCart,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
   },
   {
     path: '/wallet-transactions',
@@ -209,19 +197,3 @@ export default new Router({
   }
 ]
 });
-
-function checkAccessOfUser(to, from, next) {
-  // const isMemberFetched = store._vm['profileStore/isMemberFetched'];
-  // if (isMemberFetched) {
-  //   const member = store._vm['profileStore/getMembersData'];
-  //   console.log('Member Detail:',member);
-  //   const serviceAccess = member.services || [];
-  //   if(serviceAccess.includes('digital_products')) {
-  //     next()
-  //   } else {
-  //     next({path: '/home'});
-  //   }
-  // } else {
-  //   setTimeout(() => checkAccessOfUser(to, from, next), 400)
-  // }
-}
