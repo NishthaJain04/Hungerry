@@ -5,7 +5,11 @@ const Account = () => import(/* webpackChunkName: 'p-profile' */ '@/pages/Profil
 const Home = () => import(/* webpackChunkName: 'p-store' */ '@/pages/Store');
 const OrderHistory = () => import(/* webpackChunkName: 'p-order-history' */ '@/pages/OrderHistory');
 const Registration = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/Registration');
+const HomePage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/HomePage');
+const DonarCreateRequest = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/DonarCreateRequest');
+const RegistrationPage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/RegistrationPage');
 const DonatorRequestDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DonatorRequestDetail');
+const LoginPage = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/LoginPage');
 const Pulsa = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Pulsa');
 const BlipayPin = () => import(/* webpackChunkName: 'p-blipay-pin' */ '@/pages/BlipayPin');
 const ElectricityToken = () => import(/* webpackChunkName: 'p-electricity-token' */ '@/pages/ElectricityToken');
@@ -30,6 +34,7 @@ const NotFound = () => import(/* webpackChunkName: 'p-not-found' */ '@/pages/Not
 
 
 Vue.use(Router);
+// import store from '@/store
 
 export default new Router({
   mode: 'history',
@@ -52,6 +57,26 @@ export default new Router({
     path: '/registration',
     name: 'Registration',
     component: Registration
+  },
+  {
+    path: '/homePage',
+    name: 'HomePage',
+    component: HomePage
+  },
+  {
+    path: '/loginPage',
+    name: 'LoginPage',
+    component: LoginPage
+  },
+  {
+    path: '/donarCreateRequest',
+    name: 'DonarCreateRequest',
+    component: DonarCreateRequest
+  },
+  {
+    path: '/registrationPage',
+    name: 'RegistrationPage',
+    component: RegistrationPage
   },
   {
     path: '/collector/CollectorMatchPage',

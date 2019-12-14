@@ -10,6 +10,7 @@ export default {
     }
   },
   created() {
+    console.log(this.dataToShow)
     this.updateSliderData(this.dataToShow);
   },
   data() {
@@ -24,7 +25,7 @@ export default {
     updateSliderData(newData) {
       this.promotionList = [];
       newData.forEach(el => {
-        this.promotionList.push(el.parameters[0]);
+        this.promotionList.push(el);
       });
     }
   }
