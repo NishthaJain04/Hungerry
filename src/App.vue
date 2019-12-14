@@ -13,6 +13,8 @@
       <router-view/>
     </transition> -->
     <NavigationTab />
+    <!-- <Login /> -->
+    <!-- <CollectorMatchPage /> -->
     <!-- <OnboardingScreen
       v-if="showOnboarding"
       :showOnboardingScreen="showOnboarding"
@@ -25,6 +27,7 @@
     <!-- <transition name="fade-effect" mode="out-in">
       <Offline v-if="isOfflineNow"></Offline>
     </transition> -->
+    <CollectorCreateRequest />
   </div>
 </template>
 <script src="./js/app.js"></script>

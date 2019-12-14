@@ -1,8 +1,9 @@
 // import { mapGetters } from 'vuex';
-// import ErrorNotifier from '@/components/web/ErrorNotifier';
+import CollectorCreateRequest from '@/pages/CollectorCreateRequest';
 import NavigationTab from '@/components/web/NavigationTab';
-// import OnboardingScreen from '@/components/OnBoardingScreen';
+import CollectorMatchPage from '@/pages/CollectorMatchPage';
 import Alert from '@/components/web/Alert';
+import SignUp from '@/pages/SignUp';
 // import digitalConfigNames from '@/constant/digital-config-name'
 // import {getMemberID, getOnboardingStatus, setOnboardingStatus } from '@/utils/helpers';
 // import Offline from '@/pages/Offline'
@@ -11,6 +12,9 @@ export default {
   name: 'App',
   components: {
       Alert,
-      NavigationTab
+      NavigationTab,
+      SignUp,
+      CollectorMatchPage,
+      CollectorCreateRequest
   }
 };

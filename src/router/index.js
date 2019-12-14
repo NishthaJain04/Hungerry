@@ -17,11 +17,11 @@ const BlipayCashout = () => import(/* webpackChunkName: 'p-blipay-withdraw' */ '
 const GameVoucher = () => import(/* webpackChunkName: 'p-game-voucher' */ '@/pages/GameVoucher');
 const DigitalThankyouPage = () => import(/* webpackChunkName: 'p-thankyou-page' */ '@/pages/DigitalThankyouPage');
 const BlipayCart = () => import(/* webpackChunkName: 'p-blipay-cart' */ '@/pages/BlipayCart');
-const RetailCheckout = () => import(/* webpackChunkName: 'p-retail-checkout' */ '@/pages/RetailCheckout');
+const CollectorMatchPage = () => import(/* webpackChunkName: 'p-retail-checkout' */ '@/pages/CollectorMatchPage');
 const ConfirmOrder = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/ConfirmOrder');
 const RetailOrderDetail = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/RetailOrderDetail');
-const SettingPin = () => import(/* webpackChunkName: 'p-setting-pin' */ '@/pages/SettingPin');
-const ForgotPin = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/ForgotPin');
+const SignUp = () => import(/* webpackChunkName: 'p-login' */ '@/pages/SignUp');
+const CollectorCreateRequest = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/CollectorCreateRequest');
 const WalletTransactions = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/WalletTransactions');
 const RetailThankyouPage = () => import(/* webpackChunkName: 'p-thankyou-page' */ '@/pages/RetailThankyouPage');
 const RetailPin = () => import(/* webpackChunkName: 'p-retail-pin' */ '@/pages/RetailPin');
@@ -30,7 +30,6 @@ const NotFound = () => import(/* webpackChunkName: 'p-not-found' */ '@/pages/Not
 
 
 Vue.use(Router);
-import store from '@/store'
 
 export default new Router({
   mode: 'history',
@@ -55,9 +54,9 @@ export default new Router({
     component: Registration
   },
   {
-    path: '/retail-checkout',
-    name: 'RetailCheckout',
-    component: RetailCheckout
+    path: '/collector/CollectorMatchPage',
+    name: 'CollectorMatchPage',
+    component: CollectorMatchPage
   },
   {
     path: '/order',
@@ -70,14 +69,14 @@ export default new Router({
     component: ConfirmOrder
   },
   {
-    path: '/setting-pin',
-    name: 'SettingPin',
-    component: SettingPin
+    path: '/sign-up',
+    name: 'SignUp',
+    component: SignUp
   },
   {
-    path: '/forgot-pin',
-    name: 'ForgotPin',
-    component: ForgotPin
+    path: '/collector/createRequest',
+    name: 'CollectorCreateRequest',
+    component: CollectorCreateRequest
   },
   {
     path: '/order/retail/:orderId',
@@ -92,74 +91,47 @@ export default new Router({
   {
     path: '/digital/pulsa',
     name: 'Pulsa',
-    component: Pulsa,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: Pulsa
   },
   {
     path: '/digital/token-listrik',
     name: 'ElectricityToken',
-    component: ElectricityToken,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: ElectricityToken
   },
   {
     path: '/digital/paket-data',
     name: 'PackageData',
-    component: PackageData,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: PackageData
   },
   {
     path: '/digital/pdam',
     name: 'Pdam',
-    component: Pdam,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: Pdam
   },
   {
     path: '/digital/bpjs',
     name: 'Bpjs',
-    component: Bpjs,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: Bpjs
   },
   {
     path: '/digital/game-voucher',
     name: 'GameVoucher',
-    component: GameVoucher,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: GameVoucher
   },
   {
     path: '/digital/blipay',
     name: 'BlipayTopup',
-    component: BlipayTopup,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: BlipayTopup
   },
   {
     path: '/order/payment/:orderId',
     name: 'BlipayPin',
-    component: BlipayPin,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: BlipayPin
   },
   {
     path: '/digital/order/thank-you/:orderId',
     name: 'digitalThankyou',
-    component: DigitalThankyouPage,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: DigitalThankyouPage
   },
   {
     path: '/blipay/cashout',
@@ -169,10 +141,7 @@ export default new Router({
   {
     path: '/digital/blipay/cart',
     name: 'BlipayCart',
-    component: BlipayCart,
-    beforeEnter: (to, from, next) => {
-      checkAccessOfUser(to, from, next)
-    }
+    component: BlipayCart
   },
   {
     path: '/wallet-transactions',
@@ -209,19 +178,3 @@ export default new Router({
   }
 ]
 });
-
-function checkAccessOfUser(to, from, next) {
-  // const isMemberFetched = store._vm['profileStore/isMemberFetched'];
-  // if (isMemberFetched) {
-  //   const member = store._vm['profileStore/getMembersData'];
-  //   console.log('Member Detail:',member);
-  //   const serviceAccess = member.services || [];
-  //   if(serviceAccess.includes('digital_products')) {
-  //     next()
-  //   } else {
-  //     next({path: '/home'});
-  //   }
-  // } else {
-  //   setTimeout(() => checkAccessOfUser(to, from, next), 400)
-  // }
-}

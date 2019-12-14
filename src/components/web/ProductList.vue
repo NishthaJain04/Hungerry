@@ -3,37 +3,21 @@
   <div class="blu-columns b-mobile b-0 b-gapless">
     <div :class="`blu-column b-${colSpan1} image-list`">
         <div class="img-container">
-            <img :src="item.imageUrl" class="item-image" alt="Item Image" @error="imageLoadError"/>
+            <img :src="item.imageUrl" class="item-image" alt="Item Image" />
         </div>
     </div>
     <div :class="`blu-column b-${colSpan2} detail-list`">
       <div class="item-name ellipsis">{{ item.name }}</div>
       <div
-        class="item-current-price"
-        :class="item.offerPrice !== item.listPrice ? 'red' : 'black'">
-        {{ item.offerPrice | currency }}
+        class="item-current-price red">
+        {{ item.phoneNumber }}
       </div>
-      <BliLabelError v-if="item.discount !== 0"> {{ item.discount }}% </BliLabelError>
-      <div v-if="item.listPrice !== item.offerPrice" class="item-old-price">
-        <span style="text-decoration: line-through;">{{ item.listPrice | currency }} </span>
+      <div class="item-old-price">Distance:
+        <span >{{ item.distance }} </span>
       </div>
       <div class="weight-label ellipsis">{{ item.shortDescription }}</div>
-      <BliButton v-if="count === 0 && !item.outOfStock && !itemAdded" color="secondary" class="add-item" @click="(event)=>addItemToCart(event, item)">
-      {{ i18n("ADD") }}
-      </BliButton>
-      <div v-if="count !== 0 || itemAdded" class="item-count-wrapper">
-          <ItemCount
-            :minVal="0"
-            :currentItem="item"
-            :inputValue="quantity"
-            :getQuantity="getItemQuantity"
-            class="item-count"
-          ></ItemCount>
-      </div>
-      <BliButton v-if="item.outOfStock === true && !itemAdded" disabled color="secondary" class="add-item">
-          {{ i18n("OUT_OF_STOCK_LABEL") }}
-      </BliButton>
-      <div id="toast" ref="limitToast">{{ i18n("MAX_LIMIT") }}</div>
+      <BliButton  color="secondary" class="add-item" @click="matchDonor($event, item)">Accept</BliButton>
+      <BliButton  color="primary" v-if="hasAccepted" class="add-item" @click="matchDonor($event, item)">Accepted</BliButton>
     </div>
   </div>
 </div>
@@ -71,7 +55,7 @@
       }
     }
     .img-container {
-      transform: translate(0px, 15px);
+      transform: translate(15px, 15px);
       height: 40px;
       width: 40px;
       display: inline-block;

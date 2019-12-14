@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.gdn.mitra",
+      "sha256_cert_fingerprints": [
+        "A7:3A:18:ED:AE:56:37:48:5B:9B:4D:E0:10:54:D9:7C:C9:71:8F:48:62:1C:09:48:14:45:9D:2D:E7:16:FB:9B"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "blibli.instore.mitra",
+      "sha256_cert_fingerprints": [
+        "A7:3A:18:ED:AE:56:37:48:5B:9B:4D:E0:10:54:D9:7C:C9:71:8F:48:62:1C:09:48:14:45:9D:2D:E7:16:FB:9B"
+      ]
+    }
+  }
+]

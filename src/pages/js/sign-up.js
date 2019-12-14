@@ -1,21 +1,16 @@
-import PinModal from '@/components/PinModal';
+
 import Alert from '@/components/web/Alert';
 import Transition from '@/components/web/Transition';
 import OverlayPopup from '@/components/web/OverlayPopup';
 import OtpModal from '@/components/OtpModal';
-import { getMemberID, getI18nText} from '@/utils/helpers';
 
 export default {
-  name: 'SettingPin',
+  name: 'SignUp',
   data() {
     return {
-      isPinModalVisible: true,
-      isConfirmPinModalVisible: false,
-      isError: false,
-      isPinChangeSuccess: false,
       isOtpModalVisible: false,
-      isOtpCorrect: true,
-      registeredNumber: getMemberID(),
+      isOtpCorrect: false,
+      registeredNumber: '828262528922',
       resendVisible: false,
       countDownVisible: false,
       resendSuccessVisible: false,
@@ -24,23 +19,28 @@ export default {
       minuteTimerString: '',
       secondTimerString: '',
       interval: null,
-      disableInput: false
+      disableInput: false,
+      value: 'donator',
+      items: [
+        {
+          value: 'donator',
+          label: 'Donator'
+        }, {
+          value: 'collector',
+          label: 'Collector'
+        }
+      ]
     };
   },
   components: {
-    PinModal,
     Alert,
     Transition,
     OverlayPopup,
     OtpModal
   },
   methods: {
-    handlePinEnter(pinValue) {
-      this.firstPinValue = pinValue;
-      setTimeout(() => {
-        this.isPinModalVisible = false;
-      }, 1500);
-      this.isConfirmPinModalVisible = true;
+    registerMember() {
+      this.isOtpModalVisible = true;
     },
     timerFunction() {
         this.secondTimer -= 1;
@@ -98,97 +98,43 @@ export default {
     generateOtp() {
       this.$store.dispatch('profileStore/GENERATE_OTP', {
         pathVariables: {
-          memberId: getMemberID()
+          memberId: '293833633'
         },
         success: this.generateOtpSuccess,
         fail: this.generateOtpFail
       });
     },
-    verifyOtpFail(error) {
-      if(error) {
-        if (error.errorMessage === 'TOKEN_INVALID') {
-        this.isOtpCorrect = false
-        }
-        this.resendVisible = false
-        if(this.minuteTimer && this.secondTimer) {
-          this.countDownVisible = true
-        } else {
-          this.resendVisible = true
-        }
-        if(error.errorMessage === 'USER_VERIFY_LIMIT_EXCEED') {
-          this.$store.dispatch('SET_ERROR_POPUP', {
-            isErrorPopupVisible: true,
-            errorList: { Sorry: [getI18nText('Your verification has reached the limit. Please, try again later.', 'Batas verifikasi sudah mencapai limit. Silakan coba beberapa saat lagi')] }
-          }, {root: true});
-          this.$router.go(-1);
-        }
-        this.resendSuccessVisible = false
-      }
-    },
     verifyOtpAndSetPin(otpValue) {
-      this.isOtpCorrect = true;
       this.resendVisible = false;
+      console.log(otpValue)
+      this.$router.push('/registration')
+
       this.$store.dispatch('profileStore/VERIFY_OTP', {
         pathVariables: {
-          memberId: getMemberID()
+          memberId: '9283635229'
         },
         payload: {
           verificationCode: otpValue
         },
-        success: this.settingPinSuccess,
-        fail: this.verifyOtpFail
+        success: this.verifyOtpSuccess
       });
     },
-    updatePinSuccess(res) {
-      if(res.status === 'OK') {
-      this.generateOtp();
-      }
-    },
-    updatePin() {
-      this.$store.dispatch('profileStore/UPDATE_PIN', {
-        pathVariables: {
-          memberId: getMemberID()
-        },
-        payload: {
-          pin: this.firstPinValue
-        },
-        success: this.updatePinSuccess
-      });
-    },
-    handleConfirmPinEnter(pinValue) {
-      if (pinValue === this.firstPinValue) {
-        this.isError = false;
-        this.disableInput = true
-        this.updatePin();
-      } else {
-        this.isError = true;
-      }
-    },
-    settingPinSuccess(res) {
-      if (res.verified) {
+    verifyOtpSuccess(res) {
+      // if (res.verified) {
         this.isOtpOverlayOpen = false;
         this.isOtpCorrect = true;
-        this.isPinChangeSuccess = true;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
-      } else {
+        this.$router.push('/registration')
+      // } else {
         this.isOtpCorrect = false;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
         this.countDownVisible = true;
-      }
-    },
-    handleIncorrectPinEnter() {
-      this.isPinModalVisible = true;
-      this.isConfirmPinModalVisible = false;
-      this.isError = false;
+      // }
     },
     handleAlertClose() {
-      this.isPinChangeSuccess = false;
       this.$router.push('/');
-    },
-    handlePinClose() {
-      this.$router.push('/')
     }
   }
 };

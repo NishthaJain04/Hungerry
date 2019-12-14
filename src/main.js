@@ -6,6 +6,10 @@ import store from '@/store'
 // import Filter from './filter'
 
 import 'assets/scss/index.scss'
+import Blue from '@blibli/dls'
+import '@blibli/dls/dist/blue.min.css'
+
+Vue.use(Blue);
 
 // Vue.use(Filter);
 
