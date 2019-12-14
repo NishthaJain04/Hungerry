@@ -8,7 +8,7 @@ const Registration = () => import(/* webpackChunkName: 'p-registration' */ '@/pa
 const HomePage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/HomePage');
 const DonarCreateRequest = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/DonarCreateRequest');
 const RegistrationPage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/RegistrationPage');
-const DigitalOrderDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DigitalOrderDetail');
+const DonatorRequestDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DonatorRequestDetail');
 const Pulsa = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Pulsa');
 const BlipayPin = () => import(/* webpackChunkName: 'p-blipay-pin' */ '@/pages/BlipayPin');
 const ElectricityToken = () => import(/* webpackChunkName: 'p-electricity-token' */ '@/pages/ElectricityToken');
@@ -20,11 +20,11 @@ const BlipayCashout = () => import(/* webpackChunkName: 'p-blipay-withdraw' */ '
 const GameVoucher = () => import(/* webpackChunkName: 'p-game-voucher' */ '@/pages/GameVoucher');
 const DigitalThankyouPage = () => import(/* webpackChunkName: 'p-thankyou-page' */ '@/pages/DigitalThankyouPage');
 const BlipayCart = () => import(/* webpackChunkName: 'p-blipay-cart' */ '@/pages/BlipayCart');
-const RetailCheckout = () => import(/* webpackChunkName: 'p-retail-checkout' */ '@/pages/RetailCheckout');
+const CollectorMatchPage = () => import(/* webpackChunkName: 'p-retail-checkout' */ '@/pages/CollectorMatchPage');
 const ConfirmOrder = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/ConfirmOrder');
 const RetailOrderDetail = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/RetailOrderDetail');
-const SettingPin = () => import(/* webpackChunkName: 'p-setting-pin' */ '@/pages/SettingPin');
-const ForgotPin = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/ForgotPin');
+const SignUp = () => import(/* webpackChunkName: 'p-login' */ '@/pages/SignUp');
+const CollectorCreateRequest = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/CollectorCreateRequest');
 const WalletTransactions = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/WalletTransactions');
 const RetailThankyouPage = () => import(/* webpackChunkName: 'p-thankyou-page' */ '@/pages/RetailThankyouPage');
 const RetailPin = () => import(/* webpackChunkName: 'p-retail-pin' */ '@/pages/RetailPin');
@@ -73,9 +73,9 @@ export default new Router({
     component: RegistrationPage
   },
   {
-    path: '/retail-checkout',
-    name: 'RetailCheckout',
-    component: RetailCheckout
+    path: '/collector/CollectorMatchPage',
+    name: 'CollectorMatchPage',
+    component: CollectorMatchPage
   },
   {
     path: '/order',
@@ -88,14 +88,14 @@ export default new Router({
     component: ConfirmOrder
   },
   {
-    path: '/setting-pin',
-    name: 'SettingPin',
-    component: SettingPin
+    path: '/sign-up',
+    name: 'SignUp',
+    component: SignUp
   },
   {
-    path: '/forgot-pin',
-    name: 'ForgotPin',
-    component: ForgotPin
+    path: '/collector/createRequest',
+    name: 'CollectorCreateRequest',
+    component: CollectorCreateRequest
   },
   {
     path: '/order/retail/:orderId',
@@ -103,54 +103,54 @@ export default new Router({
     component: RetailOrderDetail
   },
   {
-    path: '/order/digital/:orderId',
-    name: 'DigitalOrderDetail',
-    component: DigitalOrderDetail
+    path: '/donator/donator-request-details',
+    name: 'DonatorRequestDetail',
+    component: DonatorRequestDetail
   },
   {
     path: '/digital/pulsa',
     name: 'Pulsa',
-    component: Pulsa,
+    component: Pulsa
   },
   {
     path: '/digital/token-listrik',
     name: 'ElectricityToken',
-    component: ElectricityToken,
+    component: ElectricityToken
   },
   {
     path: '/digital/paket-data',
     name: 'PackageData',
-    component: PackageData,
+    component: PackageData
   },
   {
     path: '/digital/pdam',
     name: 'Pdam',
-    component: Pdam,
+    component: Pdam
   },
   {
     path: '/digital/bpjs',
     name: 'Bpjs',
-    component: Bpjs,
+    component: Bpjs
   },
   {
     path: '/digital/game-voucher',
     name: 'GameVoucher',
-    component: GameVoucher,
+    component: GameVoucher
   },
   {
     path: '/digital/blipay',
     name: 'BlipayTopup',
-    component: BlipayTopup,
+    component: BlipayTopup
   },
   {
     path: '/order/payment/:orderId',
     name: 'BlipayPin',
-    component: BlipayPin,
+    component: BlipayPin
   },
   {
     path: '/digital/order/thank-you/:orderId',
     name: 'digitalThankyou',
-    component: DigitalThankyouPage,
+    component: DigitalThankyouPage
   },
   {
     path: '/blipay/cashout',
@@ -160,7 +160,7 @@ export default new Router({
   {
     path: '/digital/blipay/cart',
     name: 'BlipayCart',
-    component: BlipayCart,
+    component: BlipayCart
   },
   {
     path: '/wallet-transactions',

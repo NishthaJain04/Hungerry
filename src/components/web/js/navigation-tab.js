@@ -2,7 +2,7 @@ import Transition from '@/components/web/Transition'
 import PopupMessage from '@/components/web/PopupMessage'
 import OverlayPopup from '@/components/web/OverlayPopup'
 // import { mapGetters } from 'vuex'
-import {getHelpPageUrl} from '@/utils/helpers'
+// import {getHelpPageUrl} from '@/utils/helpers'
 
 export default {
   name: 'NavigationTab',
@@ -95,22 +95,22 @@ export default {
   },
   methods: {
     selectThisTab(route) {
-      // if (this.path === route) return;
+      if (this.path === route) return;
       // if (!this.getUserLoginStatus && (route !== '/home')) {
       //   this.$store.dispatch('GO_TO_LOGIN_PAGE', this.getConfigs);
       //   return false;
       // }
-      // this.handleUserAccessLevel(route);
+      this.handleUserAccessLevel(route);
     },
     isActive (v) {
-      // return this.path.indexOf(v.url) === 0
+      return this.path.indexOf(v.url) === 0
     },
     handleUserAccessLevel (route) {
     //   const memberData = this.getMembersData;
     //   console.log('memberData', memberData, route);
     //   let showIncompleteData = false;
     //   let showUnderVerificationData = false;
-    //   if(route === '/order') {
+      if(route === '/order') {
     //     if(memberData.registrationStatus === 'IN_PROGRESS') {
     //       showIncompleteData = true;
     //       showUnderVerificationData = false
@@ -126,18 +126,18 @@ export default {
     //     }
     //     if(memberData.registrationStatus === 'REGISTERED'
     //         && (memberData.memberDetails.verificationStatus === 'APPROVED' || memberData.memberDetails.verificationStatus === 'OUTSIDE_ZONE')){
-    //       this.$router.push(route)
+          this.$router.push(route)
     //     }
-    //   } else if(route === '/account') {
+      } else if(route === '/account') {
     //     if(memberData.registrationStatus === 'IN_PROGRESS') {
-    //       this.$router.push(route)
-    //     }
+          this.$router.push(route)
+        }
     //     if(memberData.registrationStatus === 'REGISTERED') {
     //       this.$router.push(route)
     //     }
-    //   } else {
-    //     this.$router.push(route)
-    //   }
+       else {
+        this.$router.push(route)
+      }
     //   if(showIncompleteData) {
     //     this.togglePopup()
     //   }

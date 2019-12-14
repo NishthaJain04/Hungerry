@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <router-view/>
     <!-- <div class="blank-header" v-if="isBlankHeaderVisible()"></div> -->
     <!-- <ErrorNotifier
       :is-error-popup-visible="errors.isErrorPopupVisible"
@@ -12,9 +11,12 @@
     </ErrorHandleNotifier>
     <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in">
     </transition> -->
+    <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in"> -->
+      <router-view/>
+    <!-- </transition> -->
     <NavigationTab />
-    <!-- <RegistrationPage />
-    <HomePage /> -->
+    <!-- <Login /> -->
+    <!-- <CollectorMatchPage /> -->
     <!-- <OnboardingScreen
       v-if="showOnboarding"
       :showOnboardingScreen="showOnboarding"

@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script src="./js/digital-order-detail.js" />
+<script src="./js/donator-request-detail.js" />
 <style lang="scss" scoped>
 @import "~assets/scss/colors";
 

@@ -1,9 +1,9 @@
 <template>
   <div class="otp-container">
     <div class="otp-container__otp-header">
-      <div class="otp-header-header">{{ i18n("OTP_HEADER") }}</div>
+      <div class="otp-header-header"> OTP is sent to your org mail ID</div>
       <div class="otp-header-message font-grey-1">
-        {{ i18n("OTP_MSG") }} {{ registeredNumber }}
+        Please enter your received OTP here:
       </div>
     </div>
     <form class="otp-container__otp-form">
@@ -25,17 +25,17 @@
       </div>
     </form>
     <div v-if="!isOtpCorrect" class="otp-container__errorMessage mb-2">
-      <span class="otp-mismatch">{{ i18n("OTP_MISMATCH") }}</span>
+      <span class="otp-mismatch">OTP_MISMATCH</span>
     </div>
     <div v-if="resendVisible" class="otp-container__errorMessage mb-2 mt-2 font-grey-1">
-      <span>{{ i18n("OTP_NOT_RECEIVED") }}</span>
-      <div class="font-blue-3" @click="resendOtp">{{ i18n("RESEND")}} </div>
+      <span>{{ "OTP_NOT_RECEIVED" }}</span>
+      <div class="font-blue-3" @click="resendOtp">RESEND </div>
     </div>
     <div v-if="resendSuccessVisible" class="otp-container__errorMessage mb-2 font-green">
-      {{ i18n("RESEND_SUCCESSFUL") }}
+      RESEND_SUCCESSFUL
     </div>
     <div v-if="countDownVisible && minuteTimer && secondTimer" class="otp-container__resendMessage mb-2">
-      <span class="resend-clicked">{{ i18n("RESEND_CLICKED") }}{{ minuteTimer }}:{{ secondTimer }}</span>
+      <span class="resend-clicked">RESEND_CLICKED {{ minuteTimer }}:{{ secondTimer }}</span>
     </div>
   </div>
 </template>
