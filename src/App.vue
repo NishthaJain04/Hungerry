@@ -9,9 +9,9 @@
       :is-error-handle-visible="displayErrors.isErrorHandleVisible"
       :error-handle-message="displayErrors.errorHandleMessage">
     </ErrorHandleNotifier>
-    <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in">
+    <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in"> -->
       <router-view/>
-    </transition> -->
+    <!-- </transition> -->
     <NavigationTab />
     <!-- <Login /> -->
     <!-- <CollectorMatchPage /> -->
