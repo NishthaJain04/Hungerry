@@ -8,7 +8,7 @@
         src="~assets/icons/icon-bell-grey.svg"
         alt="Notification" />
     </div>
-         <div class="blu-columns b-mobile b-0 b-gapless" v-for="(item, index) in donatingItems" :key="index">
+         <div class="blu-columns b-mobile b-0 b-gapless" v-for="(item, index) in donatingItems" :key="index" style="margin:none;">
             <div class="blu-column b-5 center-text" >
                 <!-- <BliField b-clearable v-model="index.categories" style="margin-left:8%;" >
                     <BliInput style="margin-left:5%; margin-right:5%; width:90%;height:56%;"/>
@@ -37,19 +37,19 @@
                 <img src="../assets/icons/icon-add-circle.svg" alt="add icon" width="30px" class="donarCreateRequest__header__img-donar" @click="() =>{displayProduct()}">
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless" style="margin-top:5%;">
-            <div class="blu-column b-8 center-text" style="margin-left:15px;line-height: 10px;">
-                <div>Does your food contain Non-Veg?</div>
+            <div class="blu-column b-8 center-text" style="margin-left:5px;">
+                <label>Does food contain Non-Veg?</label>
             </div>
             <div class="blu-column b-4 center-text">
-                <BliSwitch v-model="switchedCustom" style="margin-left:11%;">
+                <BliSwitch v-model="switchedCustom" style="margin-left: 15px;line-height: 10px;">
                 </BliSwitch>
              </div>
         </div>
-        <div class="blu-columns b-mobile b-0 b-gapless mt-3" style="margin-top:10%;">
-            <div class="blu-column b-8 center-text" style="margin-top:4%;">
+        <div class="blu-columns b-mobile b-0 b-gapless mt-3" style="margin-top:10px;">
+            <div class="blu-column b-8 center-text" style="margin-top: 4%;text-align: left !important;margin-left: 25px;">
                 <label slot="label">Select pickup within time</label>
             </div>
-            <div class="blu-column b-3 center-text" style="padding-right:4%;">
+            <div class="blu-column b-4 center-text" style="margin-top: 7px;">
                 <BliDropdown v-model="selectTime" selection autoclose>
                     <BliList scrollable >
                         <BliListItem value="Item 1">15 </BliListItem>

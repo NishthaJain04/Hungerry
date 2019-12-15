@@ -6,6 +6,11 @@
       <div class="request-action" @click="startDonating">Start Donating</div>
       <!-- v-if="memberType === 'collector' -->
       <div class="request-action" @click="startCollecting">Start Collecting</div>
+      <!-- v-if="memberType === 'donator' && isrequestActive" -->
+      <!-- <div class="confirm-msg">Please verify if your order was picked up</div> -->
+      <!-- v-if="memberType === 'collector' && isrequestActive" -->
+      <div class="confirm-msg">Please verify if your order was received
+      <BliButton outline color="secondary"> Confirm</BliButton></div>
       <div class="request-action"><router-link :to="getRequestPath()">Click here to see your created request!</router-link></div>
       <!-- <BliButton outline color="secondary" @click="startDonating"> Start Donating </BliButton> -->
       <!-- <BliButton outline color="secondary" @click="startCollecting"> Start Collecting</BliButton> -->
@@ -17,25 +22,25 @@
       <BliCard  class="donar" width="50" style="margin-top:8%">
         <BliCardContent>
           <h3>Pick Up%</h3>
-          <p>96</p>
+          <p>{{analysis.pickUp}}</p>
         </BliCardContent>
       </BliCard>
       <BliCard  class="donar1" width="50" style="margin-top:8%">
         <BliCardContent>
           <h3>People fed</h3>
-          <p>974219</p>
+          <p>{{analysis.peopleFed}}</p>
         </BliCardContent>
       </BliCard>
       <BliCard  class="donar2" width="50">
         <BliCardContent>
-          <h3>Revenue Saved(Rs)</h3>
-          <p>4.87 Crores</p>
+          <h3>Our Reach</h3>
+          <p>{{analysis.numberOfOrgs}}</p>
         </BliCardContent>
       </BliCard>
       <BliCard  class="donar3" width="50">
         <BliCardContent>
           <h3>Food Saved(Tons)</h3>
-          <p>321</p>
+          <p>{{analysis.foodSaved}}</p>
         </BliCardContent>
       </BliCard>
     </div>
@@ -55,16 +60,21 @@
     padding: 16px;
     font-family: EffraMedium, sans-serif;
     .request-action {
-      width: 95%;
+      width: 100%;
       border-radius: 5px;
       background: $color-blue-1;
       color: $color-white;
-      margin: 16px;
+      margin: 16px 0px;
       height: 50px;
       padding-top: 12px;
       a {
         color: $color-white;
       }
+    }
+    .confirm-msg {
+      position: fixed;
+      bottom: 70px;
+      display: inline-block;
     }
   }
   .donar {

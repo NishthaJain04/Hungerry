@@ -23,10 +23,6 @@ module.exports = {
       "^/api": {
         target: "http://10.177.68.82",
         changeOrigin: true
-      },
-      "^/backend": {
-        target: "https://wwwuata-mitra.gdn-app.com/",
-        changeOrigin: true
       }
     }
   }

@@ -20,6 +20,7 @@
           <label>No of People</label>
         </BliField>
     </div>
+    <!-- <div class="msg">PS: You can send request to only one donor.</div> -->
     <div class="collect" v-if="quantity">
       <BliButton color="secondary" @click="createCollectorRequest()">Collect</BliButton>
     </div>
@@ -59,6 +60,16 @@
       background: $color-blue-1;
       border-radius: 5px;
       color: $color-white;
+    }
+    .msg {
+      transform: translate(0px, 50%);
+      background: $color-grey;
+      border-radius: 5px;
+      color: $color-blue-1;
+      position: relative;
+      margin: 12px;
+      top: 60px;
+      text-align: center;
     }
     .input-wrapper {
       width: 120px;
