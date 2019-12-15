@@ -66,7 +66,7 @@ export default {
         params
       );
     },
-    GENERATE_OTP({ dispatch }, { success, params, pathVariables, fail } = {}) {
+    GENERATE_OTP({ dispatch }, { success, params, payload, fail } = {}) {
       api.generateOtp(
         response => {
           if (response.data.code === 200) {
@@ -83,7 +83,7 @@ export default {
           fail(error);
           errorHandler.handleErrors(dispatch, error);
         },
-        pathVariables,
+        payload,
         params
       );
     },
@@ -112,7 +112,7 @@ export default {
         payload
       );
     },
-    VERIFY_OTP({ dispatch }, { success, params, payload, pathVariables, fail } = {}) {
+    VERIFY_OTP({ dispatch }, { success, params, payload, fail } = {}) {
       api.verifyOtp(
         response => {
           if (response.data.code === 200) {
@@ -124,7 +124,6 @@ export default {
         error => {
           errorHandler.handleErrors(dispatch, error);
         },
-        pathVariables,
         params,
         payload
       );

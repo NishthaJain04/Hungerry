@@ -35,15 +35,13 @@ export default {
       }
     },
     confirmation () {
-        // this.$store.dispatch('register/fillDeatils', {
-        //   payload: this.form,
-        //   success: this.successFunction,
-        //   failure: this.failureFunction
-        // })
-        this.successFunction()
+        this.$store.dispatch('authStore/GO_TO_HOME_PAGE_REG', {
+          payload: this.form,
+          success: this.successFunction
+        })
     },
-    successFunction () {
-      // this.$store.commit('registerdetails', result.data)
+    successFunction (result) {
+      this.$store.commit('registerdetails', result.data)
       this.isRegistration = true
     },
     handleAlertClose() {
