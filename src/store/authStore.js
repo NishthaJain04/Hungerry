@@ -36,7 +36,7 @@ export default {
     SET_LOGIN_DETAILS({commit}, { payload, success, params} ={}) {
       commit('setUserLoginDetails', payload);
       api.toRegister(response => {
-        success(response.data)
+        success(response.data.data)
       }, {}, payload, params)
     },
     // eslint-disable-next-line no-empty-pattern
@@ -57,7 +57,7 @@ export default {
     // eslint-disable-next-line no-empty-pattern
     GET_MITRA_SESSION({}, {success}) {
       api.getMitraSession(response=>{
-        if(response.data.code === 200) {
+        if(response.data.data.code === 200) {
           const member = response.data.data || '';
           window.sessionStorage.setItem('memberId', member.memberId);
           success();
@@ -73,7 +73,7 @@ export default {
       console.log('appHomeUrl', appHomeUrl);
       api.logoutApp(response=>{
         console.log('response:', response);
-        if(response.data.code === 200) {
+        if(response.data.data.code === 200) {
           window.location.href = appHomeUrl;
         }
       }, fail=>{

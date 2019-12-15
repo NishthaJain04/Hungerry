@@ -20,15 +20,15 @@ export default {
       secondTimerString: '',
       interval: null,
       disableInput: false,
-      value: 'donator',
+      value: 'DONOR',
       name: '',
       email: '',
       items: [
         {
-          value: 'donator',
-          label: 'Donator'
+          value: 'DONOR',
+          label: 'Donor'
         }, {
-          value: 'collector',
+          value: 'COLLECTOR',
           label: 'Collector'
         }
       ]
@@ -49,6 +49,7 @@ export default {
         memberType:this.value
       })
       this.isOtpModalVisible = true;
+      this.generateOtp();
     },
     timerFunction() {
         this.secondTimer -= 1;
@@ -106,9 +107,9 @@ export default {
     generateOtp() {
       this.$store.dispatch('profileStore/GENERATE_OTP', {
         payload: {
-          organisationName: this.name,
-          email: this.email,
-          memberType:this.value
+          nameOfOrganisaton: this.name,
+          emailId: this.email,
+          memberType: this.value
         },
         success: this.generateOtpSuccess,
         fail: this.generateOtpFail
@@ -116,9 +117,7 @@ export default {
     },
     verifyOtpAndSetPin(otpValue) {
       this.resendVisible = false;
-      console.log(otpValue)
-      this.$router.push('/registrationPage')
-
+      console.log('VerifyOtp', otpValue)
       this.$store.dispatch('profileStore/VERIFY_OTP', {
         payload: {
           emailId: this.email,
@@ -127,19 +126,19 @@ export default {
         success: this.verifyOtpSuccess
       });
     },
-    verifyOtpSuccess() {
-      // if (res.verified) {
+    verifyOtpSuccess(res) {
+      if (res) {
         this.isOtpOverlayOpen = false;
         this.isOtpCorrect = true;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
-        this.$router.push('/registration')
-      // } else {
+        this.$router.push('/Registration');
+      } else {
         this.isOtpCorrect = false;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
         this.countDownVisible = true;
-      // }
+      }
     },
     handleAlertClose() {
       this.$router.push('/');

@@ -33,12 +33,12 @@ export default {
     GET_BANK_LIST({ commit, dispatch }) {
       api.getBanksList(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setBankList', response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -53,12 +53,12 @@ export default {
     ) {
       api.addMyBankAccount(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -74,11 +74,11 @@ export default {
       api.cashoutMoney(
         response => {
           console.log('#####:',response);
-          if (response.data.code === 200 && response.data.data) {
+          if (response.data.data.code === 200 && response.data.data) {
             success(response.data.data);
           } else {
             if(fail) {
-              fail(response.data)
+              fail(response.data.data)
             }
           }
         },
@@ -93,12 +93,12 @@ export default {
     SHOW_TRANSACTION_HISTORY({ dispatch, commit }, { pathVariables, params }) {
       api.showTransactions(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setTransactions', response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -112,15 +112,15 @@ export default {
     GET_MEMBER_BANK_LIST({ commit, dispatch }, { pathVariables, fail }) {
       api.getMemberBanksList(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setMemberBankList', response.data.data);
           } else {
             if(fail) {
-              fail(response.data)
+              fail(response.data.data)
             } else {
               dispatch('SET_ERROR_POPUP', {
                 isErrorPopupVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           }
@@ -137,12 +137,12 @@ export default {
     ) {
       api.deleteAccountOfMember(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -156,12 +156,12 @@ export default {
     EDIT_BANK_ACCOUNT({ dispatch }, { payload, params, success, pathVariables }) {
       api.editBankAccount(
           response => {
-            if (response.data.code === 200) {
+            if (response.data.data.code === 200) {
               success(response.data.data);
             } else {
               dispatch('SET_ERROR_POPUP', {
                 isErrorPopupVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           },

@@ -64,8 +64,8 @@ export default {
       digitalApi.setCustomerNumber(
         response => {
           commit('setIsAddingToCart', false)
-          if (response.data.errors) {
-            commit('setAddCartErrors', response.data.errors)
+          if (response.data.data.errors) {
+            commit('setAddCartErrors', response.data.data.errors)
           } else {
             commit('setCart', response.data.data);
             commit('setAddCartErrors', null)
@@ -90,8 +90,8 @@ export default {
     PAY({commit}, { success, payload }) {
       digitalApi.pay(
         response => {
-          if (response.data.errors) {
-            commit('setPayErrors', response.data.errors)
+          if (response.data.data.errors) {
+            commit('setPayErrors', response.data.data.errors)
           } else  {
             success && success(response.data.data)
           }
@@ -109,8 +109,8 @@ export default {
     INQUIRY({ commit }, { payload }) {
       digitalApi.inquiry(
         response => {
-          if (response.data.errors) {
-            commit('setInquiryErrors', response.data.errors)
+          if (response.data.data.errors) {
+            commit('setInquiryErrors', response.data.data.errors)
           } else {
             commit('setInquiryDetail', response.data.data)
             commit('setInquiryErrors', null)

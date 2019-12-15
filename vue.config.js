@@ -21,7 +21,7 @@ module.exports = {
     },
     proxy: {
       "^/api": {
-        target: "//10.177.68.82:8090",
+        target: "http://192.168.0.152:8090",
         changeOrigin: true
       }
     }

@@ -17,7 +17,7 @@ export default {
     createCollectorRequest() {
       console.log(this.quantity)
       this.$store.dispatch('collectorStore/CREATE_REQUEST', {
-        payload:  { quantity: this.quantity },
+        payload:  { countNeeded: this.quantity },
         success: this.createCollectorRequestSuccess
     });
     this.$router.push('/collector/CollectorMatchPage');

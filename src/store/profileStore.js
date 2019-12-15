@@ -42,19 +42,19 @@ export default {
   actions: {
     GET_MEMBER_DETAILS(
       { commit, dispatch },
-      { success, params, pathVariables } = {}
+      { params, success } = {}
     ) {
       commit('setIsMemberFetched', false);
       api.getMemberDetails(
         response => {
           commit('setIsMemberFetched', true);
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setMembersData', response.data.data);
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -62,21 +62,20 @@ export default {
           commit('setIsMemberFetched', true);
           errorHandler.handleErrors(dispatch, error);
         },
-        pathVariables,
         params
       );
     },
     GENERATE_OTP({ dispatch }, { success, params, payload, fail } = {}) {
       api.generateOtp(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
-            fail(response.data.errors);
+            fail(response.data.data.errors);
           }
         },
         error => {
@@ -87,19 +86,19 @@ export default {
         params
       );
     },
-    UPDATE_PIN({ dispatch }, { success, params, payload, pathVariables } = {}) {
+    UPDATE_PIN({ dispatch }, { success, params, payload} = {}) {
       api.updatePin(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.error === null ||
-              response.data.error === undefined
+              response.data.data.error === null ||
+              response.data.data.error === undefined
             ) {
-              success(response.data);
+              success(response.data.data);
             } else {
               dispatch('SET_ERROR_POPUP', {
                 isErrorPopupVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           }
@@ -107,7 +106,6 @@ export default {
         error => {
           errorHandler.handleErrors(dispatch, error);
         },
-        pathVariables,
         params,
         payload
       );
@@ -115,32 +113,32 @@ export default {
     VERIFY_OTP({ dispatch }, { success, params, payload, fail } = {}) {
       api.verifyOtp(
         response => {
-          if (response.data.code === 200) {
-            success(response.data.data);
+          if (response.status === 200) {
+            success(response.data);
           } else {
-            fail(response.data.data);
+            fail(response.data);
           }
         },
         error => {
           errorHandler.handleErrors(dispatch, error);
         },
-        params,
-        payload
+        payload,
+        params
       );
     },
     VERIFY_KTP({ dispatch }, { success, params, payload, pathVariables } = {}) {
       api.verifyKtp(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.error === null ||
-              response.data.error === undefined
+              response.data.data.error === null ||
+              response.data.data.error === undefined
             ) {
               success(response.data.data);
             } else {
               dispatch('SET_ERROR_POPUP', {
                 isErrorPopupVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           }
@@ -156,12 +154,12 @@ export default {
     GET_STORE_TYPE({ dispatch }, { params, payload, success } = {}) {
       api.getStoreTypeList(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -178,13 +176,13 @@ export default {
     ) {
       api.getMemberInProgress(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setMembersData', response.data.data);
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -201,13 +199,13 @@ export default {
     ) {
       api.saveMemberDetails(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             console.log('SAVE_MEMBER_DETAIL', response);
             success(response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -225,18 +223,18 @@ export default {
     ) {
       api.verifyUserPin(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               success(response.data.data);
             }
           } else {
-              fail(response.data)
+              fail(response.data.data)
                 dispatch('SET_ERROR_POPUP', {
                   isErrorPopupVisible: true,
-                  errorList: response.data.errors
+                  errorList: response.data.data.errors
                 }, {root: true});
           }
         },
@@ -252,7 +250,7 @@ export default {
     ) {
       api.uploadKTP(
           response => {
-            if (response.data.code === 200) {
+            if (response.data.data.code === 200) {
               success(response.data.data);
             } else {
              fail(response)
@@ -274,7 +272,7 @@ export default {
           response => {
             console.log('[DOWNLOAD_KTP RESPONSE]', response);
             //btoa for converting byte stream to string
-            var base64 = btoa(new Uint8Array(new Uint8Array(response.data)).reduce(
+            var base64 = btoa(new Uint8Array(new Uint8Array(response.data.data)).reduce(
                 function (data, byte) {
                   return data + String.fromCharCode(byte);
                 },
@@ -298,12 +296,12 @@ export default {
       api.getSignedUrlForImageUpload(
           response => {
             console.log('[GET_SIGNED_URL RESPONSE]', response);
-            if (response.data.code === 200) {
+            if (response.data.data.code === 200) {
               success(response.data.data)
             } else {
               dispatch('SET_ERROR_POPUP', {
                 isErrorPopupVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           },
@@ -320,12 +318,12 @@ export default {
     },
     SUBSCRIBE_WHATSAPP({dispatch}, {success, payload, pathVariables, fail}){
       api.optWhatsApp(response=> {
-        if(response.data.code === 200) {
+        if(response.data.data.code === 200) {
           success(response.data.data)
         } else {
           dispatch('SET_ERROR_POPUP', {
             isErrorPopupVisible: true,
-            errorList: response.data.errors
+            errorList: response.data.data.errors
           }, {root: true});
         }
       },error => {
@@ -337,12 +335,12 @@ export default {
     },
     GET_ADDRESS_DETAILS({dispatch}, {params, success, fail}){
       api.getAddressDetails(response=> {
-        if(response.data.code === 200) {
+        if(response.data.data.code === 200) {
           success(response.data.data)
         } else {
           dispatch('SET_ERROR_POPUP', {
             isErrorPopupVisible: true,
-            errorList: response.data.message
+            errorList: response.data.data.message
           }, {root: true});
         }
       }, error => {

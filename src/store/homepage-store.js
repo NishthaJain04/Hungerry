@@ -55,7 +55,7 @@ export default {
     GET_BANNERS_AND_SERVICES({ commit, dispatch }) {
       api.getServicesPromotion(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             const mainResponse = response.data.data[0];
             commit('setBanners', mainResponse.blocks[0]['components']);
             commit('setProducts', mainResponse.blocks[1]['components']);
@@ -64,7 +64,7 @@ export default {
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -76,12 +76,12 @@ export default {
     GET_WALLET_REQUEST({ commit, dispatch }, { pathVariables }) {
       api.getWalletRequestData(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setWalletRequest', response.data.data);
           } else {
             dispatch('SET_ERROR_POPUP', {
               isErrorPopupVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -91,28 +91,28 @@ export default {
         pathVariables
       );
     },
-    GET_WALLET_TRANSACTIONS({commit, dispatch}, {pathVariables, params, success, fail}) {
-      api.getWalletTransaction(response=>{
-        if (response.data.code === 200) {
+    GET_ANALYTICS({commit, dispatch}, {params, success, fail}) {
+      api.getHomeDetails(response=>{
+        if (response.status === 200) {
           commit('setWalletTransactions', response.data.data);
-          success()
+          success(response.data.data)
         } else {
           if(fail) {
             fail()
           }
           dispatch('SET_ERROR_POPUP', {
             isErrorPopupVisible: true,
-            errorList: response.data.errors
+            errorList: response.data.data.errors
           }, {root: true});
         }
       }, error => {
           fail();
           errorHandler.handleErrors(dispatch, error);
-      }, pathVariables, params)
+      }, params)
     },
     GET_APP_COFIGURATION({dispatch, commit}, typeOfConfiguration) {
       cmsApi.getConfig(response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             commit('setConfigs', JSON.parse(response.data.data));
           }
           },

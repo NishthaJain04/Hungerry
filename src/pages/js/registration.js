@@ -35,6 +35,10 @@ export default {
       }
     },
     confirmation () {
+        this.form.address = this.address;
+        this.form.lat = this.currentPosition.lat;
+        this.form.lng = this.currentPosition.lng;
+        this.form.memberId = '61'
         this.$store.dispatch('authStore/GO_TO_HOME_PAGE_REG', {
           payload: this.form,
           success: this.successFunction
@@ -45,7 +49,7 @@ export default {
       this.isRegistration = true
     },
     handleAlertClose() {
-      this.$router.push('/Home');
+      this.$router.push('/login');
     },
      toggleMapsVisibility() {
       this.showGoogleMaps = !this.showGoogleMaps;

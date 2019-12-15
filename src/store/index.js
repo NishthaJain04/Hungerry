@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import profileStore from './profileStore';
-// import homepageStore from './homepage-store';
+import profileStore from './profileStore';
+import homepageStore from './homepage-store';
 import authStore from './authStore';
 // import notificationStore from './notificationStore';
 // import pulsaStore from './pulsa-store';
@@ -23,10 +23,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   modules: {
     authStore,
-    collectorStore
+    collectorStore,
     // notificationStore: notificationStore,
-    // profileStore: profileStore,
-    // homepageStore,
+    profileStore: profileStore,
+    homepageStore
     // pulsa: pulsaStore,
     // digitalCart,
     // packageData,

@@ -21,10 +21,10 @@ export default {
     },
     created() {
       // this.$store.dispatch('GET_ACTIVE', { success: this.getActiveSuccess});
-      // this.$store.dispatch('homepageStore/GET_ANALYTICS', {
-      //   pathVariables: {memberId: getMemberID()},
-      //   success: this.getAnalyticsDataSuccess
-      // });
+      this.$store.dispatch('homepageStore/GET_ANALYTICS', {
+        params: { memberId: '61'},
+        success: this.getAnalyticsDataSuccess
+      });
       // this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
       //   pathVariables: {memberId: getMemberID()},
       //   success: this.getMemberSuccess
@@ -36,7 +36,7 @@ export default {
     methods: {
       getAnalyticsDataSuccess(res) {
         if (res) {
-          this.analysis = res.analysis;
+          this.analysis = res;
         }
       },
       // getActiveSuccess(res) {

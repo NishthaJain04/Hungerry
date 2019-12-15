@@ -8,8 +8,8 @@ import store from '@/store';
 const excludeUrls = ['/backend/content/pages/mitra/sections?display=normal', '/backend/content/configs/mitraAppConfiguration']
 
 function handleCallback(response, callback) {
-  console.log('handleCallback:', response.data.code, response.config.url);
-  if(!excludeUrls.includes(response.config.url) && response.data.code === 200){
+  console.log('handleCallback:', response.data.data.code, response.config.url);
+  if(!excludeUrls.includes(response.config.url) && response.data.data.code === 200){
     store.dispatch('SET_LOGIN_STATUS', true, {root: true});
   }
   callback(response);

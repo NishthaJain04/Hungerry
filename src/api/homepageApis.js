@@ -12,9 +12,9 @@ export default {
       fail
     );
   },
-  getWalletTransaction(callback, fail, pathVariables, params) {
+  getHomeDetails(callback, fail, params) {
     apiCall.makeGetRequest(
-        apiUrls.api.getTransactionHistory(pathVariables.memberId),
+        apiUrls.api.getHomeDetails,
         callback,
         fail,
         params

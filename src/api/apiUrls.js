@@ -6,8 +6,8 @@ export default {
   api: {
     toLogin: `${API_BASE_PATH}hungerry/verifyLogIn`,
     toRegister: `${API_BASE_PATH}hungerry/addMember`,
-    generateOtp: `${API_BASE_PATH}/otp/generateOtp`,
-    verifyOtp: `${API_BASE_PATH}/otp/verifyOtp`,
+    generateOtp: `${API_BASE_PATH}hungerry/generateOtp`,
+    verifyOtp: `${API_BASE_PATH}hungerry/verifyOtp`,
     getDigitalProducts(productType) {
       return `${API_BASE_PATH}digital/products/${productType}`;
     },
@@ -15,10 +15,11 @@ export default {
     getMatchingDonors: `${API_BASE_PATH}hungerry/getDonators`,
     donarRequestCheck: `${API_BASE_PATH}order/donarRequestCheck`,
     collectorRequestCheck: `${API_BASE_PATH}/order/collectorRequestCheck`,
+    getHomeDetails: `${API_BASE_PATH}hungerry/homeDetails`,
     digitalInquiry: `${API_BASE_PATH}digital/carts/_customer-number-inquiry`,
-    getMemberDetails(memberId) {
-      return `${API_BASE_PATH}mitra/members/${memberId}`;
-    },
+    // getMemberDetails(memberId) {
+    //   return `${API_BASE_PATH}mitra/members/${memberId}`;
+    // },
     getGenerateOtp(memberId) {
       return `${API_BASE_PATH}mitra/wallet/blipaypin/${memberId}`;
     },
@@ -60,11 +61,9 @@ export default {
       'wallet/transactions/081234567890/_get-by-transaction-type',
     getBankList: API_BASE_PATH + 'mitra/wallet/banks',
     getAddBankAccount(memberId) {
-      return `${API_BASE_PATH}mitra/wallet/member-bank-accounts/${memberId}`;
+      return `${API_BASE_PATH}hungerry/getMemberDetails`;
     },
-    getCashoutApi(memberId) {
-      return `${API_BASE_PATH}mitra/wallet/cashouts/${memberId}`;
-    },
+    getMemberDetails: `${API_BASE_PATH}hungerry/getMemberDetails`,
     getTransactionHistory(memberId) {
       return `${API_BASE_PATH}mitra/wallet/transactions/${memberId}`;
     },
@@ -74,7 +73,6 @@ export default {
     getDeleteUpdateMemberBankAccount(memberId, bankAccountId) {
       return `${API_BASE_PATH}mitra/wallet/member-bank-accounts/${memberId}/bank-accounts/${bankAccountId}`;
     },
-    getCartDigital: `${API_BASE_PATH}digital/carts/payments`,
     setDigitalPayment: `${API_BASE_PATH}digital/carts/_payment`,
     digitalOrders: `${API_BASE_PATH}digital/orders/_histories`,
     getCartItems: API_BASE_PATH + 'retail/carts',

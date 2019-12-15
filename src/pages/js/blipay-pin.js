@@ -48,8 +48,8 @@ export default {
     notifyError(errorResponse) {
       this.pinError = true
       this.disableInput = false
-      const errorKey = Object.keys(errorResponse.data.errors)[0]
-      this.pinErrorMessage = this.i18n(`DIGITAL.ERROR.PIN.${errorResponse.data.errors[errorKey][0]}`)
+      const errorKey = Object.keys(errorresponse.data.data.errors)[0]
+      this.pinErrorMessage = this.i18n(`DIGITAL.ERROR.PIN.${errorresponse.data.data.errors[errorKey][0]}`)
     }
   }
 };

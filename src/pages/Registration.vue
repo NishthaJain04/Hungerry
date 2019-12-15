@@ -25,12 +25,8 @@
       <BliInput type="password" v-model="form.password" />
       <label>Password</label>
     </BliField>
-    <BliField class="input" >
-      <BliInput type="danger" v-model="form.password" />
-      <label>Password</label>
-    </BliField>
     <BliField class="input">
-      <BliInput type="password" v-model="form.confirmPassword" @change="checkPassword"/>
+      <BliInput type="password" v-model="form.confirmPassword"/>
       <label>Confirmation Password</label>
     </BliField>
     <BliField b-clearable class="input">

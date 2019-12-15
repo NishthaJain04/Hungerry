@@ -7,28 +7,28 @@
     <div class="profile-page__profile-scroller">
       <div class="profile-page__profile-detail">
       <span class="profile-name">
-        {{ profile.memberDetails.name }}
+        {{ profile.name }}
       </span>
         <img src="~assets/icons/icon-face.svg"
              class="profile-img icon-svg"
              alt="profileIcon"
         />
-        <div class="profile-number">{{ profile.memberDetails.phoneNumber }}</div>
+        <div class="profile-number">{{ profile.phoneNumber }}</div>
         <span class="complete">
           Verified
         </span>
-        <span class="font-grey">{{ profile.memberDetails.emailId }}</span>
+        <span class="font-grey">{{ profile.emailId }}</span>
       </div>
       <div class="profile-page__address">
         <span class="address-label">Type</span>
         <span class="address-text">
-        {{ profile.memberDetails.memberType }}
+        {{ profile.memberType }}
       </span>
       </div>
-      <div class="profile-page__address padding-16" v-if="profile.addressDetails && profile.addressDetails.addressLine">
+      <div class="profile-page__address padding-16" v-if="profile && profile.address">
         <span class="address-label">Your Address</span>
         <span class="address-text">
-        {{ profile.addressDetails.addressLine }}
+        {{ profile.address }}
       </span>
       </div>
       <div class="profile-page__change-pin mt-4">

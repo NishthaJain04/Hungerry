@@ -25,8 +25,8 @@ export default {
     GET_PRODUCTS({ commit }, { payload }) {
       digitalApi.getProducts(
         response => {
-          if (response.data.errors) {
-            commit('setProductErrors', response.data.errors);
+          if (response.data.data.errors) {
+            commit('setProductErrors', response.data.data.errors);
           } else {
             commit('setProduct', response.data.data);
             commit('setProductErrors', null);

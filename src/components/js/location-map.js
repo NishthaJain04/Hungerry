@@ -211,7 +211,7 @@ export default {
     getAddressDetailsFail(error) {
       this.isFetchingAddress = false;
       this.isFetching = false;
-      if(error.response.data.message === 'Read timed out') {
+      if(error.response.data.data.message === 'Read timed out') {
       // this.$store.dispatch('SET_ERROR_POPUP', {
       //   isErrorPopupVisible: true,
       //   errorList: { Sorry: [getI18nText('Read timed out. Please, try again.', 'Waktu habis dibaca. Silakan coba kembali esok hari')]}

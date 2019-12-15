@@ -59,28 +59,28 @@ export default {
         retailOrderHistoryApi.getOrderHistory(
         response => {
           commit('setIsFetchingRetailOrderHistory', false);
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               if (isNewPage) {
                 commit('setOrderHistory', response.data.data.orders);
               } else {
                 commit('setOrderHistory', [...state.retailOrders, ...response.data.data.orders ]);
               }
-              commit('setRetailPaging', response.data.paging)
+              commit('setRetailPaging', response.data.data.paging)
               success && success(response.data.data);
             } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
           }, {root: true});
           }
         } else {
           dispatch('SET_ERROR_HANDLE_POPUP', {
             isErrorHandleVisible: true,
-            errorList: response.data.errors
+            errorList: response.data.data.errors
         }, {root: true});
         }
         },
@@ -97,22 +97,22 @@ export default {
         retailOrderHistoryApi.trackOrderItem(
         response => {
           commit('setIsFetchingShipping', false);
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               // commit('setShippingStatus', response.data.data.generalManifestResponses[0]);
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -129,24 +129,24 @@ export default {
       retailOrderHistoryApi.getOrderDetail(
       response => {
         commit('setIsFetchingRetailOrderHistory', false);
-        if (response.data.code === 200) {
+        if (response.data.data.code === 200) {
           if (
-            response.data.errors === null ||
-            response.data.errors === undefined
+            response.data.data.errors === null ||
+            response.data.data.errors === undefined
           ) {
             commit('setRetailOrderDetail', response.data.data.orderHistory);
           } else {
             commit('setRetailOrderDetail', {});
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         } else {
           commit('setRetailOrderDetail', {});
           dispatch('SET_ERROR_HANDLE_POPUP', {
             isErrorHandleVisible: true,
-            errorList: response.data.errors
+            errorList: response.data.data.errors
           }, {root: true});
         }
       },

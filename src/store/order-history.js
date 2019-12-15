@@ -35,7 +35,7 @@ export default {
         response => {
           commit('setIsFetchingOrderHistory', false);
           commit('setOrders', [...state.orders, ...response.data.data]);
-          commit('setPaging', response.data.paging)
+          commit('setPaging', response.data.data.paging)
           success && success(response.data.data);
         },
         error => {

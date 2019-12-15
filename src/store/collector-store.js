@@ -99,17 +99,17 @@ export default {
     GET_MATCHING_DONORS({ commit, dispatch }, { params, success } = {}) {
       retailCheckoutApi.getMatchingDonors(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCartDetails', response.data.data);
               success(response.data.data)
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
           }
           }
@@ -127,10 +127,10 @@ export default {
       commit('setIsAddingItemToCart', true)
       retailCheckoutApi.deleteCartItem(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCartDetails', response.data.data);
               commit('setCheckoutCart', response.data.data);
@@ -138,14 +138,14 @@ export default {
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
               commit('setIsAddingItemToCart', false)
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
             commit('setIsAddingItemToCart', false)
           }
@@ -164,25 +164,25 @@ export default {
     ) {
       retailCheckoutApi.createCollectorRequest(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setRequestDetails', response.data.data);
               success(response.data.data);
             } else {
-              fail(response.data.errors);
+              fail(response.data.data.errors);
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
-            fail(response.data.errors);
+            fail(response.data.data.errors);
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -200,25 +200,25 @@ export default {
       retailCheckoutApi.addItemToCart(
         response => {
           commit('setIsAddingItemToCart', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCartDetails', response.data.data);
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
-              fail(response.data.errors)
+              fail(response.data.data.errors)
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
-            fail(response.data.errors)
+            fail(response.data.data.errors)
           }
         },
         error => {
@@ -235,22 +235,22 @@ export default {
       retailCheckoutApi.checkoutCart(
         response => {
           commit('setIsFetchingList', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               success(response.data.data);
             } else {
                 dispatch('SET_ERROR_HANDLE_POPUP', {
                   isErrorHandleVisible: true,
-                  errorList: response.data.errors
+                  errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -265,22 +265,22 @@ export default {
       retailCheckoutApi.createOrder(
         response => {
           commit('setIsFetchingList', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               success(response.data.data);
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -298,22 +298,22 @@ export default {
     ) {
       retailCheckoutApi.getOrderByOrderId(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               success(response.data.data);
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               });
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             });
           }
         },
@@ -330,23 +330,23 @@ export default {
       commit('setCategories', null)
       retailCheckoutApi.getCategories(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCategories', response.data.data)
               success(response.data.data)
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               });
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             });
           }
         },
@@ -365,26 +365,26 @@ export default {
       retailCheckoutApi.getProductsList(
         response => {
           commit('setIsFetchingList', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setProductsList', [...state.productList, ...response.data.data])
-              commit('setPaging', response.data.paging)
+              commit('setPaging', response.data.data.paging)
               if(success) {
                 success(response.data.data);
               } else {
                 dispatch('SET_ERROR_HANDLE_POPUP', {
                   isErrorHandleVisible: true,
-                  errorList: response.data.errors
+                  errorList: response.data.data.errors
                 });
               }
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             });
           }
         },
@@ -404,22 +404,22 @@ export default {
       commit('setLastOrder', null)
       retailCheckoutApi.getLastOrder(
         response => {
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setLastOrder', response.data.data)
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               });
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             });
           }
         },
@@ -448,23 +448,23 @@ export default {
       retailCheckoutApi.retailCheckout(
         response => {
           commit('setIsFetchingList', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCheckoutCart', response.data.data)
               success(response.data.data)
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -483,23 +483,23 @@ export default {
       retailCheckoutApi.updateQuantityAtCheckout(
         response => {
           commit('setIsFetchingList', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCheckoutCart', response.data.data);
               success(response.data.data);
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },
@@ -517,23 +517,23 @@ export default {
       retailCheckoutApi.deleteItemAtCheckout(
         response => {
           commit('setIsFetchingList', false)
-          if (response.data.code === 200) {
+          if (response.data.data.code === 200) {
             if (
-              response.data.errors === null ||
-              response.data.errors === undefined
+              response.data.data.errors === null ||
+              response.data.data.errors === undefined
             ) {
               commit('setCheckoutCart', response.data.data);
               success(response.data.data)
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
-                errorList: response.data.errors
+                errorList: response.data.data.errors
               }, {root: true});
             }
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
-              errorList: response.data.errors
+              errorList: response.data.data.errors
             }, {root: true});
           }
         },

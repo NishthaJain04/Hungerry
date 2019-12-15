@@ -8,16 +8,15 @@
         src="~assets/icons/icon-bell-grey.svg"
         alt="Notification" />
     </div>
-    <div class="label">Email Id</div>
     <BliField class="input" b-clearable>
         <BliInput v-model="emailId"/>
         <label>Email Id</label>
     </BliField>
-    <div class="label">Password</div>
     <BliField class="input" b-clearable >
         <BliInput type="password" v-model="password"/>
         <label>Password</label>
     </BliField>
+    <a href="/sign-up" style="float: right;margin-right: 16px;transform: translate(0px, 20px);">New User? Sign Up</a>
     <div v-if="emailId && password" class="register">
         <BliButton color="secondary" @click="loginDetails"> Submit </BliButton>
     </div>
@@ -41,6 +40,7 @@
     text-align: center;
     border-bottom: 1px solid $color-grey;
     padding: 15px 0;
+    margin-bottom: 45px;
   }
 }
 .label {
@@ -52,6 +52,7 @@
     }
 .register {
       text-align: center;
+      padding-left: 25%;
     }
 
 </style>

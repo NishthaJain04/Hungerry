@@ -17,7 +17,7 @@ export default {
   actions: {
     PAY_ORDER(store, { payload, success, failed }) {
       blipayApis.pay((response) => {
-        if (response.data.errors) {
+        if (response.data.data.errors) {
           failed(response)
         } else {
           success(response)
@@ -27,7 +27,7 @@ export default {
     GET_ORDER_DETAIL({ commit }, { payload, success, failed }) {
       blipayApis.getOrderDetail(
         response => {
-          if (!response.data.errors) {
+          if (!response.data.data.errors) {
             commit('setOrder', response.data.data);
             success && success(response.data.data);
           } else {

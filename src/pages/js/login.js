@@ -30,7 +30,7 @@ export default {
           this.isLogin = true
         },
         handleAlertClose() {
-          this.$router.push('/Home');
+          this.$router.push('/home');
         }
     }  
   };

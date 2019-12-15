@@ -2,25 +2,27 @@ import apiUrls from './apiUrls';
 import apiCall from './apiUtils/makeApiCall.js';
 
 export default {
-  getMemberDetails(callback, fail, pathVariables, params) {
+  getMemberDetails(callback, fail, params) {
     apiCall.makeGetRequest(
-      apiUrls.api.getMemberDetails(pathVariables.memberId),
+      apiUrls.api.getMemberDetails,
       callback,
       fail,
       params
     );
   },
-  generateOtp(callback, fail, pathVariables, params) {
-    apiCall.makeGetRequest(
-      apiUrls.api.getGenerateOtp(pathVariables.memberId),
-      callback,
-      fail,
-      params
-    );
-  },
-  verifyOtp(callback, fail, pathVariables, params, payload) {
+  generateOtp(callback, fail, payload, params) {
+    console.log('profile', payload)
     apiCall.makePostRequest(
-      apiUrls.api.getVerifyOtpApi(pathVariables.memberId),
+      apiUrls.api.generateOtp,
+      callback,
+      fail,
+      payload,
+      params
+    );
+  },
+  verifyOtp(callback, fail, payload, params) {
+    apiCall.makePostRequest(
+      apiUrls.api.verifyOtp,
       callback,
       fail,
       payload,
