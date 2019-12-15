@@ -13,10 +13,10 @@
       <div v-if="listOpen" class="list-items">
         <div
           class="item"
-          v-for="item in listData"
+          v-for="(item, index) in listData"
           :key="item.value"
           :class="{ selected: item.value === value }"
-          @click="selectThisItem(item)"
+          @click="selectThisItem(item, index)"
         >
           <span>{{ item.name }}</span>
         </div>

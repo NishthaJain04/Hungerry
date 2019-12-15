@@ -99,19 +99,9 @@ export default {
     GET_MATCHING_DONORS({ commit, dispatch }, { params, success } = {}) {
       retailCheckoutApi.getMatchingDonors(
         response => {
-          if (response.data.data.code === 200) {
-            if (
-              response.data.data.errors === null ||
-              response.data.data.errors === undefined
-            ) {
+          if (response.data) {
               commit('setCartDetails', response.data.data);
               success(response.data.data)
-            } else {
-              dispatch('SET_ERROR_HANDLE_POPUP', {
-                isErrorHandleVisible: true,
-                errorList: response.data.data.errors
-              }, {root: true});
-          }
           }
         },
         error => {
@@ -164,20 +154,9 @@ export default {
     ) {
       retailCheckoutApi.createCollectorRequest(
         response => {
-          if (response.data.data.code === 200) {
-            if (
-              response.data.data.errors === null ||
-              response.data.data.errors === undefined
-            ) {
+          if (response.data) {
               commit('setRequestDetails', response.data.data);
               success(response.data.data);
-            } else {
-              fail(response.data.data.errors);
-              dispatch('SET_ERROR_HANDLE_POPUP', {
-                isErrorHandleVisible: true,
-                errorList: response.data.data.errors
-              }, {root: true});
-            }
           } else {
             fail(response.data.data.errors);
             dispatch('SET_ERROR_HANDLE_POPUP', {

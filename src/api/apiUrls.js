@@ -11,12 +11,12 @@ export default {
     getDigitalProducts(productType) {
       return `${API_BASE_PATH}digital/products/${productType}`;
     },
-    createCollectorRequest: `${API_BASE_PATH}order/addCollectorRequest`,
+    createCollectorRequest: `${API_BASE_PATH}hungerry/addCollectorRequest`,
     getMatchingDonors: `${API_BASE_PATH}hungerry/getDonators`,
     donarRequestCheck: `${API_BASE_PATH}order/donarRequestCheck`,
     collectorRequestCheck: `${API_BASE_PATH}/order/collectorRequestCheck`,
     getHomeDetails: `${API_BASE_PATH}hungerry/homeDetails`,
-    digitalInquiry: `${API_BASE_PATH}digital/carts/_customer-number-inquiry`,
+    createDonorRequest: `${API_BASE_PATH}hungerry/createDonorRequest`,
     // getMemberDetails(memberId) {
     //   return `${API_BASE_PATH}mitra/members/${memberId}`;
     // },

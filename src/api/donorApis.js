@@ -10,12 +10,13 @@ export default {
       params
     );
   },
-  setCustomerNumber(callback, fail, request) {
+  createDonorRequest(callback, fail, request, params) {
     apiCall.makePostRequest(
-      apiUrls.api.setNumberDigital,
+      apiUrls.api.createDonorRequest,
       callback,
       fail,
-      request
+      request,
+      params
     );
   },
   addCart(callback, fail, request) {

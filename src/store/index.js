@@ -11,7 +11,7 @@ import authStore from './authStore';
 // import blipay from './blipay-store';
 // import pdam from './pdam-store';
 // import gameVoucher from './game-voucher';
-// import digitalOrder from './digital-order';
+import donorStore from './donor-store';
 // import cashoutStore from './blipay-cashout-store';
 // import orderHistory from './order-history';
 import collectorStore from './collector-store';
@@ -26,7 +26,8 @@ export default new Vuex.Store({
     collectorStore,
     // notificationStore: notificationStore,
     profileStore: profileStore,
-    homepageStore
+    homepageStore,
+    donorStore
     // pulsa: pulsaStore,
     // digitalCart,
     // packageData,

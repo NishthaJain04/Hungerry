@@ -19,7 +19,7 @@ export default {
   created() {
     this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
       params: {
-        memberId: '48'
+        memberId: '61'
       },
       success: this.getMemberIdSuccess
     });
@@ -31,7 +31,7 @@ export default {
   },
 
   methods: {
-    getMemberSuccess(data) {
+    getMemberIdSuccess(data) {
         if (data) {
           this.profile = data;
         }

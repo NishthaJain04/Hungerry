@@ -1,4 +1,4 @@
-import digitalApi from '@/api/digitalApis';
+import digitalApi from '@/api/donorApis';
 
 export default {
   state: {
@@ -57,23 +57,18 @@ export default {
     }
   },
   actions: {
-    ADD_CART({ commit }, { payload, success = () => {} }) {
-      commit('setCart', null);
-      commit('setIsAddingToCart', true)
-      commit('setPayErrors', null)
-      digitalApi.setCustomerNumber(
+    CREATE_DONOR_REQUEST({ commit }, { success, params, payload } = {}) {
+      digitalApi.createDonorRequest(
         response => {
-          commit('setIsAddingToCart', false)
           if (response.data.data.errors) {
             commit('setAddCartErrors', response.data.data.errors)
           } else {
-            commit('setCart', response.data.data);
-            commit('setAddCartErrors', null)
-            success && success(response);
+            success && success(response.data.data);
           }
         },
         error => console.log(error),
-        payload
+        payload,
+        params
       );
     },
     ADD_CART_NO_NUMBER({ commit }, {payload, success}){

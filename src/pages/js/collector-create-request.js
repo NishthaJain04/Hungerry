@@ -18,9 +18,9 @@ export default {
       console.log(this.quantity)
       this.$store.dispatch('collectorStore/CREATE_REQUEST', {
         payload:  { countNeeded: this.quantity },
+        params: { memberId: '57'},
         success: this.createCollectorRequestSuccess
     });
-    this.$router.push('/collector/CollectorMatchPage');
     },
     createCollectorRequestSuccess(res) {
       if (res) {

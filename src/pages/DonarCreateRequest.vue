@@ -16,18 +16,14 @@
                 </BliField> -->
                 <DropDown
                 keyName="Type of Food"
-                :value="index.categories"
-                :label="index.categories"
-                :defaultLabel="SelectFoodType"
-                :onItemClick="menuItemSelected"
+                :value="item[index]"
+                defaultLabel="Food Type"
+                :onItemClick="getSelectedItem"
                 :listData="listData"
                 ></DropDown>
             </div>
-            <div class="blu-column b-5 center-text" >
-                <BliField b-clearable v-model="item.quantity" style="margin-left:5%; margin-right:5%; width:90%;">
-                    <BliInput style="height:56%;"/>
-                    <label>Quantity</label>
-                </BliField>
+            <div class="blu-column b-5 center-text" style="bordre:1px solid #9b9b9b;">
+                <input type="number" class="input-quantity" @input="getquantity($event, index)" placeholder="quantity"/>
             </div>
             <div class="blu-column b-2 center-text" >
                 <img src="../assets/icons/icon-cross.svg" alt="add icon" width="35px" style="margin-left:10%;margin-top:5%;" @click="() =>{deleteProduct(index)}">
@@ -38,7 +34,7 @@
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless" style="margin-top:5%;">
             <div class="blu-column b-8 center-text" style="margin-left:5px;">
-                <label>Does food contain Non-Veg?</label>
+                <label style="color: #0096d9;">Does food contain Non-Veg?</label>
             </div>
             <div class="blu-column b-4 center-text">
                 <BliSwitch v-model="switchedCustom" style="margin-left: 15px;line-height: 10px;">
@@ -46,11 +42,11 @@
              </div>
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless mt-3" style="margin-top:10px;">
-            <div class="blu-column b-8 center-text" style="margin-top: 4%;text-align: left !important;margin-left: 25px;">
-                <label slot="label">Select pickup within time</label>
+            <div class="blu-column b-6 center-text" style="margin-top: 4%;text-align: left !important;margin-left: 25px;">
+                <label slot="label" style="color: #0096d9;">Select pickup within time(in mins)</label>
             </div>
-            <div class="blu-column b-4 center-text" style="margin-top: 7px;">
-                <BliDropdown v-model="selectTime" selection autoclose>
+            <div class="blu-column b-5 center-text" style="margin-top: 7px;">
+                <!-- <BliDropdown v-model="selectTime" selection autoclose>
                     <BliList scrollable >
                         <BliListItem value="Item 1">15 </BliListItem>
                         <BliListItem value="Item 2">30 </BliListItem>
@@ -59,7 +55,13 @@
                         <BliListItem value="Item 5">75 </BliListItem>
                         <BliListItem value="Item 6">90 </BliListItem>
                     </BliList>
-                </BliDropdown>
+                </BliDropdown> -->
+                <DropDown
+                keyName="Time"
+                defaultLabel="Time"
+                :onItemClick="getSelectedTime"
+                :listData="minutesList"
+                ></DropDown>
             </div>
         </div>
         <div style="margin-left:3%; margin-top:10%;">
@@ -68,7 +70,7 @@
                 <label>Additional Information</label>
             </BliField>
         </div>
-        <div v-if="switchedCustom && selectTime && (donatingItems.length >= 1)" class="register">
+        <div v-if="selectTime && donatingItems[0].categories && donatingItems[0].quantity" class="register">
         <BliButton color="secondary" @click="request">Donate</BliButton>
         </div>
         <div v-else class="register">
@@ -96,6 +98,19 @@
     border-bottom: 1px solid $color-grey;
     padding: 15px 0;
     margin-bottom: 4%;
+  }
+  .input-quantity {
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 40px;
+    text-align: center;
+    margin-top: 4px;
+    font-family: EffraMedium, sans-serif;
+    font-size: 20px;
+    &:focus {
+        border: 1px solid $color-blue-5;
+    }
   }
 }
 .register {

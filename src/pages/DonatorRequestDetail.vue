@@ -4,7 +4,7 @@
         <img
           src="~assets/icons/icon-left.svg"
           alt="back"
-          @click="$router.go(-1)"/>
+          @click="$router.push('/home')"/>
       <div class="font-16">
         Your Request
       </div>

@@ -9,11 +9,6 @@ export default {
       required: false,
       default: null
     },
-    label: {
-      type: String,
-      required: false,
-      default: ''
-    },
     keyName: {
       type: String,
       required: false,
@@ -37,7 +32,8 @@ export default {
   },
   data() {
     return {
-      listOpen: false
+      listOpen: false,
+      label: ''
     };
   },
   watch: {
@@ -61,8 +57,9 @@ export default {
     toggleList() {
       this.listOpen = !this.listOpen;
     },
-    selectThisItem(item) {
-      this.onItemClick(this.keyName, item);
+    selectThisItem(item, index) {
+      this.onItemClick(this.keyName, item, index);
+      this.label = item.name;
       this.hideDropdown();
     },
     hideDropdown() {

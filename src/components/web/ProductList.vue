@@ -3,7 +3,7 @@
   <div class="blu-columns b-mobile b-0 b-gapless">
     <div :class="`blu-column b-${colSpan1} image-list`">
         <div class="img-container">
-            <img :src="item.imageUrl" class="item-image" alt="Item Image" />
+            <img src="~assets/icons/icon-face.svg" class="item-image" alt="Item Image" />
         </div>
     </div>
     <div :class="`blu-column b-${colSpan2} detail-list`">

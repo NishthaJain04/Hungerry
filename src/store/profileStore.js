@@ -44,18 +44,11 @@ export default {
       { commit, dispatch },
       { params, success } = {}
     ) {
-      commit('setIsMemberFetched', false);
       api.getMemberDetails(
         response => {
-          commit('setIsMemberFetched', true);
-          if (response.data.data.code === 200) {
+          if (response.data) {
             commit('setMembersData', response.data.data);
-            success(response.data.data);
-          } else {
-            dispatch('SET_ERROR_POPUP', {
-              isErrorPopupVisible: true,
-              errorList: response.data.data.errors
-            }, {root: true});
+            success(response.data);
           }
         },
         error => {

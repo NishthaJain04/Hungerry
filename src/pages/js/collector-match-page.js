@@ -104,7 +104,7 @@ export default {
     // this.$store.dispatch('retailCheckoutStore/SET_FETCHING', true);
     this.$store.dispatch('collectorStore/GET_MATCHING_DONORS', {
       params: {
-        memberId: '50'
+        memberId: '57'
         // getMemberID()
       },
       success: this.getMatchingDonorsSuccess
