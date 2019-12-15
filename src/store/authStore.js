@@ -3,16 +3,23 @@ import api from '@/api/authApis.js';
 
 export default {
   state: {
+    userDetails: {},
     isUserLoggedIn: false
   },
   getters: {
     getUserLoginStatus(state) {
       return state.isUserLoggedIn;
+    },
+    getUserLoginDetails(state) {
+      return state.userDetails;
     }
   },
   mutations: {
     setUserLoginStatus(state, value) {
       Object.assign(state, {isUserLoggedIn: value});
+    },
+    setUserLoginDetails(state, value) {
+    Object.assign(state, {userDetails: value});
     }
   },
   actions: {
@@ -26,10 +33,23 @@ export default {
     SET_LOGIN_STATUS({commit}, payload) {
       commit('setUserLoginStatus', payload);
     },
+    SET_LOGIN_DETAILS({commit}, payload) {
+      commit('setUserLoginDetails', payload);
+    },
     // eslint-disable-next-line no-empty-pattern
-    GO_TO_HOME_PAGE({},{ payload, params } = {}) {
+    GO_TO_HOME_PAGE({},{ payload, success, params } = {}) {
       console.log('qwdef', payload)
-      api.toLogin({}, {}, payload, params)
+      payload = Object.assign(payload, this.getUserLoginDetails)
+      api.toLogin(response=> {
+        success(response)
+      }, {}, payload, params)
+    },
+    // eslint-disable-next-line no-empty-pattern
+    GO_TO_HOME_PAGE_REG({},{ payload, success, params } = {}) {
+      console.log('qwdef', payload)
+      api.toRegister(response=> {
+        success(response)
+      }, {}, payload, params)
     },
     // eslint-disable-next-line no-empty-pattern
     GET_MITRA_SESSION({}, {success}) {

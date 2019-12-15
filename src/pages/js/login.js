@@ -21,7 +21,8 @@ export default {
               payload: {
                   emailId: this.emailId,
                   password: this.password
-                }
+                },
+                success: this.successFunction
               })
         },
         successFunction (result) {

@@ -7,6 +7,21 @@ export default {
     apiCall.makePostRequest(
       apiUrls.api.toLogin, callback, fail, payload, params);
   },
+  toRegister(callback, fail, payload, params) {
+    console.log('payload', payload)
+    apiCall.makePostRequest(
+      apiUrls.api.toRegister, callback, fail, payload, params);
+  },
+  generateOtp(callback, fail, payload, params) {
+    console.log('payload', payload)
+    apiCall.makePostRequest(
+      apiUrls.api.generateOtp, callback, fail, payload, params);
+  },
+  verifyOtp(callback, fail, payload, params) {
+    console.log('payload', payload)
+    apiCall.makePostRequest(
+      apiUrls.api.verifyOtp, callback, fail, payload, params);
+  },
 //   deleteCartItem(callback, fail, payload, params) {
 //     apiCall.makePostRequest(
 //       apiUrls.api.deleteCartItem,

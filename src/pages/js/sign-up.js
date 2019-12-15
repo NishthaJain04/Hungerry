@@ -42,6 +42,12 @@ export default {
   },
   methods: {
     registerMember() {
+      console.log(this.name, ' ', this.email, ' ', this.value)
+      this.$store.commit('authStore/SET_LOGIN_DETAILS', {
+        organisationName: this.name,
+        email: this.email,
+        memberType:this.value
+      })
       this.isOtpModalVisible = true;
     },
     timerFunction() {
@@ -99,8 +105,10 @@ export default {
     },
     generateOtp() {
       this.$store.dispatch('profileStore/GENERATE_OTP', {
-        pathVariables: {
-          memberId: '293833633'
+        payload: {
+          organisationName: this.name,
+          email: this.email,
+          memberType:this.value
         },
         success: this.generateOtpSuccess,
         fail: this.generateOtpFail
@@ -112,11 +120,9 @@ export default {
       this.$router.push('/registrationPage')
 
       this.$store.dispatch('profileStore/VERIFY_OTP', {
-        pathVariables: {
-          memberId: '9283635229'
-        },
         payload: {
-          verificationCode: otpValue
+          emailId: this.email,
+          otpNumber: otpValue
         },
         success: this.verifyOtpSuccess
       });
@@ -127,7 +133,7 @@ export default {
         this.isOtpCorrect = true;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
-        this.$router.push('/registrationPage')
+        this.$router.push('/registration')
       // } else {
         this.isOtpCorrect = false;
         this.resendVisible = false;
