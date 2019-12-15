@@ -21,14 +21,13 @@
   background-color: $color-black;
   border-radius: 10px;
   text-align: center;
-  width: 200px;
+  width: 250px;
   height: 200px;
   padding: 20px;
   margin: calc(50vh - 100px) auto;
 
   span {
     color: $color-white;
-    font-size: 20px;
     font-family: EffraMedium, sans-serif;
     display: inline-block;
     margin-top: 2rem;
