@@ -15,19 +15,19 @@ export default {
       getOrderHistory: [
         {
           orderId: '12232123',
-          receiverName: 'ngo.org',
+          donorName: 'ngo.org',
           date: '23-19-2018',
           quantity: 3
         },
         {
           orderId: '12232123',
-          receiverName: 'ngo.org',
+          donorName: 'ngo.org',
           date: '23-19-2018',
           quantity: 3
         },
         {
           orderId: '12232123',
-          receiverName: 'ngo.org',
+          donorName: 'ngo.org',
           date: '23-19-2018',
           quantity: 3
         }

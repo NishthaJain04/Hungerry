@@ -21,11 +21,7 @@ module.exports = {
     },
     proxy: {
       "^/api": {
-        target: "http://mitra-api.qa1-sg.cld",
-        changeOrigin: true
-      },
-      "^/backend": {
-        target: "https://wwwuata-mitra.gdn-app.com/",
+        target: "http://10.177.68.82",
         changeOrigin: true
       }
     }

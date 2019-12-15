@@ -18,7 +18,8 @@ export default {
       },
       colSpan2: {
           default: 9
-      }
+      },
+      radio: !1
     },
     data() {
       return {

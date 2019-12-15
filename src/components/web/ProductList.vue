@@ -16,8 +16,6 @@
         <span >{{ item.distance }} </span>
       </div>
       <div class="weight-label ellipsis">Weight: {{ item.quantity }}</div>
-      <BliButton  color="secondary" class="add-item" @click="matchDonor($event, item)">Accept</BliButton>
-      <BliButton  color="primary" v-if="hasAccepted" class="add-item" @click="matchDonor($event, item)">Accepted</BliButton>
     </div>
   </div>
 </div>
@@ -55,7 +53,7 @@
       }
     }
     .img-container {
-      transform: translate(15px, 15px);
+      transform: translate(0px, 25px);
       height: 40px;
       width: 40px;
       display: inline-block;

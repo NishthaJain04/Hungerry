@@ -24,6 +24,11 @@
     <div v-else class="register">
         <BliButton disabled @click="loginDetails"> Submit </BliButton>
     </div>
+    <Alert
+      :show-alert="isLogin"
+      :hide-alert="handleAlertClose"
+      alertMessage="Logged in Successfully!"
+    />
 </div>
 </template>
 <script src="./js/login.js"></script>

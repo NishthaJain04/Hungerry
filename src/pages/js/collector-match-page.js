@@ -22,6 +22,9 @@ export default {
       selectedSubCat: null,
       subCategories: [],
       category: '',
+      radio: !1,
+      isSelected: false,
+      selectedDonor: '',
       getDonors: [
         {
           name: 'nishtha',
@@ -105,6 +108,13 @@ export default {
     // });
   },
   methods: {
+    getSelectedDonor(donor) {
+      console.log(donor);
+      this.selectedDonor = donor;
+    },
+    submitDonorDetails() {
+      console.log(this.selectedDonor)
+    },
     getProductList(success) {
       // this.$store.dispatch('retailCheckoutStore/GET_PRODUCTS_LIST', {
       //   pathVariables: { memberId: getMemberID() },

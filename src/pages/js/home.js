@@ -1,20 +1,30 @@
 import ImageSlider from '@/components/web/ImageSlider';
-import pulsaIcon from '@/assets/icons/icon-phone-prepaid.svg';
-import gameIcon from '@/assets/icons/icon-game_voucher.svg';
-import dataIcon from '@/assets/icons/icon-phone-data.svg';
-import pdamIcon from '@/assets/icons/icon-water-bill.svg';
+import pulsaIcon from '@/assets/icons/icon-npo.jpg';
+import gameIcon from '@/assets/icons/icon-ngo.jpg';
+import dataIcon from '@/assets/icons/icon-people.jpg';
+import pdamIcon from '@/assets/icons/icon-npo-text.jpg';
 import { getMemberID } from '@/utils/helpers';
 export default {
     name: 'HomePage',
     data() {
       return {
-        bannersToShow: [{image: pulsaIcon}, {image: gameIcon}, {image: dataIcon}, {image: pdamIcon}],
+        bannersToShow: [{image: pdamIcon}, {image: gameIcon}, {image: dataIcon}, {image: pulsaIcon}],
         isrequestActive: false,
-        memberType: ''
+        memberType: '',
+        analysis: {
+          pickUp: 986,
+          peopleFed: 525,
+          numberOfOrgs: 30,
+          foodSaved: 2000
+        }
       };
     },
     created() {
       // this.$store.dispatch('GET_ACTIVE', { success: this.getActiveSuccess});
+      // this.$store.dispatch('homepageStore/GET_ANALYTICS', {
+      //   pathVariables: {memberId: getMemberID()},
+      //   success: this.getAnalyticsDataSuccess
+      // });
       // this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
       //   pathVariables: {memberId: getMemberID()},
       //   success: this.getMemberSuccess
@@ -24,6 +34,11 @@ export default {
       ImageSlider,
     },
     methods: {
+      getAnalyticsDataSuccess(res) {
+        if (res) {
+          this.analysis = res.analysis;
+        }
+      },
       // getActiveSuccess(res) {
       //   if (res) {
       //     this.isrequestActive = res.active

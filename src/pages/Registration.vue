@@ -9,36 +9,32 @@
         alt="Notification" />
     </div>
     <div class="registration__header">
-      <BliField>
-        <BliInput v-model="form.organisationName"/>
-        <label>Organisation Name</label>
-      </BliField>
-      <BliField >
-          <BliInput v-model="form.emailId"/>
-          <label>Email Id</label>
-      </BliField>
-      <BliField >
+      <BliField class="input">
           <BliInput v-model="form.registrationId"/>
           <label>Registration Id</label>
-      </BliField>
-      <BliField>
+      </BliField >
+      <BliField class="input">
         <BliInput type="number" maxlength="10" v-model="form.mobileNumber"/>
         <label>Mobile Number</label>
       </BliField>
-      <BliField>
+      <BliField class="input">
         <BliInput type="number" maxlength="10" v-model="form.alternativeNumber"/>
         <label>Alternative Number</label>
-      </BliField>
-      <BliField>
+      </BliField >
+      <BliField class="input" >
       <BliInput type="password" v-model="form.password" />
       <label>Password</label>
     </BliField>
-    <BliField>
-      <BliInput type="password" v-model="form.confirmPassword" />
+    <BliField class="input" >
+      <BliInput type="danger" v-model="form.password" />
+      <label>Password</label>
+    </BliField>
+    <BliField class="input">
+      <BliInput type="password" v-model="form.confirmPassword" @change="checkPassword"/>
       <label>Confirmation Password</label>
     </BliField>
-    <BliField b-clearable>
-      <BliTextarea v-model="address" @click="() => showGoogleMaps = true"/>
+    <BliField b-clearable class="input">
+      <BliInput v-model="address" @click="() => showGoogleMaps = true"/>
       <label>Address</label>
     </BliField>
     <Transition effect-name="slide-left">
@@ -53,6 +49,11 @@
         </LocationMap>
       </Transition>
       <BliButton color="secondary" @click="confirmation">Confirmation</BliButton>
+      <Alert
+      :show-alert="isRegistration"
+      :hide-alert="handleAlertClose"
+      alertMessage="Registered Successfully!"
+    />
     </div>
     </div>
 </template>
@@ -83,5 +84,10 @@
     padding: 15px 0;
   }
 }
+.input {
+      width: 90%;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
 
 </style>

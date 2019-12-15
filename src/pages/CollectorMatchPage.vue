@@ -21,8 +21,25 @@
            class="category-list no-scrollbar"
            :key="index"
         >
+        <div class="blu-columns b-mobile b-0 b-gapless">
+          <div class="blu-column b-3 center-text">
+          <BliRadio class="add-item" v-model="radio" :value="index" @change="getSelectedDonor(donor)"></BliRadio>
+          </div>
+          <div class="blu-column b-9 center-text">
           <ProductList :productList="getDonors" :item="donor" :index="index"/>
+          </div>
         </div>
+        </div>
+        <Transition effectName="slide-up">
+          <div class="checkout__footer">
+          <BliButton block color="secondary" class="pay-now" @click="submitDonorDetails()">
+            Submit
+          </BliButton>
+          <BliButton v-if="!isSelected" disabled block color="secondary" class="pay-now">
+            Submit
+          </BliButton>
+      </div>
+      </Transition>
         <!-- <infinite-loading
           v-if="getDonors.length"
           force-use-infinite-wrapper
@@ -31,10 +48,8 @@
         > -->
           <!-- <div slot="no-more" class="font-grey">NO MORE DONORS</div> -->
         <!-- </infinite-loading> -->
-        <div class="loader" v-if="getIsFetchingList && this.getDonors.length === 0"><Loader></Loader></div>
       </div>
     </div>
-    <div class="addcart-loader" v-if="isAddingItemToCart"><Loader></Loader></div>
   </div>
 </template>
 <script src="./js/collector-match-page.js"></script>
@@ -76,8 +91,11 @@
     transition: all 0.3s ease;
 
     .list-wrapper {
-      height: 100%;
+      height: calc(100vh - 130px);
       overflow-y: scroll;
+    }
+    .add-item {
+      transform: translate(0px, 20px);
     }
   }
 
@@ -107,6 +125,38 @@
   .no-scrollbar {
     overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
+  }
+  &__footer {
+    z-index: 1;
+    padding: 0 16px;
+    border-top: 1px solid $color-grey;
+    position: absolute;
+    bottom: 0;
+    background-color: $color-white;
+    width: 100%;
+    height: 72px;
+    line-height: 72px;
+
+    .item-total {
+      border-top: 1px solid $color-grey;
+      border-bottom: 1px solid $color-grey;
+      height: 40px;
+      line-height: 2.5;
+      color: $color-grey-darker;
+      padding-left: 15px;
+      margin-bottom: 15px;
+    }
+    .item-total-price {
+      float: right;
+      padding-right: 20px;
+      color: $color-black;
+    }
+    .pay-now {
+      z-index: 1;
+      letter-spacing: normal;
+      font-family: EffraMedium, serif;
+      height: 48px;
+    }
   }
 }
 </style>

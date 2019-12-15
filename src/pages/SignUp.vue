@@ -48,11 +48,6 @@
       />
     </Transition>
     </OverlayPopup>
-    <Alert
-      :show-alert="isOtpCorrect"
-      :hide-alert="handleAlertClose"
-      alertMessage="Logged in Successfully!"
-    />
   </div>
 </template>
 <script src="./js/sign-up.js"></script>
