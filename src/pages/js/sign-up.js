@@ -43,7 +43,7 @@ export default {
   methods: {
     registerMember() {
       console.log(this.name, ' ', this.email, ' ', this.value)
-      this.$store.commit('authStore/SET_LOGIN_DETAILS', {
+      this.$store.dispatch('authStore/SET_LOGIN_DETAILS', {
         organisationName: this.name,
         email: this.email,
         memberType:this.value

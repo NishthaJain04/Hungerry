@@ -1,4 +1,4 @@
-import router from '@/router';
+// import router from '@/router';
 import api from '@/api/authApis.js';
 
 export default {
@@ -19,7 +19,7 @@ export default {
       Object.assign(state, {isUserLoggedIn: value});
     },
     setUserLoginDetails(state, value) {
-    Object.assign(state, {userDetails: value});
+      Object.assign(state, {userDetails: value});
     }
   },
   actions: {
