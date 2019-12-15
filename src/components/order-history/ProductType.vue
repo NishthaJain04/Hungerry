@@ -5,11 +5,11 @@
         v-for="(tab, index) in tabs"
         class="tab"
         :key="'product-type-' + index"
-        :class="tab.productType === activeProductType ? 'active' : ''"
+        :class="tab.orderStatus === activeProductType ? 'active' : ''"
         @click="switchTab(tab)"
       >
         <div class="tab__product-name">{{ tab.name }}</div>
-        <div>{{ i18n(`HOME_PAGE.PRODUCTS.${tab.productType}`) }}</div>
+        <div>{{tab.orderStatus}}</div>
       </div>
     </div>
   </div>
@@ -23,6 +23,7 @@
     white-space: nowrap;
     overflow: auto;
     position: relative;
+    border-bottom: 1px solid $color-grey-lightest-1;
     .slide {
       border: 1px solid $color-blue-3;
       height: 2px;
@@ -39,7 +40,6 @@
       font-size: 16px;
       height: 48px;
       display: inline-block;
-      border-bottom: 1px solid $color-grey-lightest-1;
       padding: 0px 20px;
       div {
         transform: translate(0px, 10px);

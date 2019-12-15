@@ -9,32 +9,36 @@
         alt="Notification" />
     </div>
     <div class="registration__header">
-      <BliField class="input">
+      <BliField>
+        <BliInput v-model="form.organisationName"/>
+        <label>Organisation Name</label>
+      </BliField>
+      <BliField >
+          <BliInput v-model="form.emailId"/>
+          <label>Email Id</label>
+      </BliField>
+      <BliField >
           <BliInput v-model="form.registrationId"/>
           <label>Registration Id</label>
-      </BliField >
-      <BliField class="input">
+      </BliField>
+      <BliField>
         <BliInput type="number" maxlength="10" v-model="form.mobileNumber"/>
         <label>Mobile Number</label>
       </BliField>
-      <BliField class="input">
+      <BliField>
         <BliInput type="number" maxlength="10" v-model="form.alternativeNumber"/>
         <label>Alternative Number</label>
-      </BliField >
-      <BliField class="input" >
+      </BliField>
+      <BliField>
       <BliInput type="password" v-model="form.password" />
       <label>Password</label>
     </BliField>
-    <BliField class="input" >
-      <BliInput type="danger" v-model="form.password" />
-      <label>Password</label>
-    </BliField>
-    <BliField class="input">
-      <BliInput type="password" v-model="form.confirmPassword" @change="checkPassword"/>
+    <BliField>
+      <BliInput type="password" v-model="form.confirmPassword" />
       <label>Confirmation Password</label>
     </BliField>
-    <BliField b-clearable class="input">
-      <BliInput v-model="address" @click="() => showGoogleMaps = true"/>
+    <BliField b-clearable>
+      <BliTextarea v-model="address" @click="() => showGoogleMaps = true"/>
       <label>Address</label>
     </BliField>
     <Transition effect-name="slide-left">
@@ -42,22 +46,17 @@
           v-if="showGoogleMaps"
           id="myMap"
           :onCloseRequest="toggleMapsVisibility"
-          :currentPosition="currentPosition"
+          :currentPosition="address ? currentPosition : { lat: 12.9716, lng: 77.5946 }"
           :onPlaceChanged="handlePlaceChange"
           :onContinueClick="saveAddress"
         >
         </LocationMap>
       </Transition>
       <BliButton color="secondary" @click="confirmation">Confirmation</BliButton>
-      <Alert
-      :show-alert="isRegistration"
-      :hide-alert="handleAlertClose"
-      alertMessage="Registered Successfully!"
-    />
     </div>
     </div>
 </template>
-<script src="./js/registration.js"></script>
+<script src="./js/registrationPage.js"></script>
 <style lang="scss" scoped>
 @import "~assets/scss/colors";
 
@@ -84,10 +83,5 @@
     padding: 15px 0;
   }
 }
-.input {
-      width: 90%;
-      margin-left: 20px;
-      margin-top: 20px;
-    }
 
 </style>

@@ -86,8 +86,7 @@
           <div class="mt-2 not-found-result" v-if="noResultFound && isInput">
             <img src="~assets/icons/404.svg" alt="Not Found" />
             <div class="not-found-result__wording">
-              <span class="main-text">{{LOCATION_MAP.LOCATION_NOT_FOUND_HEAD}}</span>
-              <span class="secondary-text">{{LOCATION_MAP.LOCATION_NOT_FOUND_SUBTEXT}}</span>
+              <span class="main-text">Location Not Found</span>
             </div>
           </div>
         </div>

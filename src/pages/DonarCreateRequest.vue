@@ -38,10 +38,10 @@
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless" style="margin-top:5%;">
             <div class="blu-column b-8 center-text" style="margin-left:1%;">
-                <label>Do food contain Non-Veg?</label>
+                <label>Does food contain Non-Veg?</label>
             </div>
-            <div class="blu-column b-3 center-text">
-                <BliSwitch v-model="switchedCustom">
+            <div class="blu-column b-4 center-text">
+                <BliSwitch v-model="switchedCustom" style="margin-left:11%;">
                 </BliSwitch>
              </div>
         </div>
@@ -68,6 +68,17 @@
                 <label>Additional Information</label>
             </BliField>
         </div>
+        <div v-if="switchedCustom && selectTime && (donatingItems.length >= 1)" class="register">
+        <BliButton color="secondary" @click="request">Donate</BliButton>
+        </div>
+        <div v-else class="register">
+        <BliButton color="disabled" @click="request">Donate</BliButton>
+        </div>
+        <Alert
+        :show-alert="isDonarRequest"
+        :hide-alert="handleAlertClose"
+        alertMessage="Successfully request is created"
+        />
         </div>
 </template>
 <script src="./js/donarCreateRequest.js"></script>
@@ -86,6 +97,9 @@
     padding: 15px 0;
     margin-bottom: 4%;
   }
+}
+.register {
+    text-align: center;
 }
 
 </style>

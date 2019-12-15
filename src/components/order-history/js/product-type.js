@@ -14,48 +14,24 @@ export default {
       tabs: [
         {
           icon: RetailIcon,
-          productType: 'GROCERIES'
+          orderStatus: 'Upcoming'
         },
         {
           icon: PulsaIcon,
-          productType: 'PHONE_CREDIT'
+          orderStatus: 'Completed'
         },
         {
           icon: DataIcon,
-          productType: 'DATA_PACKAGE'
-        },
-        {
-          icon: PlnIcon,
-          productType: 'ELECTRICITY_CREDIT'
-        },
-        {
-          icon: WaterBillIcon,
-          productType: 'WATER_BILL'
-        },
-        {
-          icon: PlnIcon,
-          productType: 'ELECTRICITY_POSTPAID'
-        },
-        {
-          icon: GameIcon,
-          productType: 'GAME_VOUCHER'
-        },
-        {
-          icon: BpjsIcon,
-          productType: 'BPJS'
-        },
-        {
-          icon: WalletIcon,
-          productType: 'WALLET_BALANCE'
+          orderStatus: 'Cancelled'
         }
       ],
       backUpData: []
     };
   },
   computed: {
-    ...mapGetters('profileStore', ['getMembersData']),
+    // ...mapGetters('profileStore', ['getMembersData']),
     activeProductType() {
-      return this.$route.query.productType;
+      return this.$route.query.orderStatus;
     }
   },
   created(){
@@ -63,52 +39,40 @@ export default {
   },
   mounted() {
     // this.$refs.tabs.scrollLeft = this.activeTabIndex * 96;
-    this.checkForRetailAccess(this.getMembersData)
+    // this.checkForRetailAccess(this.getMembersData)
   },
   watch: {
-    getMembersData: function (newValue) {
-      console.log('[getMembersData watch]', newValue);
-      this.checkForRetailAccess(newValue)
-    }
+    // getMembersData: function (newValue) {
+    //   console.log('[getMembersData watch]', newValue);
+    //   this.checkForRetailAccess(newValue)
+    // }
   },
   methods: {
     switchTab(tab) {
       const query = {
         ...this.$route.query,
-        productType: tab.productType
+        orderStatus: tab.orderStatus
       };
       this.$router.push({ query });
-      this.$store.dispatch('orderHistory/RESET_ORDERS');
-      this.$store.dispatch('retailOrderHistory/RESET_ORDERS');
-        if (query.productType === 'GROCERIES') {
-          this.$store.dispatch('retailOrderHistory/GET_ORDER_HISTORY', {
-          params: {
-            page: 0,
-            pageSize: 10,
-            orderStatus: query.orderStatus
-          },
-          isNewPage: true
-        })
-      } else {
-        const payload = {
-          status: query.orderStatus,
-          productType: query.productType,
-          page: 0,
-          size: 10
-        };
-        this.$store.dispatch('orderHistory/GET_ORDERS', { payload })
-      }
-    },
-    checkForRetailAccess(memberData) {
-      if(!memberData.services) return false;
-      const hasAccessOfService = memberData.services.includes('replenishment_products');
-      const zoneId = memberData.zoneId;
-      let arr = this.backUpData;
-      if(memberData && (!hasAccessOfService || zoneId == null)) {
-        console.log('FILTERED_PRODUCTS:', arr.filter(el => el.productType !== 'GROCERIES'));
-        this.tabs = arr.filter(el => el.productType !== 'GROCERIES');
-        this.$refs.tabs.scrollLeft = 0;
+      // this.$store.dispatch('orderHistory/RESET_ORDERS');
+      // this.$store.dispatch('retailOrderHistory/RESET_ORDERS');
+      //   if (query.productType === 'GROCERIES') {
+      //     this.$store.dispatch('retailOrderHistory/GET_ORDER_HISTORY', {
+      //     params: {
+      //       page: 0,
+      //       pageSize: 10,
+      //       orderStatus: query.orderStatus
+      //     },
+      //     isNewPage: true
+      //   })
+      // } else {
+                    // const payload = {
+                    //   status: query.orderStatus,
+                    //   productType: query.productType,
+                    //   page: 0,
+                    //   size: 10
+                    // };
+                    // this.$store.dispatch('orderHistory/GET_ORDERS', { payload })
       }
     }
-  }
 };

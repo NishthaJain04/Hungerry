@@ -281,6 +281,7 @@ export default {
         console.log('SHOW 404');
         this.noResultFound = true;
       } else {
+        console.log('RESULT', result);
         this.currentPredictions = result;
         this.noResultFound = false;
       }

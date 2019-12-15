@@ -2,31 +2,31 @@
   <div class="order">
     <div class="order--top">
     <div class="date">
-      {{ order.orderDate | date("dd MMM yyyy") }}
+      {{ order.orderDate }}
     <div class="transaction">
             <BliLabelSuccess v-if="$route.query.orderStatus === 'FINISHED_ORDER'">
-              {{ i18n("RETAIL_ORDER_HISTORY.ORDER_SUCCESS") }}
+              RETAIL_ORDER_HISTORY.ORDER_SUCCESS
             </BliLabelSuccess>
             <BliLabelError v-if="$route.query.orderStatus === 'CANCELED_ORDER' && order.paymentStatus ==='APPROVED'">
-              {{ i18n("ORDER_HISTORY.ORDER_CANCELLED_PAID") }}
+              ORDER_HISTORY.ORDER_CANCELLED_PAID
             </BliLabelError>
             <BliLabelError v-if="$route.query.orderStatus === 'CANCELED_ORDER' && order.paymentStatus ==='DECLINED'">
-              {{ i18n("ORDER_HISTORY.ORDER_CANCELLED") }}
+              ORDER_HISTORY.ORDER_CANCELLED
             </BliLabelError>
             <BliLabelInfo v-if="currentStatus === 'FP'">
-              {{ i18n("RETAIL_ORDER_HISTORY.ORDER_PROCESSING") }}
+              RETAIL_ORDER_HISTORY.ORDER_PROCESSING
             </BliLabelInfo>
             <BliLabelInfo v-else-if="currentStatus === 'PU'">
-              {{ i18n("RETAIL_ORDER_HISTORY.ORDER_READY_TO_SHIP") }}
+              RETAIL_ORDER_HISTORY.ORDER_READY_TO_SHIP
             </BliLabelInfo>
             <BliLabelInfo v-else-if="currentStatus === 'CX'">
-              {{ i18n("RETAIL_ORDER_HISTORY.ORDER_ON_DELIVERY") }}
+              RETAIL_ORDER_HISTORY.ORDER_ON_DELIVERY
             </BliLabelInfo>
             <BliLabelSuccess v-else-if="currentStatus === 'D'">
-              {{ i18n("RETAIL_ORDER_HISTORY.ORDER_SENT") }}
+              RETAIL_ORDER_HISTORY.ORDER_SENT
             </BliLabelSuccess>
             <BliLabelWarning v-if="order.paymentStatus === 'PENDING'">
-            {{ i18n("DIGITAL.ORDER.TRANSACTION_PENDING") }}
+            DIGITAL.ORDER.TRANSACTION_PENDING
           </BliLabelWarning>
     </div>
     </div>
@@ -44,13 +44,13 @@
             </div>
         <div class="blu-column b-9">
           <div class="font-16 product-type font-grey-3">
-            {{ order.orderItems.length }} {{ i18n("DIGITAL.THANK_YOU.GOODS") }}
+            {{ order.quantity }} kg Food
           </div>
           <div class="product-information">
-            {{ i18n("DIGITAL.ORDER.ORDER_NO") }} {{ order.orderId }}
+            Order Number {{ order.orderId }}
           </div>
           <div class="font-blue font-bold font-16 mb-1">
-              {{ order.paymentAmount | currency }}
+              Order Date {{ order.date }}
             </div>
         </div>
       </div>
