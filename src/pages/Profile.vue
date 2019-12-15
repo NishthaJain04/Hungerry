@@ -2,10 +2,6 @@
   <div class="profile-page">
     <div class="profile-page__profile-header">
       Your Account
-      <img
-        class="bell"
-        src="~assets/icons/icon-left.svg"
-        alt="Notification" />
     </div>
 
     <div class="profile-page__profile-scroller">
@@ -18,6 +14,9 @@
              alt="profileIcon"
         />
         <div class="profile-number">{{ profile.memberDetails.phoneNumber }}</div>
+        <span class="complete">
+          Verified
+        </span>
         <span class="font-grey">{{ profile.memberDetails.emailId }}</span>
       </div>
       <div class="profile-page__address">
@@ -83,6 +82,10 @@
     .profile-number {
       font-size: 13px;
       color: $color-grey-dark;
+    }
+    .complete {
+      color: $color-green;
+      float: right;
     }
   }
   &__address {

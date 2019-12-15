@@ -8,14 +8,6 @@
         src="~assets/icons/icon-bell-grey.svg"
         alt="Notification" />
     </div>
-        <div class="blu-columns b-mobile b-0 b-gapless ">
-            <div class="blu-column b-5 center-text" style="margin-left:3%;">
-            <label style="background-color:$color-blue-1"> Type</label>
-            </div>
-            <div class="blu-column b-5 center-text">
-                <label> Quantity </label>
-            </div>
-        </div>
          <div class="blu-columns b-mobile b-0 b-gapless" v-for="(item, index) in donatingItems" :key="index">
             <div class="blu-column b-5 center-text" >
                 <!-- <BliField b-clearable v-model="index.categories" style="margin-left:8%;" >
@@ -45,8 +37,8 @@
                 <img src="../assets/icons/icon-add-circle.svg" alt="add icon" width="30px" class="donarCreateRequest__header__img-donar" @click="() =>{displayProduct()}">
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless" style="margin-top:5%;">
-            <div class="blu-column b-8 center-text" style="margin-left:1%;">
-                <label>Does food contain Non-Veg?</label>
+            <div class="blu-column b-8 center-text" style="margin-left:15px;line-height: 10px;">
+                <div>Does your food contain Non-Veg?</div>
             </div>
             <div class="blu-column b-4 center-text">
                 <BliSwitch v-model="switchedCustom" style="margin-left:11%;">

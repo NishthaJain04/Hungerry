@@ -9,5 +9,38 @@ export default {
   name: 'App',
   components: {
       NavigationTab
+  },
+  data() {
+    return {
+      navTabVisible: false
+    }
+  },
+  watch: {
+    $route(to) {
+      this.handleNavigationTabVisibility(to.path);
+    }
+  },
+  created () {
+    // this.$store.dispatch('GET_SESSION', { success: this.sessionFetched});
+  },
+  methods: {
+    handleNavigationTabVisibility(path) {
+      if (
+        path.includes('home') ||
+        path === '/order' ||
+        path.includes('help') ||
+        path.includes('account')
+      ) {
+        this.navTabVisible = true
+      } else {
+        this.navTabVisible = false
+      }
+    },
+    sessionFetched () {
+      // this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
+      //   pathVariables: {memberId: getMemberID()},
+      //   success: this.checkMemberRegistration
+      // });
+    }
   }
 };

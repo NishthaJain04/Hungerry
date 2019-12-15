@@ -11,6 +11,7 @@ export default {
     return {
       page: 0,
       selectedOrderStatus: null,
+      memberType: '',
       getOrderHistory: [
         {
           orderId: '12232123',
@@ -39,6 +40,15 @@ export default {
     // window.onpopstate = function() {
     //   self.getAllOrders();
     // };
+    // this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
+      //   pathVariables: {memberId: getMemberID()},
+      //   success: this.getMemberSuccess
+      // });
+      // getMemberSuccess(res) {
+      //   if (res) {
+      //     this.memberType = res.memberDetails.memberType;
+      //   }
+      // },
   },
   components: {
     OrderSummary,

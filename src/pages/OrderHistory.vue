@@ -1,9 +1,14 @@
 <template>
   <div class="order--history">
     <div class="order--history__header">
+      <!-- v-if="memberType === 'donator'" -->
       <b>
         Your Donations
       </b>
+      <!-- v-else -->
+      <!-- <b>
+        Your Collections
+      </b> -->
       <img
         class="notification"
         src="~assets/icons/icon-bell.svg" />
