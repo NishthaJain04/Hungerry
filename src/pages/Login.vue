@@ -22,7 +22,7 @@
         <BliButton color="secondary" @click="loginDetails"> Submit </BliButton>
     </div>
     <div v-else class="register">
-        <BliButton color="disabled" @click="loginDetails"> Submit </BliButton>
+        <BliButton disabled @click="loginDetails"> Submit </BliButton>
     </div>
 </div>
 </template>

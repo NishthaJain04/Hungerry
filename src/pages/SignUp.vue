@@ -22,7 +22,7 @@
     <BliButton color="secondary" @click="registerMember()">Register</BliButton>
   </div>
   <div v-else class="register">
-    <BliButton color="disabled"  @click="registerMember()">Register</BliButton>
+    <BliButton disabled  @click="registerMember()">Register</BliButton>
   </div>
   </div>
     <OverlayPopup

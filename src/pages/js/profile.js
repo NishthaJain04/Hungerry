@@ -1,3 +1,4 @@
+import clearSessionStorage from '@/utils/helpers';
 export default {
   name: 'Profile',
   data() {
@@ -20,7 +21,6 @@ export default {
   components: {
   },
   created() {
-    // this.$store.dispatch('homepageStore/GET_APP_COFIGURATION', 'mitraAppConfiguration');
     // this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
     //   pathVariables: {
     //     memberId: '80123445665',
@@ -29,49 +29,17 @@ export default {
   },
   computed: {
     // ...mapGetters('profileStore', ['getMembersData']),
-    // ...mapGetters('homepageStore', ['getConfigs', 'getWalletRequest'])
   },
   watch: {
   },
 
   methods: {
-    toggleOverlayPopup() {
-      // this.isOverlayOpen = !this.isOverlayOpen;
-    },
-    handleBrowse() {
-      // this.isOverlayOpen = false;
-    },
-    getMemberDetailsSuccess(res) {
-      // 
-    },
+    // getMemberSuccess(res) {
+      //   if (res) {
+      //     this.memberType = res.memberDetails.memberType;
+      //   }
+      // },
     handleChangePIN() {
-      // const memberData = this.getMembersData;
-      // const walletRequest = this.getWalletRequest;
-      // if(memberData.registrationStatus === 'IN_PROGRESS') {
-      //   this.togglePopup();
-      //   return false;
-      // }
-      // if(memberData.registrationStatus === 'REGISTERED' && memberData.memberDetails.verificationStatus === 'NEEDS_APPROVAL') {
-      //   this.toggleOverlayPopup();
-      //   return false;
-      // }
-      // if(memberData.registrationStatus === 'REGISTERED' && (memberData.memberDetails.verificationStatus === 'REJECTED')) {
-      //   this.toggleRejectionOverlay();
-      //   return false;
-      // }
-      // if(memberData.registrationStatus === 'REGISTERED'
-      //     && (memberData.memberDetails.verificationStatus === 'APPROVED' || memberData.memberDetails.verificationStatus === 'OUTSIDE_ZONE')
-      //     && walletRequest && walletRequest.pinRegistered === false){
-      //   this.$router.push('/setting-pin')
-      // } else {
-      //   this.$router.push('/forgot-pin');
-      // }
-    },
-    toggleRejectionOverlay() {
-      // this.isRejectionOverlayVisible = !this.isRejectionOverlayVisible;
-    },
-    showRejectionOverlay() {
-      // this.isRejectionOverlayVisible = true;
     },
     logOutFromApp() {
       // console.log('LOGOUT:', this.getConfigs);
@@ -80,11 +48,6 @@ export default {
       // this.$store.dispatch('LOG_OUT_FROM_APP', {
       //   appHomeUrl: this.getConfigs.appHome
       // });
-    },
-    togglePopup() {
-      console.log('togglePopup');
-      this.showIncompleteDataPopup = !this.showIncompleteDataPopup;
-      this.isWhatsappEnabled = 'no';
     }
   }
 };

@@ -14,7 +14,7 @@
     <!-- <transition v-if="!isOfflineNow" name="fade-effect" mode="out-in"> -->
       <router-view/>
     <!-- </transition> -->
-    <NavigationTab />
+    <NavigationTab v-if="navTabVisible"/>
     <!-- <Login /> -->
     <!-- <CollectorMatchPage /> -->
     <!-- <OnboardingScreen

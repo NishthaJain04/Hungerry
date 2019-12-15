@@ -24,7 +24,7 @@
       <BliButton color="secondary" @click="createCollectorRequest()">Collect</BliButton>
     </div>
     <div v-else class="collect">
-      <BliButton color="disabled" @click="createCollectorRequest()">Collect</BliButton>
+      <BliButton disabled @click="createCollectorRequest()">Collect</BliButton>
     </div>
   </div>
 </template>
