@@ -14,7 +14,7 @@ import authStore from './authStore';
 // import digitalOrder from './digital-order';
 // import cashoutStore from './blipay-cashout-store';
 // import orderHistory from './order-history';
-// import retailCheckoutStore from './retail-checkout-store';
+import collectorStore from './collector-store';
 // import retailOrderHistory from './retail-order-history-store';
 // import digitalConfig from './digital-config'
 
@@ -22,7 +22,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    authStore
+    authStore,
+    collectorStore
     // notificationStore: notificationStore,
     // profileStore: profileStore,
     // homepageStore,

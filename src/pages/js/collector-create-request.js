@@ -16,7 +16,7 @@ export default {
   methods: {
     createCollectorRequest() {
       console.log(this.quantity)
-      this.$store.dispatch('retailOrderHistory/GET_RETAIL_ORDER_DETAIL', {
+      this.$store.dispatch('collectorStore/CREATE_REQUEST', {
         payload:  { quantity: this.quantity },
         success: this.createCollectorRequestSuccess
     });

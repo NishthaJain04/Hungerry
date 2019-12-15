@@ -33,8 +33,11 @@ export default {
     SET_LOGIN_STATUS({commit}, payload) {
       commit('setUserLoginStatus', payload);
     },
-    SET_LOGIN_DETAILS({commit}, payload) {
+    SET_LOGIN_DETAILS({commit}, { payload, success, params} ={}) {
       commit('setUserLoginDetails', payload);
+      api.toRegister(response => {
+        success(response.data)
+      }, {}, payload, params)
     },
     // eslint-disable-next-line no-empty-pattern
     GO_TO_HOME_PAGE({},{ payload, success, params } = {}) {

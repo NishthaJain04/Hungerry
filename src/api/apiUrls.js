@@ -11,9 +11,10 @@ export default {
     getDigitalProducts(productType) {
       return `${API_BASE_PATH}digital/products/${productType}`;
     },
-    addCartDigital: `${API_BASE_PATH}digital/carts`,
-    setNumberDigital: `${API_BASE_PATH}digital/carts/_customer-number`,
-    payDigital: `${API_BASE_PATH}digital/orders`,
+    createCollectorRequest: `${API_BASE_PATH}order/addCollectorRequest`,
+    getMatchingDonors: `${API_BASE_PATH}hungerry/getDonators`,
+    donarRequestCheck: `${API_BASE_PATH}order/donarRequestCheck`,
+    collectorRequestCheck: `${API_BASE_PATH}/order/collectorRequestCheck`,
     digitalInquiry: `${API_BASE_PATH}digital/carts/_customer-number-inquiry`,
     getMemberDetails(memberId) {
       return `${API_BASE_PATH}mitra/members/${memberId}`;

@@ -8,7 +8,6 @@ export default {
       apiUrls.api.toLogin, callback, fail, payload, params);
   },
   toRegister(callback, fail, payload, params) {
-    console.log('payload', payload)
     apiCall.makePostRequest(
       apiUrls.api.toRegister, callback, fail, payload, params);
   },

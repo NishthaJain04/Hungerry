@@ -2,13 +2,13 @@ import apiUrls from './apiUrls';
 import apiCall from './apiUtils/makeApiCall.js';
 
 export default {
-  getCartItems(callback, fail, params) {
+  getMatchingDonors(callback, fail, params) {
     apiCall.makeGetRequest(
-      apiUrls.api.getCartItems, callback, fail, params);
+      apiUrls.api.getMatchingDonors, callback, fail, params);
   },
-  deleteCartItem(callback, fail, payload, params) {
+  createCollectorRequest(callback, fail, payload, params) {
     apiCall.makePostRequest(
-      apiUrls.api.deleteCartItem,
+      apiUrls.api.createCollectorRequest,
       callback,
       fail,
       payload,

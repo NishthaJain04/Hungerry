@@ -1,7 +1,7 @@
 import ProductList from '@/components/web/ProductList'
 import OverlayPopup from '@/components/web/OverlayPopup'
 import InfiniteLoading from 'vue-infinite-loading';
-// import {getMemberID} from '@/utils/helpers'
+import {getMemberID} from '@/utils/helpers'
 // import { mapGetters } from 'vuex'
 import Loader from '@/components/web/Loader'
 import Alert from '@/components/web/Alert'
@@ -102,12 +102,13 @@ export default {
     // this.$store.dispatch('retailCheckoutStore/GET_LAST_ORDER');
     // this.$store.dispatch('retailCheckoutStore/RESET_PRODUCT_LIST');
     // this.$store.dispatch('retailCheckoutStore/SET_FETCHING', true);
-    // this.$store.dispatch('retailCheckoutStore/GET_CATEGORIES', {
-    //   params: {
-    //     cartId: getMemberID()
-    //   },
-    //   success: this.getProductList
-    // });
+    this.$store.dispatch('collectorStore/GET_MATCHING_DONORS', {
+      params: {
+        memberId: '50'
+        // getMemberID()
+      },
+      success: this.getMatchingDonorsSuccess
+    });
   },
   methods: {
     getSelectedDonor(donor) {
@@ -133,9 +134,10 @@ export default {
       }
     },
     handleAlertClose() {
-      this.$router.push('/Home');
+      this.$router.push('/home');
     },
-    getProductList(success) {
+    getMatchingDonorsSuccess(data) {
+      this.getDonors = data;
       // this.$store.dispatch('retailCheckoutStore/GET_PRODUCTS_LIST', {
       //   pathVariables: { memberId: getMemberID() },
       //   payload: {

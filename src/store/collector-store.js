@@ -1,9 +1,9 @@
-import retailCheckoutApi from '@/api/retailCheckoutApis';
+import retailCheckoutApi from '@/api/collectorApis';
 import errorHandler from '../api/apiUtils/errorHandler';
 
 export default {
   state: {
-    cartDetails: {},
+    requestDetails: {},
     productList: [],
     categories: [],
     shippingAddress: '',
@@ -19,8 +19,8 @@ export default {
     setProductsList(state, productListResponse) {
       state.productList = productListResponse;
     },
-    setCartDetails(state, cartResponse) {
-      state.cartDetails = cartResponse;
+    setRequestDetails(state, cartResponse) {
+      state.requestDetails = cartResponse;
     },
     setCategories(state, categories) {
       state.categories = categories
@@ -64,8 +64,8 @@ export default {
     getProductsList(state) {
       return state.productList;
     },
-    getCartDetails(state) {
-      return state.cartDetails;
+    getRequestDetails(state) {
+      return state.requestDetails;
     },
     getCategories(state) {
       return state.categories;
@@ -96,8 +96,8 @@ export default {
     }
   },
   actions: {
-    GET_CART_ITEMS({ commit, dispatch }, { params } = {}) {
-      retailCheckoutApi.getCartItems(
+    GET_MATCHING_DONORS({ commit, dispatch }, { params, success } = {}) {
+      retailCheckoutApi.getMatchingDonors(
         response => {
           if (response.data.code === 200) {
             if (
@@ -105,6 +105,7 @@ export default {
               response.data.errors === undefined
             ) {
               commit('setCartDetails', response.data.data);
+              success(response.data.data)
             } else {
               dispatch('SET_ERROR_HANDLE_POPUP', {
                 isErrorHandleVisible: true,
@@ -157,20 +158,18 @@ export default {
         params
       );
     },
-    UPDATE_ITEM_QUANTITY(
+    CREATE_REQUEST(
       { commit, dispatch },
       { payload, params, success, fail } = {}
     ) {
-      commit('setIsAddingItemToCart', true)
-      retailCheckoutApi.updateItemQuantity(
+      retailCheckoutApi.createCollectorRequest(
         response => {
-          commit('setIsAddingItemToCart', false)
           if (response.data.code === 200) {
             if (
               response.data.errors === null ||
               response.data.errors === undefined
             ) {
-              commit('setCartDetails', response.data.data);
+              commit('setRequestDetails', response.data.data);
               success(response.data.data);
             } else {
               fail(response.data.errors);
