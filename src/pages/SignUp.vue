@@ -9,12 +9,10 @@
     {{ i.label }}
   </BliChipChoice>
     </div>
-    <div class="label">Organisation Name</div>
     <BliField class="input" b-clearable>
     <BliInput v-model="name"/>
     <label>Organisation Name</label>
   </BliField>
-   <div class="label">Organisation Mail ID</div>
     <BliField class="input" b-clearable >
       <BliInput v-model="email"/>
       <label>Organisation Mail ID</label>
@@ -27,6 +25,12 @@
     <BliButton color="disabled"  @click="registerMember()">Register</BliButton>
   </div>
   </div>
+    <OverlayPopup
+        :isOpen="isOtpModalVisible"
+        :closePopup="() => !isOtpModalVisible"
+        title="Enter Otp"
+        closeVisible
+      >
     <Transition effect-name="slide-right">
       <OtpModal
         v-if="isOtpModalVisible"
@@ -43,6 +47,7 @@
         class="mt-3"
       />
     </Transition>
+    </OverlayPopup>
     <Alert
       :show-alert="isOtpCorrect"
       :hide-alert="handleAlertClose"
@@ -70,6 +75,7 @@
     .input {
       width: 90%;
       margin-left: 20px;
+      margin-top: 20px;
     }
     .register {
       text-align: center;

@@ -46,7 +46,7 @@
           v-if="showGoogleMaps"
           id="myMap"
           :onCloseRequest="toggleMapsVisibility"
-          :currentPosition="currentPosition"
+          :currentPosition="address ? currentPosition : { lat: 12.9716, lng: 77.5946 }"
           :onPlaceChanged="handlePlaceChange"
           :onContinueClick="saveAddress"
         >

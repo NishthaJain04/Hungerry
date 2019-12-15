@@ -15,6 +15,7 @@ export default {
             confirmPassword: '',
             address: ''
         },
+        address: '',
         showGoogleMaps: false,
         currentPosition: { lat: 12.9716, lng: 77.5946 },
     };

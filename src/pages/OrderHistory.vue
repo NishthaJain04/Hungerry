@@ -2,7 +2,7 @@
   <div class="order--history">
     <div class="order--history__header">
       <b>
-        {{ i18n("ORDER_HISTORY.ORDERS") }}
+        Your Donations
       </b>
       <img
         class="notification"
@@ -14,7 +14,7 @@
     <div class="order--history__listing margin-top-16">
       <div class="status--filter margin-bottom-16">
         <div>
-          <BliChipChoice
+          <!-- <BliChipChoice
             :class="filter.code === selectedOrderStatusFilter ? 'unclikable' : ''"
             v-for="filter in orderStatusFilter"
             type="radio"
@@ -25,41 +25,30 @@
             @change="changeOrderStatusFilter(filter)"
           >
             {{ filter.name }}
-          </BliChipChoice>
+          </BliChipChoice> -->
         </div>
       </div>
-      <div v-if="$route.query.productType !== 'GROCERIES'">
-      <router-link
-        v-for="order in orders"
-        :key="order.orderId"
-        :to="getOrderDetailPath(order)"
-      >
-        <order-summary :order="order" />
-      </router-link>
-      </div>
-      <div v-else>
         <div v-if="getOrderHistory && getOrderHistory.length !== 0">
-        <router-link
+        <div
         v-for="(order, index) in getOrderHistory"
-        :key="`${order.paymentStatus}+${index}+${order.status}`"
+        :key="index"
         :to="getRetailOrderDetailPath(order)"
       >
-        <retail-order-summary :key="`${order.paymentStatus}+${index}+${order.status}`" :order="order"/>
-        </router-link>
+        <retail-order-summary :key="index" :order="order"/>
         </div>
-      </div>
-      <infinite-loading v-if="orders.length > 0 || getOrderHistory.length" force-use-infinite-wrapper @infinite="getNextPage">
+        </div>
+      <!-- <infinite-loading v-if="orders.length > 0 || getOrderHistory.length" force-use-infinite-wrapper @infinite="getNextPage">
         <div slot="no-more" class="font-grey">
-          {{ i18n("ORDER_HISTORY.NO_MORE_DATA") }}
+          ORDER_HISTORY.NO_MORE_DATA
         </div>
       </infinite-loading>
       <div class="loader" v-if="(isFetchingOrderHistory && orders.length === 0) || (isFetchingRetailOrderHistory && getOrderHistory.length === 0)">
         <Loader />
-      </div>
+      </div> -->
       <div class="not--found__message" v-if="showEmptyMessage">
           <img src="~assets/icons/icon-own-store.svg" alt="No Data" />
-          <div class="not--found__message__heading">{{ i18n("ORDER_HISTORY.EMPTY_MESSAGE_HEADING") }}</div>
-          <div class="not--found__message__text">{{ i18n("ORDER_HISTORY.EMPTY_MESSAGE_TEXT") }}</div>
+          <div class="not--found__message__heading">ORDER_HISTORY.EMPTY_MESSAGE_HEADING</div>
+          <div class="not--found__message__text">ORDER_HISTORY.EMPTY_MESSAGE_TEXT</div>
       </div>
     </div>
   </div>
