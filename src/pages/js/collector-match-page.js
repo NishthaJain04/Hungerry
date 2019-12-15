@@ -4,7 +4,7 @@ import InfiniteLoading from 'vue-infinite-loading';
 // import {getMemberID} from '@/utils/helpers'
 // import { mapGetters } from 'vuex'
 import Loader from '@/components/web/Loader'
-import debounce from 'lodash.debounce'
+import Alert from '@/components/web/Alert'
 import Transition from '@/components/web/Transition'
 import profileImage from '@/assets/icons/icon-face.svg'
 
@@ -23,8 +23,9 @@ export default {
       subCategories: [],
       category: '',
       radio: !1,
-      isSelected: false,
+      isNotSelected: true,
       selectedDonor: '',
+      submitSuccess: false,
       getDonors: [
         {
           name: 'nishtha',
@@ -66,7 +67,8 @@ export default {
     OverlayPopup,
     InfiniteLoading,
     Loader,
-    Transition
+    Transition,
+    Alert
   },
   computed: {
     // ...mapGetters('retailCheckoutStore',
@@ -110,10 +112,28 @@ export default {
   methods: {
     getSelectedDonor(donor) {
       console.log(donor);
+      this.isNotSelected = false;
       this.selectedDonor = donor;
     },
     submitDonorDetails() {
-      console.log(this.selectedDonor)
+      console.log(this.selectedDonor);
+      // this.$store.dispatch('retailCheckoutStore/GET_PRODUCTS_LIST', {
+      //   pathVariables: { memberId: getMemberID() },
+      //   payload: {
+          // donor: this.selesctedDonor
+      //   },
+      //   params: { page: this.page, limit: 10 },
+      //   success: this.submitDonorDetailsSuccess
+      // });
+      this.submitSuccess = true
+    },
+    submitDonorDetailsSuccess(res) {
+      if (res) {
+        this.submitSuccess = true
+      }
+    },
+    handleAlertClose() {
+      this.$router.push('/Home');
     },
     getProductList(success) {
       // this.$store.dispatch('retailCheckoutStore/GET_PRODUCTS_LIST', {
@@ -164,9 +184,9 @@ export default {
       //   this.subCategories = []
       // }
     },
-    getProductsListDebounce: debounce(function() {
-      this.getSearchProductsList()
-    }, 500),
+    // getProductsListDebounce: debounce(function() {
+    //   this.getSearchProductsList()
+    // }, 500),
     getSearchProductsList(success) {
       // this.$store.dispatch('retailCheckoutStore/GET_PRODUCTS_LIST', {
       //   pathVariables: { memberId: getMemberID() },

@@ -4,6 +4,7 @@ const services = '/backend/content/pages/mitra/sections?display=normal';
 
 export default {
   api: {
+    toLogin: `${API_BASE_PATH}hungerry/verifyLogIn`,
     getDigitalProducts(productType) {
       return `${API_BASE_PATH}digital/products/${productType}`;
     },

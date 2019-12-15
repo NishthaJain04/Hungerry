@@ -32,12 +32,17 @@
         </div>
         <Transition effectName="slide-up">
           <div class="checkout__footer">
-          <BliButton block color="secondary" class="pay-now" @click="submitDonorDetails()">
+          <BliButton v-if="!isNotSelected" block color="secondary" class="pay-now" @click="submitDonorDetails()">
             Submit
           </BliButton>
-          <BliButton v-if="!isSelected" disabled block color="secondary" class="pay-now">
+          <BliButton v-if="isNotSelected" disabled block class="pay-now">
             Submit
           </BliButton>
+          <Alert
+        :show-alert="submitSuccess"
+        :hide-alert="handleAlertClose"
+        alertMessage="Your match was successful!"
+           />
       </div>
       </Transition>
         <!-- <infinite-loading

@@ -10,10 +10,18 @@
     </div>
          <div class="blu-columns b-mobile b-0 b-gapless" v-for="(item, index) in donatingItems" :key="index" style="margin:none;">
             <div class="blu-column b-5 center-text" >
-                <BliField b-clearable v-model="index.categories" style="margin-left:8%;" >
+                <!-- <BliField b-clearable v-model="index.categories" style="margin-left:8%;" >
                     <BliInput style="margin-left:5%; margin-right:5%; width:90%;height:56%;"/>
                     <label>Type of Food</label>
-                </BliField>
+                </BliField> -->
+                <DropDown
+                keyName="Type of Food"
+                :value="index.categories"
+                :label="index.categories"
+                :defaultLabel="SelectFoodType"
+                :onItemClick="menuItemSelected"
+                :listData="listData"
+                ></DropDown>
             </div>
             <div class="blu-column b-5 center-text" >
                 <BliField b-clearable v-model="item.quantity" style="margin-left:5%; margin-right:5%; width:90%;">
@@ -64,7 +72,7 @@
         <BliButton color="secondary" @click="request">Donate</BliButton>
         </div>
         <div v-else class="register">
-        <BliButton color="disabled" @click="request">Donate</BliButton>
+        <BliButton disabled @click="request">Donate</BliButton>
         </div>
         <Alert
         :show-alert="isDonarRequest"
