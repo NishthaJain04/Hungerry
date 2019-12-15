@@ -121,7 +121,7 @@ export default {
         success: this.verifyOtpSuccess
       });
     },
-    verifyOtpSuccess(res) {
+    verifyOtpSuccess() {
       // if (res.verified) {
         this.isOtpOverlayOpen = false;
         this.isOtpCorrect = true;

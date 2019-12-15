@@ -2,14 +2,12 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 const Account = () => import(/* webpackChunkName: 'p-profile' */ '@/pages/Profile');
-const Home = () => import(/* webpackChunkName: 'p-store' */ '@/pages/Store');
+const Home = () => import(/* webpackChunkName: 'p-store' */ '@/pages/Home');
 const OrderHistory = () => import(/* webpackChunkName: 'p-order-history' */ '@/pages/OrderHistory');
 const Registration = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/Registration');
-const HomePage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/HomePage');
 const DonarCreateRequest = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/DonarCreateRequest');
-const RegistrationPage = () => import(/* webpackChunkName: 'p-registration' */ '@/pages/RegistrationPage');
 const DonatorRequestDetail = () => import(/* webpackChunkName: 'p-digital-order-detail' */ '@/pages/DonatorRequestDetail');
-const LoginPage = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/LoginPage');
+const Login = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Login');
 const Pulsa = () => import(/* webpackChunkName: 'p-pulsa' */ '@/pages/Pulsa');
 const BlipayPin = () => import(/* webpackChunkName: 'p-blipay-pin' */ '@/pages/BlipayPin');
 const ElectricityToken = () => import(/* webpackChunkName: 'p-electricity-token' */ '@/pages/ElectricityToken');
@@ -59,24 +57,14 @@ export default new Router({
     component: Registration
   },
   {
-    path: '/homePage',
-    name: 'HomePage',
-    component: HomePage
-  },
-  {
-    path: '/loginPage',
-    name: 'LoginPage',
-    component: LoginPage
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/donarCreateRequest',
     name: 'DonarCreateRequest',
     component: DonarCreateRequest
-  },
-  {
-    path: '/registrationPage',
-    name: 'RegistrationPage',
-    component: RegistrationPage
   },
   {
     path: '/collector/CollectorMatchPage',
