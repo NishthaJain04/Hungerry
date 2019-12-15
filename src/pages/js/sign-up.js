@@ -49,6 +49,7 @@ export default {
         memberType:this.value
       })
       this.isOtpModalVisible = true;
+      this.generateOtp();
     },
     timerFunction() {
         this.secondTimer -= 1;
@@ -116,8 +117,8 @@ export default {
     },
     verifyOtpAndSetPin(otpValue) {
       this.resendVisible = false;
-      console.log(otpValue)
-      this.$router.push('/registrationPage')
+      console.log('VerifyOtp', otpValue)
+      this.$router.push('/registration')
 
       this.$store.dispatch('profileStore/VERIFY_OTP', {
         payload: {
@@ -133,7 +134,7 @@ export default {
         this.isOtpCorrect = true;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
-        this.$router.push('/registration')
+        this.$router.push('/Registration')
       // } else {
         this.isOtpCorrect = false;
         this.resendVisible = false;

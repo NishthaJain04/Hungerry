@@ -10,17 +10,19 @@ export default {
       params
     );
   },
-  generateOtp(callback, fail, pathVariables, params) {
-    apiCall.makeGetRequest(
-      apiUrls.api.getGenerateOtp(pathVariables.memberId),
+  generateOtp(callback, fail, payload, params) {
+    console.log('profile', payload)
+    apiCall.makePostRequest(
+      apiUrls.api.generateOtp,
       callback,
       fail,
+      payload,
       params
     );
   },
-  verifyOtp(callback, fail, pathVariables, params, payload) {
+  verifyOtp(callback, fail, payload, params) {
     apiCall.makePostRequest(
-      apiUrls.api.getVerifyOtpApi(pathVariables.memberId),
+      apiUrls.api.verifyOtp,
       callback,
       fail,
       payload,

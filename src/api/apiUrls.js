@@ -6,8 +6,8 @@ export default {
   api: {
     toLogin: `${API_BASE_PATH}hungerry/verifyLogIn`,
     toRegister: `${API_BASE_PATH}hungerry/addMember`,
-    generateOtp: `${API_BASE_PATH}/otp/generateOtp`,
-    verifyOtp: `${API_BASE_PATH}/otp/verifyOtp`,
+    generateOtp: `${API_BASE_PATH}hungerry/generateOtp`,
+    verifyOtp: `${API_BASE_PATH}hungerry/verifyOtp`,
     getDigitalProducts(productType) {
       return `${API_BASE_PATH}digital/products/${productType}`;
     },

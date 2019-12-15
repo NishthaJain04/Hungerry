@@ -87,7 +87,7 @@ export default {
         params
       );
     },
-    UPDATE_PIN({ dispatch }, { success, params, payload, pathVariables } = {}) {
+    UPDATE_PIN({ dispatch }, { success, params, payload} = {}) {
       api.updatePin(
         response => {
           if (response.data.code === 200) {
@@ -107,7 +107,6 @@ export default {
         error => {
           errorHandler.handleErrors(dispatch, error);
         },
-        pathVariables,
         params,
         payload
       );
@@ -124,8 +123,8 @@ export default {
         error => {
           errorHandler.handleErrors(dispatch, error);
         },
-        params,
-        payload
+        payload,
+        params
       );
     },
     VERIFY_KTP({ dispatch }, { success, params, payload, pathVariables } = {}) {
