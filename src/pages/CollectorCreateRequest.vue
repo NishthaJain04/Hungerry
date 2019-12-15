@@ -16,13 +16,16 @@
     <div class="input-label ">Please enter the number of people you want us to serve today!!</div>
       <div class="input-wrapper">
         <BliField type="dark">
-          <BliInput v-model="quantity"/>
+          <BliInput v-model="quantity" type="number"/>
           <label>No of People</label>
         </BliField>
     </div>
-    <div class="collect">
-    <BliButton color="secondary" @click="createCollectorRequest()">Collect</BliButton>
-  </div>
+    <div class="collect" v-if="quantity">
+      <BliButton color="secondary" @click="createCollectorRequest()">Collect</BliButton>
+    </div>
+    <div v-else class="collect">
+      <BliButton color="disabled" @click="createCollectorRequest()">Collect</BliButton>
+    </div>
   </div>
 </template>
 <script src="./js/collector-create-request.js"></script>

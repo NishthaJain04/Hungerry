@@ -15,7 +15,7 @@
       <div class="item-old-price">Distance:
         <span >{{ item.distance }} </span>
       </div>
-      <div class="weight-label ellipsis">{{ item.shortDescription }}</div>
+      <div class="weight-label ellipsis">Weight: {{ item.quantity }}</div>
       <BliButton  color="secondary" class="add-item" @click="matchDonor($event, item)">Accept</BliButton>
       <BliButton  color="primary" v-if="hasAccepted" class="add-item" @click="matchDonor($event, item)">Accepted</BliButton>
     </div>

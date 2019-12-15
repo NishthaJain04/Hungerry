@@ -8,35 +8,51 @@
         src="~assets/icons/icon-bell-grey.svg"
         alt="Notification" />
     </div>
-      <BliField class="input" style="margin-top:5%;">
+    <div class="registration__header">
+      <BliField>
+        <BliInput v-model="form.organisationName"/>
+        <label>Organisation Name</label>
+      </BliField>
+      <BliField >
+          <BliInput v-model="form.emailId"/>
+          <label>Email Id</label>
+      </BliField>
+      <BliField >
           <BliInput v-model="form.registrationId"/>
           <label>Registration Id</label>
       </BliField>
-      <BliField class="input">
+      <BliField>
         <BliInput type="number" maxlength="10" v-model="form.mobileNumber"/>
         <label>Mobile Number</label>
       </BliField>
-      <BliField class="input">
+      <BliField>
         <BliInput type="number" maxlength="10" v-model="form.alternativeNumber"/>
         <label>Alternative Number</label>
       </BliField>
-      <BliField class="input">
-      <BliInput type="password" v-model="form.password"/>
+      <BliField>
+      <BliInput type="password" v-model="form.password" />
       <label>Password</label>
     </BliField>
-    <BliField class="input">
-      <BliInput type="password" v-model="form.confirmPassword"/>
+    <BliField>
+      <BliInput type="password" v-model="form.confirmPassword" />
       <label>Confirmation Password</label>
     </BliField>
-    <BliField b-clearable class="input">
-      <BliTextarea v-model="form.address"/>
+    <BliField b-clearable>
+      <BliTextarea v-model="address" @click="() => showGoogleMaps = true"/>
       <label>Address</label>
     </BliField>
-    <div v-if="form.registrationId && form.mobileNumber && form.password && form.confirmPassword && form.address" class="register">
+    <Transition effect-name="slide-left">
+        <LocationMap
+          v-if="showGoogleMaps"
+          id="myMap"
+          :onCloseRequest="toggleMapsVisibility"
+          :currentPosition="currentPosition"
+          :onPlaceChanged="handlePlaceChange"
+          :onContinueClick="saveAddress"
+        >
+        </LocationMap>
+      </Transition>
       <BliButton color="secondary" @click="confirmation">Confirmation</BliButton>
-    </div>
-    <div v-else class="register">
-      <BliButton color="disabled" @click="confirmation">Confirmation</BliButton>
     </div>
     </div>
 </template>
@@ -67,12 +83,5 @@
     padding: 15px 0;
   }
 }
-.input {
-      width: 90%;
-      margin-left: 20px;
-}
-.register {
-      text-align: center;
-    }
 
 </style>

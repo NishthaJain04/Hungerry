@@ -75,7 +75,7 @@ export default {
         prod: window.VUE_APP_MITRA_GOOGLE_MAPS_API_KEY
       };
       //for local development change value to keyEnv.dev and restart dev server
-      const apiKEY = keyEnv.prod;
+      const apiKEY = keyEnv.dev;
       const lat = this.currentPosition.lat;
       const lng = this.currentPosition.lng;
       return `https://maps.googleapis.com/maps/api/staticmap?center=${

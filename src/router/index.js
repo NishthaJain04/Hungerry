@@ -21,7 +21,7 @@ const DigitalThankyouPage = () => import(/* webpackChunkName: 'p-thankyou-page' 
 const BlipayCart = () => import(/* webpackChunkName: 'p-blipay-cart' */ '@/pages/BlipayCart');
 const CollectorMatchPage = () => import(/* webpackChunkName: 'p-retail-checkout' */ '@/pages/CollectorMatchPage');
 const ConfirmOrder = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/ConfirmOrder');
-const RetailOrderDetail = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/RetailOrderDetail');
+const CollectorRequestDetail = () => import(/* webpackChunkName: 'p-confirm-order' */ '@/pages/CollectorRequestDetail');
 const SignUp = () => import(/* webpackChunkName: 'p-login' */ '@/pages/SignUp');
 const CollectorCreateRequest = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/CollectorCreateRequest');
 const WalletTransactions = () => import(/* webpackChunkName: 'p-forgot-pin' */ '@/pages/WalletTransactions');
@@ -92,12 +92,12 @@ export default new Router({
     component: CollectorCreateRequest
   },
   {
-    path: '/order/retail/:orderId',
-    name: 'RetailOrderDetail',
-    component: RetailOrderDetail
+    path: '/collector/request-details',
+    name: 'CollectorRequestDetail',
+    component: CollectorRequestDetail
   },
   {
-    path: '/donator/donator-request-details',
+    path: '/donator/request-details',
     name: 'DonatorRequestDetail',
     component: DonatorRequestDetail
   },
