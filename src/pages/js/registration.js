@@ -1,159 +1,55 @@
-import Tabs from '@/components/web/Tabs'
-import Transition from '@/components/web/Transition'
-import Upload from '@/components/registration/Upload'
-import Personal from '@/components/registration/Personal'
-import Address from '@/components/registration/Address'
-import { getI18nText, getMemberID} from '@/utils/helpers'
 
+import Transition from '@/components/web/Transition'
+import LocationMap from '@/components/LocationMap'
 export default {
-  name: 'Registration',
+  name: 'RegistrationPage',
   data() {
     return {
-      activeTab: 'step1',
-      tabStatus: [
-        {
-          step: 'step1',
-          status: 'active',
-          name: getI18nText('Upload Photo', 'Upload')
+        form: {
+            organisationName: '',
+            emailId: '',
+            registrationId: '',
+            mobileNumber: '',
+            alternativeNumber: '',
+            password: '',
+            confirmPassword: '',
+            address: ''
         },
-        {
-          step: 'step2',
-          status: 'inactive',
-          name: getI18nText('Personal Data', 'Data Diri')
-        },
-        {
-          step: 'step3',
-          status: 'inactive',
-          name: getI18nText('Address', 'Alamat')
-        }
-      ],
-      isBackButtonEnabled: true
+        showGoogleMaps: false,
+        currentPosition: { lat: 12.9716, lng: 77.5946 },
     };
   },
   created() {
-    this.$store.dispatch('homepageStore/GET_BANNERS_AND_SERVICES');
-    if(this.$route.query.edit_mode){
-      this.$router.replace({ query: {} });
-    }
-    this.fetchLatestUser();
   },
   components: {
-    Tabs,
-    Upload,
-    Personal,
-    Address,
-    Transition
+    Transition,
+    LocationMap
   },
   methods: {
-    fetchLatestUser(){
-      this.$store.dispatch('profileStore/GET_MEMBER_IN_PROGRESS', {
-        pathVariables: { memberId: getMemberID() },
-        success: this.fetchedMember
-      });
+    confirmation () {
+        console.log(this.form)
     },
-    closeLoginScreen() {
-      console.log('CLOSE LOGIN');
-      this.$router.push('/');
+    toggleMapsVisibility() {
+      this.showGoogleMaps = !this.showGoogleMaps;
     },
-    continueStep1() {
-      if(this.$route.query.edit_mode){
-        this.$router.replace({ query: {} });
-      }
-      console.log('CONTINUE STEP');
-      this.activeTab = 'step2';
-      this.tabStatus.forEach(el => {
-        if (el.step === 'step1') {
-          el.status = 'complete';
-        }
-        if (el.step === 'step2') {
-          el.status = 'active';
-        }
-      });
+    handlePlaceChange(newPosition) {
+      this.currentPosition = this.convertPosition(newPosition)
     },
-    continueStep2() {
-      if(this.$route.query.edit_mode){
-        this.$router.replace({ query: {} });
-      }
-      this.activeTab = 'step3';
-      this.tabStatus.forEach(el => {
-        if (el.step === 'step1') {
-          el.status = 'complete';
-        }
-        if (el.step === 'step2') {
-          el.status = 'complete';
-        }
-        if (el.step === 'step3') {
-          el.status = 'active';
-        }
-      });
+    saveAddress(address, position, completeAddress, zipCode, place_id) {
+      this.showGoogleMaps = !this.showGoogleMaps;
+      this.address = address;
+      this.completeAddress = completeAddress;
+      this.addressNotes = address;
+      this.zipCode = zipCode;
+      this.place_id = place_id;
+      console.log(address, position, completeAddress, zipCode, place_id)
+      Object.assign(this.currentPosition, this.convertPosition(position));
     },
-    fetchedMember(member) {
-      console.log('fetchedMember[registration]:', member, this.$route.query);
-      const query = this.$route.query;
-      if(query.edit_mode === 'step2' || query.edit_mode === 'step1'){
-        return false
-      }
-      if(!member || !member.memberDetails) {
-        this.isBackButtonEnabled = false;
-        return false
-      }
-      // if(member === null) {
-      //   this.$router.push('/');
-      //   return false;
-      // }
-      const memberDetails = member.memberDetails;
-      if(memberDetails.ktpNumber && !memberDetails.firstName) {
-        this.continueStep1();
-        return false;
-      }
-      if(memberDetails.firstName
-          && memberDetails.lastName
-          && memberDetails.placeOfBirth
-          && memberDetails.dateOfBirth
-          && memberDetails.gender
-      ) {
-        this.continueStep2();
-        return false;
+    convertPosition(position) {
+      return {
+        lat: typeof position.lat === 'number' ? position.lat : position.lat(),
+        lng: typeof position.lng === 'number' ? position.lng : position.lng()
       }
     },
-    handleTabClick(tab) {
-      console.log('[handleTabClick]');
-      console.log('TAB:', tab);
-      if(tab.step === 'step3' && tab.status === 'active') {
-        return false
-      }
-      if(tab.step === 'step2' && tab.status === 'complete') {
-        this.$router.replace({ query: {edit_mode: tab.step} });
-        this.activeTab = tab.step;
-          this.tabStatus.forEach(el => {
-            if (el.step === tab.step) {
-              console.log('TAB STEP 2 ACTIVE:', tab);
-              el.status = 'active';
-            }
-            if(el.step === 'step3') {
-              el.status = 'inactive';
-            }
-          });
-      }
-      if(tab.step === 'step1' && tab.status === 'complete') {
-        this.$router.replace({ query: {edit_mode: tab.step} });
-        this.activeTab = tab.step;
-        this.tabStatus.forEach(el => {
-          if (el.step === tab.step) {
-            console.log('TAB STEP 1 ACTIVE:', tab);
-            el.status = 'active';
-          }
-          if(el.step === 'step2' || el.step === 'step3') {
-            el.status = 'inactive';
-          }
-        });
-      }
-      if(tab.step === 'step1' && this.$route.query.edit_mode === 'step1') {
-        this.fetchLatestUser();
-      }
-      if(tab.step === 'step2' && this.$route.query.edit_mode === 'step2') {
-        this.fetchLatestUser();
-      }
-    }
-  }
+  }  
 };

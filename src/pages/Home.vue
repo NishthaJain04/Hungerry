@@ -2,8 +2,8 @@
   <div class="home">
     <div class="home__header">
       <h2>No Food Waste</h2>
-      <BliButton outline color="secondary" style="margin-right:3%"> Start Donating </BliButton>
-      <BliButton outline color="secondary"> Start Collecting</BliButton>
+      <BliButton outline color="secondary" @click="startDonating"> Start Donating </BliButton>
+      <BliButton outline color="secondary" @click="startCollecting"> Start Collecting</BliButton>
       <BliCard width="50" style="visibility: hidden;">
         <BliCardContent>
         </BliCardContent>
@@ -36,7 +36,7 @@
     </div>
     </div>
 </template>
-<script src="./js/homePage.js"></script>
+<script src="./js/home.js"></script>
 <style lang="scss" scoped>
 @import "~assets/scss/colors";
 

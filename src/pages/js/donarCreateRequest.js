@@ -23,11 +23,13 @@ export default {
                 Quantity: ''
             }
             this.donatingItems.push(product)
+            console.log(this.donatingItems)
         },
         deleteProduct (index) {
-            this.donatingItems.splice(index, 1);
-            this.donatingItems.join()
             console.log(index)
+            if (this.donatingItems.length > 1) {
+             this.donatingItems.splice(index, 1);
+            }
         }
     }  
   };

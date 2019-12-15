@@ -17,6 +17,12 @@ export default {
       ImageSlider,
     },
     methods: {
+      startDonating () {
+        this.$router.push('/donarCreateRequest')
+      },
+      startCollecting () {
+        this.$router.push('/collector/CollectorMatchPage')
+      }
     }  
   };
   
