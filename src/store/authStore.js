@@ -27,12 +27,9 @@ export default {
       commit('setUserLoginStatus', payload);
     },
     // eslint-disable-next-line no-empty-pattern
-    GO_TO_HOME_PAGE({}, payload) {
-      console.log('auth_stroe payload', payload);
-      console.log('window.location', window.location.pathname);
-      if(window.location.pathname !== payload.path) {
-        router.push(payload.path);
-      }
+    GO_TO_HOME_PAGE({},{ payload, params } = {}) {
+      console.log('qwdef', payload)
+      api.toLogin({}, {}, payload, params)
     },
     // eslint-disable-next-line no-empty-pattern
     GET_MITRA_SESSION({}, {success}) {
@@ -61,5 +58,5 @@ export default {
       })
     }
   },
-  namespaced: false
+  namespaced: true
 };

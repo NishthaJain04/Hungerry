@@ -1,4 +1,5 @@
 import Alert from '@/components/web/Alert';
+import DropDown from '@/components/web/DropDown'
 
 export default {
     name: 'DonarCreateRequest',
@@ -8,6 +9,7 @@ export default {
             categories: '',
             Quantity: ''
         }],
+        listData: ['Rice', 'Bread', 'Curry', 'Others'],
         switchedCustom: true,
         additionalInfo: '',
         selectTime: '',
@@ -17,7 +19,8 @@ export default {
     created() {
     },
     components: {
-        Alert
+        Alert,
+        DropDown
     },
     methods: {
         displayProduct() {

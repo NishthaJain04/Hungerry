@@ -1,5 +1,5 @@
 
-import {mapGetters} from 'vuex';
+// import {mapGetters} from 'vuex';
 import pulsaIcon from '@/assets/icons/icon-phone-prepaid.svg';
 import gameIcon from '@/assets/icons/icon-game_voucher.svg';
 import dataIcon from '@/assets/icons/icon-phone-data.svg';

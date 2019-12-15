@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 // import profileStore from './profileStore';
 // import homepageStore from './homepage-store';
-// import authStore from './authStore';
+import authStore from './authStore';
 // import notificationStore from './notificationStore';
 // import pulsaStore from './pulsa-store';
 // import packageData from './package-data-store';
@@ -22,7 +22,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    // authStore,
+    authStore
     // notificationStore: notificationStore,
     // profileStore: profileStore,
     // homepageStore,

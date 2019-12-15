@@ -16,19 +16,16 @@ export default {
     },
     methods: {
         loginDetails() {
-            // console.log(this.emailId, '', this.password)
-            // this.$store.dispatch('loginStore/GET_LOGIN_DETAILS', {
-            //     params: {
-            //       emailId: this.emailId,
-            //       password: this.password
-            //     },
-            //     success: this.successFunction,
-            //     fail: this.failureFunction
-            //   })
-            this.successFunction()
+            console.log(this.emailId, '', this.password)
+            this.$store.dispatch('authStore/GO_TO_HOME_PAGE', {
+              payload: {
+                  emailId: this.emailId,
+                  password: this.password
+                }
+              })
         },
-        successFunction () {
-          // this.$store.commit('logindetails', result.data)
+        successFunction (result) {
+          this.$store.commit('logindetails', result.data)
           this.isLogin = true
         },
         handleAlertClose() {

@@ -21,7 +21,7 @@ module.exports = {
     },
     proxy: {
       "^/api": {
-        target: "http://mitra-api.qa1-sg.cld",
+        target: "http://10.177.68.82",
         changeOrigin: true
       },
       "^/backend": {
