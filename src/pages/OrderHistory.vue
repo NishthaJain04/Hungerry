@@ -29,13 +29,13 @@
         </div>
       </div>
         <div v-if="getOrderHistory && getOrderHistory.length !== 0">
-        <div
+        <router-link
         v-for="(order, index) in getOrderHistory"
         :key="index"
         :to="getRetailOrderDetailPath(order)"
       >
         <retail-order-summary :key="index" :order="order"/>
-        </div>
+        </router-link>
         </div>
       <!-- <infinite-loading v-if="orders.length > 0 || getOrderHistory.length" force-use-infinite-wrapper @infinite="getNextPage">
         <div slot="no-more" class="font-grey">

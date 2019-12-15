@@ -1,9 +1,12 @@
 <template>
   <div class="home">
     <div class="home__header">
-      <h2>No Food Waste</h2>
-      <BliButton outline color="secondary" @click="startDonating"> Start Donating </BliButton>
-      <BliButton outline color="secondary" @click="startCollecting"> Start Collecting</BliButton>
+      <h2>No Food Wasted</h2>
+      <div class="request-action" @click="startDonating">Start Donating</div>
+      <div class="request-action" @click="startCollecting">Start Collecting</div>
+      <div class="request-action"><router-link :to="getRequestPath()">Click to see your created request!</router-link></div>
+      <!-- <BliButton outline color="secondary" @click="startDonating"> Start Donating </BliButton> -->
+      <!-- <BliButton outline color="secondary" @click="startCollecting"> Start Collecting</BliButton> -->
       <BliCard width="50" style="visibility: hidden;">
         <BliCardContent>
         </BliCardContent>
@@ -40,7 +43,7 @@
 <style lang="scss" scoped>
 @import "~assets/scss/colors";
 
-.home{
+.home {
   position: relative;
   height: 100vh;
   width: 100%;
@@ -49,6 +52,18 @@
     text-align: center;
     padding: 16px;
     font-family: EffraMedium, sans-serif;
+    .request-action {
+      width: 95%;
+      border-radius: 5px;
+      background: $color-blue-1;
+      color: $color-white;
+      margin: 16px;
+      height: 50px;
+      padding-top: 12px;
+      a {
+        color: $color-white;
+      }
+    }
   }
   .donar {
     display: inline-block;

@@ -21,7 +21,18 @@ export default {
         this.$router.push('/donarCreateRequest')
       },
       startCollecting () {
-        this.$router.push('/collector/CollectorMatchPage')
+        this.$router.push('/collector/createRequest')
+      },
+      getRequestPath() {
+        if (this.$route.path.includes('donor')) {
+          return {
+            path: '/donator/request-details',
+          }
+        } else {
+          return {
+            path: '/collector/request-details',
+          }
+        }
       }
     }  
   };

@@ -92,25 +92,25 @@ export default {
     },
     getOrders(success) {
       const query = this.$route.query
-      if (query.orderStatus === 'GROCERIES') {
-        this.$store.dispatch('retailOrderHistory/GET_ORDER_HISTORY', {
-        params: {
-          page: this.page,
-          pageSize: 10,
-          orderStatus: query.orderStatus,
-        },
-        success,
-        isNewPage: this.page === 0 ? true : false
-      })
-    } else {
+    //   if (query.orderStatus === 'GROCERIES') {
+    //     this.$store.dispatch('retailOrderHistory/GET_ORDER_HISTORY', {
+    //     params: {
+    //       page: this.page,
+    //       pageSize: 10,
+    //       orderStatus: query.orderStatus,
+    //     },
+    //     success,
+    //     isNewPage: this.page === 0 ? true : false
+    //   })
+    // } else {
       const payload = {
         status: query.orderStatus,
         orderStatus: query.orderStatus,
         page: this.page,
         size: 10
       }
-      this.$store.dispatch('orderHistory/GET_ORDERS', { payload, success })
-    }
+      // this.$store.dispatch('orderHistory/GET_ORDERS', { payload, success })
+    // }
     },
     getNextPage($state) {
       this.page = this.page + 1;
@@ -130,7 +130,7 @@ export default {
     },
     getRetailOrderDetailPath(order) {
       return {
-        path: `/order/retail/${order.orderId}`,
+        path: '/donator/request-details',
         query: this.$route.query
       }
     },
