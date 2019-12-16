@@ -39,9 +39,8 @@ export default {
     handleChangePIN() {
     },
     logOutFromApp() {
-      console.log('LOGOUT:', this.getConfigs);
       // Remove all saved data from sessionStorage
-      clearSessionStorage();
+      // clearSessionStorage();
       this.$router.push('/login');
     }
   }

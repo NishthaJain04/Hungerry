@@ -87,11 +87,11 @@ export default {
         params
       );
     },
-    GET_ORDER_HISTORY({ commit, state }, { success, params } = {}) {
+    GET_ORDER_HISTORY({ commit, state , dispatch}, { success, params } = {}) {
       api.getOrderHistory(
         response => {
           if (response.data) {
-            commit('setOrders', [...state.orders, ...response.data.data]);
+            // commit('setOrders', [...state.orders, ...response.data.data]);
               success(response.data.data);
             }
         },

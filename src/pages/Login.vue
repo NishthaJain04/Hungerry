@@ -16,7 +16,7 @@
         <BliInput type="password" v-model="password"/>
         <label>Password</label>
     </BliField>
-    <a href="/sign-up" style="float: right;margin-right: 16px;transform: translate(0px, 20px);">New User? Sign Up</a>
+    <a href="/sign-up" style="float: right;margin-right: 16px;transform: translate(0px, 20px); color: '#673ab7';">New User? Sign Up</a>
     <div v-if="emailId && password" class="register">
         <BliButton color="secondary" @click="loginDetails"> Submit </BliButton>
     </div>
@@ -53,6 +53,11 @@
 .register {
       text-align: center;
       padding-left: 25%;
+    }
+    .b-secondary{
+    font-family: EffraMedium, sans-serif;
+    background-color: $color-blue-3 !important;
+    border-color: $color-blue-3 !important;
     }
 
 </style>

@@ -33,6 +33,11 @@ export default {
   },
   created(){
     this.backUpData = this.tabs;
+    const query = {
+      ...this.$route.query,
+      orderStatus: 'Upcoming'
+    };
+    this.$router.push({ query });
   },
   mounted() {
     // this.$refs.tabs.scrollLeft = this.activeTabIndex * 96;

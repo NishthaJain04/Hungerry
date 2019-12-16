@@ -36,7 +36,7 @@
         <div class="blu-column b-3">
               <div class="icon">
                 <img
-                  src="@/assets/icons/icon-retail.svg"
+                  src="@/assets/icons/icon-food.svg"
                   class="item-image"
                   alt="Item Image"
                 />
@@ -52,7 +52,7 @@
           <div class="product-information">
             Donor: {{ order.name }}
           </div>
-          <div class="font-blue font-bold font-16 mb-1">
+          <div class="font-blue font-bold font-16 mb-1" style="color: #673ab7;">
               Order Date {{ order.createdDate }}
             </div>
         </div>

@@ -9,14 +9,14 @@
         Your Request
       </div>
       <div class="font-12 font-grey">
-        Request ID: {{ order.orderId }}
+        Request ID: {{ order.donateRequestId }}
       </div>
     </div>
     <div class="font-16 padding-16">Your Items List</div>
     <div v-for="(itemType, index) in order.foodResponseList" :key="index">
-      <img class="padding-left-16" style="display: inline-block;" :src="images[index]"/>
+      <img class="padding-left-16" style="display: inline-block;height: 60px;width: 55px;" :src="images[index]"/>
       <div class="label font-blue-3 font-bold padding-left-16">{{ itemType.foodType }}</div>
-      <div class="value font-orange font-16 padding-left-16">{{ itemType.quantity }}</div>
+      <div class="value font-orange font-16 padding-left-16" style="margin-top: 10px;">{{ itemType.quantity }}</div>
       </div>
   </div>
 </template>

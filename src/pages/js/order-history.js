@@ -35,6 +35,11 @@ export default {
       ]
       }
   },
+  watch: {
+    // getOrderHistory(newVal) {
+    //   this.getOrderHistory = newVal
+    // }
+  },
   created() {
     // this.getAllOrders();
     // const self = this;
@@ -42,7 +47,7 @@ export default {
     //   self.getAllOrders();
     // };
     this.$store.dispatch('profileStore/GET_ORDER_HISTORY', {
-        params: {memberId: '6', memberType: 'DONOR', status: this.$route.query.orderStatus.toUpperCase()
+        params: {memberId: getMemberID(), memberType: getMemberType(), status: this.$route.query.orderStatus.toUpperCase()
         },
         success: this.getHistorySuccess
       });
@@ -77,7 +82,7 @@ export default {
   methods: {
     getHistorySuccess(res) {
       if (res) {
-        this.getOrderHistory = data;
+        this.getOrderHistory = res;
       }
     },
     getAllOrders() {

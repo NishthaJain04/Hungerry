@@ -1,6 +1,6 @@
 
 // import {mapGetters} from 'vuex';
-import pulsaIcon from '@/assets/icons/icon-phone-prepaid.svg';
+import pulsaIcon from '@/assets/icons/icon-food.svg';
 import gameIcon from '@/assets/icons/icon-game_voucher.svg';
 import dataIcon from '@/assets/icons/icon-phone-data.svg';
 import pdamIcon from '@/assets/icons/icon-water-bill.svg';
@@ -13,7 +13,7 @@ export default {
       order: {
 
       },
-      images: [pulsaIcon, gameIcon, dataIcon, pdamIcon]
+      images: [pulsaIcon, pulsaIcon, pulsaIcon, pulsaIcon]
     };
   },
   components: {

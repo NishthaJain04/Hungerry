@@ -2,6 +2,7 @@
 import Transition from '@/components/web/Transition'
 import LocationMap from '@/components/LocationMap'
 import Alert from '@/components/web/Alert';
+import { getMemberID } from '../../utils/helpers';
 
 export default {
   name: 'RegistrationPage',
@@ -38,7 +39,7 @@ export default {
         this.form.address = this.address;
         this.form.lat = this.currentPosition.lat;
         this.form.lng = this.currentPosition.lng;
-        this.form.memberId = '61'
+        this.form.memberId = getMemberID()
         this.$store.dispatch('authStore/GO_TO_HOME_PAGE_REG', {
           payload: this.form,
           success: this.successFunction

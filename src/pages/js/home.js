@@ -80,7 +80,7 @@ export default {
         this.$router.push('/collector/createRequest')
       },
       getRequestPath() {
-        if (this.memberType === 'donator') {
+        if (this.memberType === 'DONOR') {
           return {
             path: '/donator/request-details',
           }

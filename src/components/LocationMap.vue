@@ -293,7 +293,11 @@
     }
   }
 }
-
+.b-secondary{
+    font-family: EffraMedium, sans-serif;
+    background-color: $color-blue-3 !important;
+    border-color: $color-blue-3 !important;
+    }
 .search-icon {
   line-height: 38px;
 }

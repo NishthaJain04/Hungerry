@@ -18,12 +18,12 @@ export default {
     getHomeDetails: `${API_BASE_PATH}hungerry/homeDetails`,
     createDonorRequest: `${API_BASE_PATH}hungerry/createDonorRequest`,
     sendCollectRequest: `${API_BASE_PATH}hungerry/acceptDonatorRequest`,
-    getActiveRequest: `${API_BASE_PATH}order/activeRequestCheck`,
+    getActiveRequest: `${API_BASE_PATH}hungerry/activeRequestCheck`,
     getConfirmMsg: `${API_BASE_PATH}order/deliveryCheck`,
     getMitraSessionInfo: API_BASE_PATH + 'hungerry/session',
     logoutUrl: API_BASE_PATH + 'authentication/destroy',
     getDonorRequestDetail: API_BASE_PATH + 'hungerry/getDonatorRequestDetails',
-    getOrderHistory: API_BASE_PATH + 'order/getHistory',
+    getOrderHistory: API_BASE_PATH + 'hungerry/getHistory',
     // getMemberDetails(memberId) {
     //   return `${API_BASE_PATH}mitra/members/${memberId}`;
     // },
