@@ -7,13 +7,13 @@
     <div class="profile-page__profile-scroller">
       <div class="profile-page__profile-detail">
       <span class="profile-name">
-        {{ profile.name }}
+        {{ profile.nameOfOrganisaton }}
       </span>
         <img src="~assets/icons/icon-face.svg"
              class="profile-img icon-svg"
              alt="profileIcon"
         />
-        <div class="profile-number">{{ profile.phoneNumber }}</div>
+        <div class="profile-number">{{ profile.mobileNumber }}</div>
         <span class="complete">
           Verified
         </span>

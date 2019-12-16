@@ -14,7 +14,7 @@ export default {
           name: 'Home',
           idx: 0,
           url: '/home',
-          label: 'HOME',
+          label: 'Home',
           alt: 'Store Active',
           icons: [
             require('assets/icons/icon-home.svg'),
@@ -25,7 +25,7 @@ export default {
           name: 'OrderHistory',
           idx: 1,
           url: '/order',
-          label: 'ORDER',
+          label: 'Orders',
           alt: 'Order',
           icons: [
             require('assets/icons/icon-trending.svg'),

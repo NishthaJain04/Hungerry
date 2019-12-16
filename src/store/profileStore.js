@@ -326,9 +326,9 @@ export default {
         errorHandler.handleErrors(dispatch, error);
       }, pathVariables, payload)
     },
-    GET_ADDRESS_DETAILS({dispatch}, {params, success, fail}){
-      api.getAddressDetails(response=> {
-        if(response.data.data.code === 200) {
+    REQUEST_ACTIVE({dispatch}, {params, success, fail}){
+      api.getActiveRequest(response=> {
+        if(response.data) {
           success(response.data.data)
         } else {
           dispatch('SET_ERROR_POPUP', {

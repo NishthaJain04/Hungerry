@@ -50,7 +50,7 @@ export default {
             }
         },
         getquantity(event, index) {
-          this.donatingItems[index].quantity = event.target.value * 1000;
+          this.donatingItems[index].quantity = event.target.value;
         },
         getSelectedItem(name, item, index) {
           console.log(name, item, index)

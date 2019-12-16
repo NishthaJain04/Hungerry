@@ -57,12 +57,14 @@ export default {
     // eslint-disable-next-line no-empty-pattern
     GET_MITRA_SESSION({}, {success}) {
       api.getMitraSession(response=>{
-        if(response.data.data.code === 200) {
+        if(response.data) {
           const member = response.data.data || '';
           window.sessionStorage.setItem('memberId', member.memberId);
+          window.sessionStorage.setItem('memberType', member.memberType);
           success();
         } else {
           window.sessionStorage.setItem('memberId', '')
+          window.sessionStorage.setItem('memberType', '')
         }
       }, fail => {
         console.log('error', fail)

@@ -1,9 +1,10 @@
 <template>
   <div class="help">
-    <div class="help--header">
-      {{ i18n("HELP_PAGE.TITLE") }}
+    <div class="help--header">Notifications
     </div>
-    <help-action :showTitle="false" />
+    <div v-if="showNoti" class="confirm-msg">Please verify if your order was received
+      <BliButton outline color="secondary"> Confirm</BliButton></div>
+    <!-- <help-action :showTitle="false" /> -->
   </div>
 </template>
 
@@ -16,6 +17,10 @@
       font-weight: bold;
       text-align: center;
       border-bottom: 1px solid #eaeff3;
+    }
+    .confirm-msg {
+      text-align: center;
+      margin: 12px;
     }
   }
 </style>

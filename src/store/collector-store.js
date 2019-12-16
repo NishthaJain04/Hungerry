@@ -113,25 +113,12 @@ export default {
     RESET_SUB_CATEGORIES({ commit }) {
       commit('setSubCategoryList', null);
     },
-    DEL_CART_ITEM({ commit, dispatch }, { payload, params } = {}) {
+    SEND_COLLECT_REQUEST({ commit, dispatch }, { params, success } = {}) {
       commit('setIsAddingItemToCart', true)
-      retailCheckoutApi.deleteCartItem(
+      retailCheckoutApi.sendCollectRequest(
         response => {
-          if (response.data.data.code === 200) {
-            if (
-              response.data.data.errors === null ||
-              response.data.data.errors === undefined
-            ) {
-              commit('setCartDetails', response.data.data);
-              commit('setCheckoutCart', response.data.data);
-              commit('setIsAddingItemToCart', false);
-            } else {
-              dispatch('SET_ERROR_HANDLE_POPUP', {
-                isErrorHandleVisible: true,
-                errorList: response.data.data.errors
-              }, {root: true});
-              commit('setIsAddingItemToCart', false)
-            }
+          if (response.data) {
+            success(response.data.data)
           } else {
             dispatch('SET_ERROR_HANDLE_POPUP', {
               isErrorHandleVisible: true,
@@ -144,7 +131,6 @@ export default {
           commit('setIsAddingItemToCart', false)
           errorHandler.handleErrors(dispatch, error);
         },
-        payload,
         params
       );
     },

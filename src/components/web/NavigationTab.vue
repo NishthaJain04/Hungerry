@@ -23,9 +23,6 @@
                 :src="v.icons[isActive(v) ? 1 : 0]"
                 :alt="v.alt"
             />
-            <div class="tab-text">
-              {{ v.label }}
-            </div>
           </div>
         </div>
       </div>

@@ -29,22 +29,19 @@ export default {
   },
   watch: {
   },
-
   methods: {
     getMemberIdSuccess(data) {
         if (data) {
-          this.profile = data;
+          this.profile = data.data;
         }
       },
     handleChangePIN() {
     },
     logOutFromApp() {
-      // console.log('LOGOUT:', this.getConfigs);
-      // // Remove all saved data from sessionStorage
-      // clearSessionStorage();
-      // this.$store.dispatch('LOG_OUT_FROM_APP', {
-      //   appHomeUrl: this.getConfigs.appHome
-      // });
+      console.log('LOGOUT:', this.getConfigs);
+      // Remove all saved data from sessionStorage
+      clearSessionStorage();
+      this.$router.push('/login');
     }
   }
 };

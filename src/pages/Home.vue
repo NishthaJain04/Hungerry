@@ -10,8 +10,7 @@
       <!-- <div class="confirm-msg">Please verify if your order was picked up</div> -->
       <!-- v-if="memberType === 'collector' && isrequestActive" -->
       <ImageSlider :dataToShow="bannersToShow"></ImageSlider>
-      <div class="confirm-msg">Please verify if your order was received
-      <BliButton outline color="secondary"> Confirm</BliButton></div>
+      
       <!-- <div class="request-action"><router-link :to="getRequestPath()">Click here to see your created request!</router-link></div> -->
       <!-- <BliButton outline color="secondary" @click="startDonating"> Start Donating </BliButton> -->
       <!-- <BliButton outline color="secondary" @click="startCollecting"> Start Collecting</BliButton> -->
@@ -85,22 +84,6 @@
       position: fixed;
       bottom: 70px;
     }
-  }
-  .donar {
-    display: inline-block;
-    background-color:  rgb(38, 173, 117);
-  }
-  .donar1 {
-    display: inline-block;
-    background-color:  rgb(38, 140, 173);
-  }
-  .donar2 {
-    display: inline-block;
-    background-color:  rgb(236, 100, 207);
-  }
-  .donar3 {
-    display: inline-block;
-    background-color:  rgb(171, 173, 38);
   }
   .cards {
     height: 70px;

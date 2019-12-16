@@ -2,6 +2,17 @@ import apiUrls from './apiUrls';
 import apiCall from './apiUtils/makeApiCall.js';
 
 export default {
+  getMitraSession(callback, fail, params) {
+    apiCall.makeGetRequest(
+      apiUrls.api.getMitraSessionInfo,
+      callback,
+      fail,
+      params
+    );
+  },
+  logoutApp(callback, fail) {
+    apiCall.makePostRequest(apiUrls.api.logoutUrl, callback, fail)
+  },
     toLogin(callback, fail, payload, params) {
     console.log('payload', payload)
     apiCall.makePostRequest(

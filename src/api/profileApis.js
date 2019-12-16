@@ -38,9 +38,9 @@ export default {
       params
     );
   },
-  getStoreTypeList(callback, fail, params) {
+  getActiveRequest(callback, fail, params) {
     apiCall.makeGetRequest(
-      apiUrls.api.getStoreTypeList,
+      apiUrls.api.getActiveRequest,
       callback,
       fail,
       params

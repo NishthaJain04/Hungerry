@@ -118,15 +118,10 @@ export default {
     },
     submitDonorDetails() {
       console.log(this.selectedDonor);
-      // this.$store.dispatch('retailCheckoutStore/GET_PRODUCTS_LIST', {
-      //   pathVariables: { memberId: getMemberID() },
-      //   payload: {
-          // donor: this.selesctedDonor
-      //   },
-      //   params: { page: this.page, limit: 10 },
-      //   success: this.submitDonorDetailsSuccess
-      // });
-      this.submitSuccess = true
+      this.$store.dispatch('collectorStore/SEND_COLLECT_REQUEST', {
+        params: { memberId: '57', donatorId: this.selectedDonor.donatorId },
+        success: this.submitDonorDetailsSuccess
+      });
     },
     submitDonorDetailsSuccess(res) {
       if (res) {

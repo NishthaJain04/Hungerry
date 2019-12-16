@@ -19,6 +19,9 @@ export default {
         }
       };
     },
+    mounted() {
+      this.$store.dispatch('authStore/GET_MITRA_SESSION', { success: this.sessionFetched});
+    },
     created() {
       // this.$store.dispatch('GET_ACTIVE', { success: this.getActiveSuccess});
       this.$store.dispatch('homepageStore/GET_ANALYTICS', {
@@ -49,6 +52,15 @@ export default {
       //     this.memberType = res.memberDetails.memberType;
       //   }
       // },
+      sessionFetched() {
+        console.log('sessionFetched', getMemberID());
+        this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
+          pathVariables: {
+            memberId: 'getMemberID()'
+          },
+          success: this.fetchedMemberSuccess
+        });
+      },
       startDonating () {
         this.$router.push('/donarCreateRequest')
       },

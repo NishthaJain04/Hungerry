@@ -15,12 +15,11 @@ export default {
       params
     );
   },
-  updateItemQuantity(callback, fail, payload, params) {
-    apiCall.makePutRequest(
-      apiUrls.api.updateItemQuantity,
+  sendCollectRequest(callback, fail, params) {
+    apiCall.makeGetRequest(
+      apiUrls.api.sendCollectRequest,
       callback,
       fail,
-      payload,
       params
     );
   },

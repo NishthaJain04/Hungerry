@@ -10,12 +10,16 @@
       <div class="item-name ellipsis">{{ item.name }}</div>
       <div
         class="item-current-price red">
-        {{ item.phoneNumber }}
+        {{ item.email }}
       </div>
-      <div class="item-old-price">Distance:
-        <span >{{ item.distance }} </span>
+      <div class="item-old-price" v-if="item.foodResponse && item.foodResponse.length">Food Type:
+        <span >{{ item.foodResponse[0].foodType }} </span>
       </div>
-      <div class="weight-label ellipsis">Weight: {{ item.quantity }}</div>
+      <div class="weight-label ellipsis">Quantity: {{ item.foodResponse[1].quantity }} kg</div>
+      <div class="item-old-price"  v-if="item.foodResponse && item.foodResponse.length">Food Type:
+        <span >{{ item.foodResponse[1].foodType }} </span>
+      </div>
+      <div class="weight-label ellipsis">Quantity: {{ item.foodResponse[1].quantity }} kg</div>
     </div>
   </div>
 </div>
@@ -25,7 +29,6 @@
 @import "~assets/scss/colors";
 
 .product-items {
-    height: 96px;
     margin: 7px;
     border-radius: 4px;
     box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.12);
@@ -37,7 +40,6 @@
     .detail-list {
       text-align: left;
       position: relative;
-      height: 96px;
       padding-left: 5px !important;
 
       .label {
@@ -80,6 +82,7 @@
     .item-old-price {
       font-size: 10px;
       color: $color-grey-shade-1;
+      display: inline-block;
     }
     .weight-label {
       width: 32%;

@@ -17,6 +17,10 @@ export default {
     collectorRequestCheck: `${API_BASE_PATH}/order/collectorRequestCheck`,
     getHomeDetails: `${API_BASE_PATH}hungerry/homeDetails`,
     createDonorRequest: `${API_BASE_PATH}hungerry/createDonorRequest`,
+    sendCollectRequest: `${API_BASE_PATH}hungerry/acceptDonatorRequest`,
+    getActiveRequest: `${API_BASE_PATH}hungerry/requestCheck`,
+    getMitraSessionInfo: API_BASE_PATH + 'hungerry/session',
+    logoutUrl: API_BASE_PATH + 'authentication/destroy',
     // getMemberDetails(memberId) {
     //   return `${API_BASE_PATH}mitra/members/${memberId}`;
     // },
@@ -105,8 +109,6 @@ export default {
     trackOrderItem(orderId, orderItemId) {
       return `${API_BASE_PATH}retail/orders/${orderId}/item/${orderItemId}/logistics-info`;
     },
-    getMitraSessionInfo: API_BASE_PATH + 'mitra/session',
-    logoutUrl: API_BASE_PATH + 'authentication/destroy',
     getAddressDetailsApi: API_BASE_PATH + 'mitra/region/subdistricts',
     retailCheckout: API_BASE_PATH + 'retail/checkout/carts',
     updateQuantityAtCheckout: API_BASE_PATH + 'retail/checkout/carts/item',

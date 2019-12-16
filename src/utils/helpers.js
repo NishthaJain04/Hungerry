@@ -25,6 +25,11 @@ export function getMemberID() {
   return window.sessionStorage.getItem('memberId');
 }
 
+export function getMemberType() {
+  console.log('Helper[MemberId]', window.sessionStorage.getItem('memberType'))
+  return window.sessionStorage.getItem('memberType');
+}
+
 export function clearSessionStorage() {
   window.sessionStorage.clear();
 }
