@@ -10,6 +10,14 @@ export default {
       params
     );
   },
+  getDonorRequestDetail(callback, fail, params) {
+    apiCall.makeGetRequest(
+      apiUrls.api.getDonorRequestDetail,
+      callback,
+      fail,
+      params
+    );
+  },
   createDonorRequest(callback, fail, request, params) {
     apiCall.makePostRequest(
       apiUrls.api.createDonorRequest,

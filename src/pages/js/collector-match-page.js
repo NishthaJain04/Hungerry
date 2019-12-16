@@ -27,38 +27,38 @@ export default {
       selectedDonor: '',
       submitSuccess: false,
       getDonors: [
-        {
-          name: 'nishtha',
-          phoneNumber: '9835112837',
-          email: 'jain04nishtha@gmail.com',
-          imageUrl: profileImage,
-          distance: '1.2km',
-          quantity: '1.5kg'
-        },
-        {
-          name: 'purvakshi',
-          phoneNumber: '9835112837',
-          email: 'jain04nishtha@gmail.com',
-          imageUrl: profileImage,
-          distance: '1.2km',
-          quantity: '1.5kg'
-        },
-        {
-          name: 'vyshnavi',
-          phoneNumber: '9835112837',
-          email: 'jain04nishtha@gmail.com',
-          imageUrl: profileImage,
-          distance: '1.2km',
-          quantity: '1.5kg'
-        },
-        {
-          name: 'sowmiya',
-          phoneNumber: '9835112837',
-          email: 'jain04nishtha@gmail.com',
-          imageUrl: profileImage,
-          distance: '1.2km',
-          quantity: '1.5kg'
-        }
+        // {
+        //   name: 'nishtha',
+        //   phoneNumber: '9835112837',
+        //   email: 'jain04nishtha@gmail.com',
+        //   imageUrl: profileImage,
+        //   distance: '1.2km',
+        //   quantity: '1.5kg'
+        // },
+        // {
+        //   name: 'purvakshi',
+        //   phoneNumber: '9835112837',
+        //   email: 'jain04nishtha@gmail.com',
+        //   imageUrl: profileImage,
+        //   distance: '1.2km',
+        //   quantity: '1.5kg'
+        // },
+        // {
+        //   name: 'vyshnavi',
+        //   phoneNumber: '9835112837',
+        //   email: 'jain04nishtha@gmail.com',
+        //   imageUrl: profileImage,
+        //   distance: '1.2km',
+        //   quantity: '1.5kg'
+        // },
+        // {
+        //   name: 'sowmiya',
+        //   phoneNumber: '9835112837',
+        //   email: 'jain04nishtha@gmail.com',
+        //   imageUrl: profileImage,
+        //   distance: '1.2km',
+        //   quantity: '1.5kg'
+        // }
       ]
     };
   },
@@ -119,7 +119,7 @@ export default {
     submitDonorDetails() {
       console.log(this.selectedDonor);
       this.$store.dispatch('collectorStore/SEND_COLLECT_REQUEST', {
-        params: { memberId: '57', donatorId: this.selectedDonor.donatorId },
+        params: { memberId: getMemberID(), donatorId: this.selectedDonor.donatorId },
         success: this.submitDonorDetailsSuccess
       });
     },

@@ -21,7 +21,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('authStore/GET_MITRA_SESSION', { success: this.sessionFetched});
+    // this.$store.dispatch('authStore/GET_MITRA_SESSION', { success: this.sessionFetched});
   },
   methods: {
     handleNavigationTabVisibility(path) {
@@ -36,10 +36,10 @@ export default {
         this.navTabVisible = false
       }
     },
-    sessionFetched () {
-      this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
-        pathVariables: {memberId: '27y7'}
-      });
-    }
+    // sessionFetched () {
+    //   this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
+    //     pathVariables: {memberId: '27y7'}
+    //   });
+    // }
   }
 };

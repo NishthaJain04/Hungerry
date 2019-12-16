@@ -1,3 +1,4 @@
+import { getMemberID } from '@/utils/helpers';
 
 
 export default {
@@ -18,7 +19,7 @@ export default {
       console.log(this.quantity)
       this.$store.dispatch('collectorStore/CREATE_REQUEST', {
         payload:  { countNeeded: this.quantity },
-        params: { memberId: '57'},
+        params: { memberId: getMemberID()},
         success: this.createCollectorRequestSuccess
     });
     },

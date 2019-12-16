@@ -23,7 +23,7 @@
                 ></DropDown>
             </div>
             <div class="blu-column b-5 center-text" style="bordre:1px solid #9b9b9b;">
-                <input type="number" class="input-quantity" @input="getquantity($event, index)" placeholder="quantity"/>
+                <input type="number" class="input-quantity" @input="getquantity($event, index)" placeholder="quantity(kg)"/>
             </div>
             <div class="blu-column b-2 center-text" >
                 <img src="../assets/icons/icon-cross.svg" alt="add icon" width="35px" style="margin-left:10%;margin-top:5%;" @click="() =>{deleteProduct(index)}">
@@ -34,7 +34,7 @@
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless" style="margin-top:5%;">
             <div class="blu-column b-8 center-text" style="margin-left:5px;">
-                <label style="color: #0096d9;">Does food contain Non-Veg?</label>
+                <label style="color: #673ab7;">Does food contain Non-Veg?</label>
             </div>
             <div class="blu-column b-4 center-text">
                 <BliSwitch v-model="switchedCustom" style="margin-left: 15px;line-height: 10px;">
@@ -43,7 +43,7 @@
         </div>
         <div class="blu-columns b-mobile b-0 b-gapless mt-3" style="margin-top:10px;">
             <div class="blu-column b-6 center-text" style="margin-top: 4%;text-align: left !important;margin-left: 25px;">
-                <label slot="label" style="color: #0096d9;">Select pickup within time(in mins)</label>
+                <label slot="label" style="color: #673ab7;">Select pickup within time(in mins)</label>
             </div>
             <div class="blu-column b-5 center-text" style="margin-top: 7px;">
                 <!-- <BliDropdown v-model="selectTime" selection autoclose>
@@ -100,7 +100,7 @@
     margin-bottom: 4%;
   }
   .input-quantity {
-    width: 100px;
+    width: 120px;
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 40px;
@@ -112,6 +112,15 @@
         border: 1px solid $color-blue-5;
     }
   }
+  .b-secondary{
+    font-family: EffraMedium, sans-serif;
+    background-color: $color-blue-3 !important;
+    border-color: $color-blue-3 !important;
+    }
+    .switch input label
+        &:before {
+       background-color: $color-blue-3 !important; 
+    }
 }
 .register {
     text-align: center;

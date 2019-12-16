@@ -19,5 +19,13 @@ export default {
         fail,
         params
     );
+  },
+  getConfirmMsg(callback, fail, params) {
+    apiCall.makeGetRequest(
+        apiUrls.api.getConfirmMsg,
+        callback,
+        fail,
+        params
+    );
   }
 };

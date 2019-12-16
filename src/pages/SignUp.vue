@@ -75,5 +75,13 @@
     .register {
       text-align: center;
     }
+    .blu-chip {
+       input:checked {
+          span {
+          border-color: #673ab7;
+          background-color: #673ab7;
+          }
+       }
+    }
   }
 </style>

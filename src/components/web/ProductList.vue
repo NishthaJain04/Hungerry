@@ -15,11 +15,17 @@
       <div class="item-old-price" v-if="item.foodResponse && item.foodResponse.length">Food Type:
         <span >{{ item.foodResponse[0].foodType }} </span>
       </div>
+      <div class="item-old-price" v-if="item.foodResponse && item.foodResponse.length">Can serve:
+        <span >{{ item.foodResponse[0].feedCount }} </span>  people
+      </div>
       <div class="weight-label ellipsis">Quantity: {{ item.foodResponse[1].quantity }} kg</div>
       <div class="item-old-price"  v-if="item.foodResponse && item.foodResponse.length">Food Type:
         <span >{{ item.foodResponse[1].foodType }} </span>
       </div>
       <div class="weight-label ellipsis">Quantity: {{ item.foodResponse[1].quantity }} kg</div>
+      <div class="item-old-price" v-if="item.foodResponse && item.foodResponse.length">Can serve:
+        <span >{{ item.foodResponse[1].feedCount }} </span>  people
+      </div>
     </div>
   </div>
 </div>
@@ -82,7 +88,6 @@
     .item-old-price {
       font-size: 10px;
       color: $color-grey-shade-1;
-      display: inline-block;
     }
     .weight-label {
       width: 32%;

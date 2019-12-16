@@ -5,6 +5,7 @@ import InfiniteLoading from 'vue-infinite-loading';
 import RetailOrderSummary from '@/components/order-history/RetailOrderSummary'
 import { mapGetters } from 'vuex'
 import { getI18nText } from '@/utils/helpers'
+import { getMemberType, getMemberID } from '../../utils/helpers';
 export default {
   name: 'OrderHistory',
   data() {
@@ -15,8 +16,8 @@ export default {
       getOrderHistory: [
         {
           orderId: '12232123',
-          donorName: 'ngo.org',
-          date: '23-19-2018',
+          name: 'ngo.org',
+          createdDate: '23-19-2018',
           quantity: 3
         },
         {
@@ -35,21 +36,17 @@ export default {
       }
   },
   created() {
-    this.getAllOrders();
+    // this.getAllOrders();
     // const self = this;
     // window.onpopstate = function() {
     //   self.getAllOrders();
     // };
-    // this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
-      //   pathVariables: {memberId: getMemberID()},
-      //   success: this.getMemberSuccess
-      // });
-      // getMemberSuccess(res) {
-      //   if (res) {
-      //     this.memberType = res.memberDetails.memberType;
-      //   }
-      // },
-  },
+    this.$store.dispatch('profileStore/GET_ORDER_HISTORY', {
+        params: {memberId: '6', memberType: 'DONOR', status: this.$route.query.orderStatus.toUpperCase()
+        },
+        success: this.getHistorySuccess
+      });
+    },
   components: {
     OrderSummary,
     ProductType,
@@ -78,6 +75,11 @@ export default {
     }
   },
   methods: {
+    getHistorySuccess(res) {
+      if (res) {
+        this.getOrderHistory = data;
+      }
+    },
     getAllOrders() {
       const query = {};
       this.page = 0;

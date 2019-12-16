@@ -7,6 +7,7 @@ import BpjsIcon from '@/assets/icons/icon-bpjs.svg';
 import WalletIcon from '@/assets/icons/mitrapay.svg';
 import RetailIcon from '@/assets/icons/icon-retail.svg';
 import { mapGetters } from 'vuex';
+import { getMemberID, getMemberType } from '../../../utils/helpers';
 
 export default {
   data() {
@@ -19,10 +20,6 @@ export default {
         {
           icon: PulsaIcon,
           orderStatus: 'Completed'
-        },
-        {
-          icon: DataIcon,
-          orderStatus: 'Cancelled'
         }
       ],
       backUpData: []
@@ -57,14 +54,13 @@ export default {
       // this.$store.dispatch('orderHistory/RESET_ORDERS');
       // this.$store.dispatch('retailOrderHistory/RESET_ORDERS');
       //   if (query.productType === 'GROCERIES') {
-      //     this.$store.dispatch('retailOrderHistory/GET_ORDER_HISTORY', {
-      //     params: {
-      //       page: 0,
-      //       pageSize: 10,
-      //       orderStatus: query.orderStatus
-      //     },
-      //     isNewPage: true
-      //   })
+          this.$store.dispatch('profileStore/GET_ORDER_HISTORY', {
+            params: {
+            status: query.orderStatus.toUpperCase(),
+            memberId: getMemberID(),
+            memberType: getMemberType()
+          }
+        })
       // } else {
                     // const payload = {
                     //   status: query.orderStatus,

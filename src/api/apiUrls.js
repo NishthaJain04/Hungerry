@@ -18,9 +18,12 @@ export default {
     getHomeDetails: `${API_BASE_PATH}hungerry/homeDetails`,
     createDonorRequest: `${API_BASE_PATH}hungerry/createDonorRequest`,
     sendCollectRequest: `${API_BASE_PATH}hungerry/acceptDonatorRequest`,
-    getActiveRequest: `${API_BASE_PATH}hungerry/requestCheck`,
+    getActiveRequest: `${API_BASE_PATH}order/activeRequestCheck`,
+    getConfirmMsg: `${API_BASE_PATH}order/deliveryCheck`,
     getMitraSessionInfo: API_BASE_PATH + 'hungerry/session',
     logoutUrl: API_BASE_PATH + 'authentication/destroy',
+    getDonorRequestDetail: API_BASE_PATH + 'hungerry/getDonatorRequestDetails',
+    getOrderHistory: API_BASE_PATH + 'order/getHistory',
     // getMemberDetails(memberId) {
     //   return `${API_BASE_PATH}mitra/members/${memberId}`;
     // },
@@ -105,7 +108,7 @@ export default {
     getWhatsAppOptApi(memberId) {
       return `${API_BASE_PATH}mitra/members/${memberId}/opt-whatsapp`;
     },
-    getOrderHistory: `${API_BASE_PATH}retail/orders/history`,
+    // getOrderHistory: `${API_BASE_PATH}retail/orders/history`,
     trackOrderItem(orderId, orderItemId) {
       return `${API_BASE_PATH}retail/orders/${orderId}/item/${orderItemId}/logistics-info`;
     },

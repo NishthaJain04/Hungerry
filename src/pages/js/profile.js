@@ -1,4 +1,5 @@
 import clearSessionStorage from '@/utils/helpers';
+import {getMemberID} from '@/utils/helpers';
 export default {
   name: 'Profile',
   data() {
@@ -19,7 +20,7 @@ export default {
   created() {
     this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
       params: {
-        memberId: '61'
+        memberId: getMemberID()
       },
       success: this.getMemberIdSuccess
     });

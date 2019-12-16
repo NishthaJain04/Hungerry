@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from '@/store'
 
 const Account = () => import(/* webpackChunkName: 'p-profile' */ '@/pages/Profile');
 const Home = () => import(/* webpackChunkName: 'p-store' */ '@/pages/Home');
@@ -175,10 +176,6 @@ export default new Router({
     path: '/help',
     name: 'Help',
     component: Help
-  },
-  {
-    path: '/mitra-pwa',
-    redirect: '/home'
   },
   {
     path: '/not-found',

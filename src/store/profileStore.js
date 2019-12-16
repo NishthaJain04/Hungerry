@@ -6,7 +6,8 @@ export default {
     membersData: {},
     userPin: '',
     ocrDetails: {},
-    isMemberFetched: false
+    isMemberFetched: false,
+    orders: {}
   },
   getters: {
     getMembersData(state) {
@@ -20,9 +21,15 @@ export default {
     },
     isMemberFetched(state) {
       return state.isMemberFetched;
-    }
+    },
+    getOrderHistory(state) {
+      return state.orders;
+    },
   },
   mutations: {
+    setOrders(state, orders) {
+      state.orders = orders;
+    },
     setMembersData(state, value) {
       state.membersData = value;
     },
@@ -48,6 +55,7 @@ export default {
         response => {
           if (response.data) {
             commit('setMembersData', response.data.data);
+            commit('setIsMemberFetched', true);
             success(response.data);
           }
         },
@@ -79,28 +87,18 @@ export default {
         params
       );
     },
-    UPDATE_PIN({ dispatch }, { success, params, payload} = {}) {
-      api.updatePin(
+    GET_ORDER_HISTORY({ commit, state }, { success, params } = {}) {
+      api.getOrderHistory(
         response => {
-          if (response.data.data.code === 200) {
-            if (
-              response.data.data.error === null ||
-              response.data.data.error === undefined
-            ) {
+          if (response.data) {
+            commit('setOrders', [...state.orders, ...response.data.data]);
               success(response.data.data);
-            } else {
-              dispatch('SET_ERROR_POPUP', {
-                isErrorPopupVisible: true,
-                errorList: response.data.data.errors
-              }, {root: true});
             }
-          }
         },
         error => {
           errorHandler.handleErrors(dispatch, error);
         },
-        params,
-        payload
+        params
       );
     },
     VERIFY_OTP({ dispatch }, { success, params, payload, fail } = {}) {

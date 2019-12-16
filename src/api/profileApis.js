@@ -46,6 +46,14 @@ export default {
       params
     );
   },
+  getOrderHistory(callback, fail, params) {
+    apiCall.makeGetRequest(
+      apiUrls.api.getOrderHistory,
+      callback,
+      fail,
+      params
+    );
+  },
   getMemberInProgress(callback, fail, pathVariables, params) {
     apiCall.makeGetRequest(
       apiUrls.api.getMemberInProgressApi(pathVariables.memberId),

@@ -35,7 +35,7 @@
       left: 0;
     }
     .tab {
-      width: max-content;
+      width: 50%;
       text-align: center;
       font-size: 16px;
       height: 48px;

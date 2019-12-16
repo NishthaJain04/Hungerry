@@ -1,5 +1,5 @@
 <template>
-  <div class="order--detail" v-if="order.requestDetails">
+  <div class="order--detail" v-if="order">
     <div class="order--detail__header">
         <img
           src="~assets/icons/icon-left.svg"
@@ -13,9 +13,9 @@
       </div>
     </div>
     <div class="font-16 padding-16">Your Items List</div>
-    <div v-for="(itemType, index) in order.requestDetails.type" :key="index">
+    <div v-for="(itemType, index) in order.foodResponseList" :key="index">
       <img class="padding-left-16" style="display: inline-block;" :src="images[index]"/>
-      <div class="label font-blue-3 font-bold padding-left-16">{{ itemType.name }}</div>
+      <div class="label font-blue-3 font-bold padding-left-16">{{ itemType.foodType }}</div>
       <div class="value font-orange font-16 padding-left-16">{{ itemType.quantity }}</div>
       </div>
   </div>

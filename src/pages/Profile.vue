@@ -84,7 +84,7 @@
       color: $color-grey-dark;
     }
     .complete {
-      color: $color-green;
+      color: $color-blue-3;
       float: right;
     }
   }

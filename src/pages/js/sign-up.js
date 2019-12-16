@@ -3,6 +3,7 @@ import Alert from '@/components/web/Alert';
 import Transition from '@/components/web/Transition';
 import OverlayPopup from '@/components/web/OverlayPopup';
 import OtpModal from '@/components/OtpModal';
+import {getMemberID} from '@/utils/helpers'
 
 export default {
   name: 'SignUp',
@@ -126,12 +127,25 @@ export default {
         success: this.verifyOtpSuccess
       });
     },
+    sessionFetched () {
+      this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
+        pathVariables: {memberId: '27y7'}
+      });
+    },
     verifyOtpSuccess(res) {
       if (res) {
         this.isOtpOverlayOpen = false;
         this.isOtpCorrect = true;
         this.resendVisible = false;
         this.resendSuccessVisible = false;
+          window.sessionStorage.setItem('memberId', res.data.memberId);
+          window.sessionStorage.setItem('memberType', res.data.memberType);
+        this.$store.dispatch('profileStore/GET_MEMBER_DETAILS', {
+          params: {
+            memberId: getMemberID()
+          },
+          success: this.getMemberIdSuccess
+        });
         this.$router.push('/Registration');
       } else {
         this.isOtpCorrect = false;

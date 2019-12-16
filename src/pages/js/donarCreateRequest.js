@@ -1,5 +1,6 @@
 import Alert from '@/components/web/Alert';
 import DropDown from '@/components/web/DropDown'
+import { getMemberID } from '../../utils/helpers';
 
 export default {
     name: 'DonarCreateRequest',
@@ -71,7 +72,7 @@ export default {
                   pickUpTime: this.selectTime
                 },
                 params: {
-                  memberId: '61'
+                  memberId: getMemberID()
                 },
                 success: this.successFunction,
                 failure: this.failureFuction

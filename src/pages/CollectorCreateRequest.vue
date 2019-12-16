@@ -71,6 +71,7 @@
       top: 60px;
       text-align: center;
     }
+
     .input-wrapper {
       width: 120px;
       transform: translate(100%, 50%);
@@ -89,6 +90,11 @@
       .blu-btn {
         width: 97%;
       }
+    .b-secondary{
+    font-family: EffraMedium, sans-serif;
+    background-color: $color-blue-3 !important;
+    border-color: $color-blue-3 !important;
+    }
     }
 }
 </style>

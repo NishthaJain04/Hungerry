@@ -110,16 +110,16 @@ export default {
           errorHandler.handleErrors(dispatch, error);
       }, params)
     },
-    GET_APP_COFIGURATION({dispatch, commit}, typeOfConfiguration) {
-      cmsApi.getConfig(response => {
-          if (response.data.data.code === 200) {
-            commit('setConfigs', JSON.parse(response.data.data));
+    GET_DELIVERY_CHECK({dispatch, commit}, {params, success}) {
+      api.getConfirmMsg(response => {
+          if (response.data) {
+            success(response.data.data);
           }
-          },
+        },
           error => {
             errorHandler.handleErrors(dispatch, error);
           },
-          typeOfConfiguration
+          params
       )
     }
   },

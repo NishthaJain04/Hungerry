@@ -71,15 +71,15 @@ export default {
         params
       );
     },
-    ADD_CART_NO_NUMBER({ commit }, {payload, success}){
+    GET_DONOR_REQUEST_DETAIL({ commit }, { params, success}){
       commit('setCart', null);
-      digitalApi.addCart(
+      digitalApi.getDonorRequestDetail(
         response => {
           commit('setCart', response.data.data);
           success && success(response.data.data);
         },
         error => console.log(error),
-        payload
+        params
       );
     },
     PAY({commit}, { success, payload }) {

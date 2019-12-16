@@ -50,10 +50,10 @@
             Order Number {{ order.orderId }}
           </div>
           <div class="product-information">
-            Donor: {{ order.donorName }}
+            Donor: {{ order.name }}
           </div>
           <div class="font-blue font-bold font-16 mb-1">
-              Order Date {{ order.date }}
+              Order Date {{ order.createdDate }}
             </div>
         </div>
       </div>

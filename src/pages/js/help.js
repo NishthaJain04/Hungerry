@@ -1,4 +1,5 @@
 import HelpAction from '@/components/HelpAction'
+import { getMemberID, getMemberType } from '../../utils/helpers';
 
 export default {
   data() {
@@ -10,8 +11,8 @@ export default {
     HelpAction
   },
   created() {
-    this.$store.dispatch('profileStore/REQUEST_ACTIVE', {
-      params: { memberId: '57'},
+    this.$store.dispatch('homepageStore/GET_DELIVERY_CHECK', {
+      params: { memberId: getMemberID(), memberType: getMemberType() },
       success: this.requestActiveSuccess
     });
   },

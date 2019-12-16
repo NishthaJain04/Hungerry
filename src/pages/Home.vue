@@ -2,16 +2,14 @@
   <div class="home">
     <div class="home__header">
       <span style="font-size:20px;">No Food Wasted</span>
-      <!-- v-if="memberType === 'donator' -->
-      <div class="request-action" @click="startDonating">Start Donating</div>
-      <!-- v-if="memberType === 'collector' -->
-      <!-- <div class="request-action" @click="startCollecting">Start Collecting</div> -->
+      <div class="request-action" v-if="memberType === 'DONOR' && !isrequestActive" @click="startDonating">Start Donating</div>
+      <div class="request-action" v-if="memberType === 'COLLECTOR' && !isrequestActive" @click="startCollecting">Start Collecting</div>
       <!-- v-if="memberType === 'donator' && isrequestActive" -->
       <!-- <div class="confirm-msg">Please verify if your order was picked up</div> -->
       <!-- v-if="memberType === 'collector' && isrequestActive" -->
       <ImageSlider :dataToShow="bannersToShow"></ImageSlider>
       
-      <!-- <div class="request-action"><router-link :to="getRequestPath()">Click here to see your created request!</router-link></div> -->
+      <div class="request-action" v-if="isrequestActive"><router-link :to="getRequestPath()">Click here to see your created request!</router-link></div>
       <!-- <BliButton outline color="secondary" @click="startDonating"> Start Donating </BliButton> -->
       <!-- <BliButton outline color="secondary" @click="startCollecting"> Start Collecting</BliButton> -->
       <!-- <BliCard width="50" style="visibility: hidden;">
